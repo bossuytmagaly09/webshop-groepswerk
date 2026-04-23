@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechShop | Premium Developer Gear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-[#0d0d0d] font-['Inter'] antialiased">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-black/[0.05]">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="index.html" class="text-xl font-semibold tracking-tight">TECH<span class="text-[#18E299]">SHOP</span></a>
+                <div class="hidden md:flex gap-6 text-[14px] font-medium">
+                    <a href="products.html" class="hover:text-[#18E299] transition-colors">Products</a>
+                    <a href="#" class="hover:text-[#18E299] transition-colors">Workstations</a>
+                    <a href="#" class="hover:text-[#18E299] transition-colors">Peripherals</a>
+                </div>
+            </div>
+            <a href="products.html" class="bg-[#0d0d0d] text-white px-6 py-2 rounded-full text-[15px] font-medium hover:opacity-90 transition-all shadow-sm">Shop Now</a>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-[radial-gradient(circle_at_center,_#d4fae8_0%,_transparent_70%)] opacity-40 -z-10"></div>
+        <div class="max-w-[1200px] mx-auto px-6 text-center">
+            <div class="inline-block bg-[#d4fae8] text-[#0fa76e] text-[12px] font-bold tracking-[0.6px] uppercase px-3 py-1 rounded-full mb-6 hero-el">New Season 2026</div>
+            <h1 class="text-5xl md:text-[64px] font-semibold leading-[1.15] tracking-[-1.28px] mb-6 hero-el">Tools for the next <br/> generation of creators.</h1>
+            <p class="text-lg text-[#666666] max-w-2xl mx-auto mb-10 hero-el">High-performance hardware engineered for developers, designers, and digital architects.</p>
+            <div class="flex flex-wrap justify-center gap-4 hero-el">
+                <button class="bg-[#0d0d0d] text-white px-8 py-3 rounded-full text-[15px] font-medium shadow-md">Browse Collection</button>
+                <button class="bg-white border border-black/[0.08] text-[#0d0d0d] px-8 py-3 rounded-full text-[15px] font-medium">View Lookbook</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-[1200px] mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="category-card p-8 rounded-[24px] border border-black/[0.05] bg-white shadow-[0_2px_4px_rgba(0,0,0,0.03)] hover:border-black/[0.1] transition-all cursor-pointer">
+                <div class="text-[12px] font-mono text-[#0fa76e] tracking-widest mb-4">01. SYSTEMS</div>
+                <h3 class="text-xl font-semibold tracking-[-0.2px] mb-2">Workstations</h3>
+                <p class="text-[14px] text-[#666666]">M4 Powered systems built for compilation speed.</p>
+            </div>
+            <div class="category-card p-8 rounded-[24px] border border-black/[0.05] bg-white shadow-[0_2px_4px_rgba(0,0,0,0.03)] hover:border-black/[0.1] transition-all cursor-pointer">
+                <div class="text-[12px] font-mono text-[#0fa76e] tracking-widest mb-4">02. INPUT</div>
+                <h3 class="text-xl font-semibold tracking-[-0.2px] mb-2">Keyboards</h3>
+                <p class="text-[14px] text-[#666666]">Mechanical precision for high-velocity coding.</p>
+            </div>
+            <div class="category-card p-8 rounded-[24px] border border-black/[0.05] bg-white shadow-[0_2px_4px_rgba(0,0,0,0.03)] hover:border-black/[0.1] transition-all cursor-pointer">
+                <div class="text-[12px] font-mono text-[#0fa76e] tracking-widest mb-4">03. VISION</div>
+                <h3 class="text-xl font-semibold tracking-[-0.2px] mb-2">Displays</h3>
+                <p class="text-[14px] text-[#666666]">6K Resolution with true-to-life color accuracy.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
