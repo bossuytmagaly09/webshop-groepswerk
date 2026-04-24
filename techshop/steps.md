@@ -14,7 +14,7 @@ Doel: Het opzetten van de ontwikkelomgeving en het in kaart brengen van de datas
 - [ ] Maken en configureren van de Laravel Modellen & Relaties (Eloquent) `Product`, `Category`, `Order`, `OrderItem`, `User`.
 - [x] Backed Enums aanmaken (`OrderStatus`, `UserRole`).
 - [x] Aanmaken van de bijbehorende database Migrations.
-- [ ] Aanmaken van Factories en Seeders (dummy data) voor testdoeleinden.
+- [x] Aanmaken van Factories en Seeders (dummy data) voor testdoeleinden.
 - [ ] Repository / Service Layer architectuur opzetten (indien we logica willen scheiden van controllers/Livewire componenten).
 
 ---
