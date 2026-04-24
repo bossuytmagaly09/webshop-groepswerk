@@ -11,7 +11,7 @@ Doel: Het opzetten van de ontwikkelomgeving en het in kaart brengen van de datas
 
 - [ ] Controleren en inladen van de actuele `rules.md` (Zorg dat deze opgeslagen is in je IDE)
 - [ ] Database ontwerp uittekenen (ERD): Producten, Categorieën, Gebruikers (Rollen), Bestellingen, Bestelregels, Reviews.
-- [ ] Maken en configureren van de Laravel Modellen & Relaties (Eloquent) `Product`, `Category`, `Order`, `OrderItem`, `User`.
+- [x] Maken en configureren van de Laravel Modellen & Relaties (Eloquent) `Product`, `Category`, `Order`, `OrderItem`, `User`.
 - [x] Backed Enums aanmaken (`OrderStatus`, `UserRole`).
 - [x] Aanmaken van de bijbehorende database Migrations.
 - [x] Aanmaken van Factories en Seeders (dummy data) voor testdoeleinden.
