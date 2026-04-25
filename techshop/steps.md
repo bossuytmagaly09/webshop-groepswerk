@@ -48,8 +48,8 @@ Doel: Het opbouwen van de voorkant van de webshop die naadloos communiceert met 
   - [ ] Integratie van het navigatie menu (inclusief dynamische categorie weergave) en de footer.
 - [ ] **Home & Catalogus**
   - [ ] Homepage opzetten (Uitgelichte producten, Banners, Recente toevoegingen).
-  - [ ] Product overzicht (Shop/Catalogus) pagina maken met Livewire (dynamisch inladen zonder page reloads).
-  - [ ] Filters en zoekbalk implementeren (bijv. zoeken op naam of categorie).
+  - [x] Product overzicht (Shop/Catalogus) pagina maken met Livewire (dynamisch inladen zonder page reloads).
+  - [x] Filters en zoekbalk implementeren (bijv. zoeken op naam of categorie).
 - [ ] **Product Detail Pagina**
   - [ ] Uitgebreide detailpagina (Titel, afbeeldingsgalerij, specificaties, review weergave).
   - [ ] 'Toevoegen aan winkelwagen' knop (dynamisch via Livewire/Sessie of Database cart).
