@@ -33,11 +33,18 @@ class Product extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    /**
-     * Scope a query to only include products with available stock.
-     */
     public function scopeAvailable(Builder $query): void
     {
         $query->where('stock', '>', 0);
+    }
+
+    public function scopeSearch(Builder $query, string $search): void
+    {
+        $query->when($search !== '', fn (Builder $q) => $q->where('name', 'like', "%{$search}%"));
+    }
+
+    public function scopeInCategory(Builder $query, string $category): void
+    {
+        $query->when($category !== '', fn (Builder $q) => $q->where('category_id', (int) $category));
     }
 }
