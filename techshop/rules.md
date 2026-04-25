@@ -17,7 +17,7 @@ Alles wat gegenereerd, aangepast of voorgesteld wordt, moet compatibel zijn met:
 
 Dit project is geen generieke demo-app.
 
-Dit project is een **premium tech content platform + hardware showcase CMS**, gebouwd op basis van de frontend uit `test.zip` / `techsop.zip`.
+Dit project is een **premium tech content platform + hardware showcase CMS**, gebouwd op basis van de frontend uit `test.zip` / `techshop.zip`.
 
 De frontend toont een moderne techsite gericht op:
 
@@ -49,7 +49,7 @@ De admin backend wordt opgebouwd via:
 * Het Laravel project bestaat reeds.
 * Laravel 13 + Livewire 4 zijn reeds geïnstalleerd.
 * We bouwen verder op de bestaande starter kit.
-* `techsop.zip` bevat de frontendreferentie.
+* `techshop.zip` bevat de frontendreferentie.
 * De frontend moet volledig geanalyseerd worden.
 * HTML mockups worden vertaald naar Blade + Livewire.
 * De backend wordt een volledig CMS.
@@ -80,7 +80,7 @@ Bouw een schaalbare premium techsite met:
 
 ---
 
-# Analyse van techsop.zip
+# Analyse van techshop.zip
 
 ## Algemene stijl
 
