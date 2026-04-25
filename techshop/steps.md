@@ -23,6 +23,7 @@ Doel: Het opzetten van de ontwikkelomgeving en het in kaart brengen van de datas
 Doel: Het verder uitbouwen van het bestaande Livewire/Fortify dashboard om te dienen als het CMS van de techshop.
 
 - [ ] **Configuratie & Rechten**
+  - [x] [Auth] Social Login Integreren (Google & GitHub) met accountkoppeling.
   - [ ] Role-based Access Control (RBAC) invoeren: Onderscheid tussen Admin en normale Klanten.
   - [ ] Dashboard toegang beveiligen met middleware via Livewire/Fortify.
 - [ ] **Categorie Beheer (CRUD)**
