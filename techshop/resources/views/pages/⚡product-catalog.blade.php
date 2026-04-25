@@ -89,8 +89,8 @@ new #[Title('Products'), Layout('layouts.shop')] class extends Component
                 @foreach ($this->categories as $cat)
                     <button
                         wire:key="pill-{{ $cat->id }}"
-                        wire:click="$set('category', '{{ $cat->id }}')"
-                        class="{{ (string) $cat->id === $category ? 'bg-[#d4fae8] text-[#0fa76e] border-[#18E299]/20' : 'border-black/[0.08] hover:bg-gray-50' }} px-4 py-1.5 rounded-full text-[13px] font-medium border transition-all cursor-pointer"
+                        wire:click="$set('category', '{{ $cat->slug }}')"
+                        class="{{ $cat->slug === $category ? 'bg-[#d4fae8] text-[#0fa76e] border-[#18E299]/20' : 'border-black/[0.08] hover:bg-gray-50' }} px-4 py-1.5 rounded-full text-[13px] font-medium border transition-all cursor-pointer"
                     >
                         {{ $cat->name }}
                     </button>

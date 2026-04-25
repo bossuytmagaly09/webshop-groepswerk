@@ -72,11 +72,11 @@ new #[Title('TechShop'), Layout('layouts.shop')] class extends Component
 
             {{-- Right: featured product visual --}}
             <div class="relative">
-                <div class="absolute -inset-6 bg-gradient-to-tr from-[#18E299]/30 via-[#d4fae8]/40 to-transparent rounded-[32px] blur-2xl -z-10"></div>
+                <div class="absolute -inset-6 bg-gradient-to-tr from-[#18E299]/15 via-[#d4fae8]/20 to-transparent rounded-[32px] blur-xl -z-10"></div>
 
                 @if ($this->featuredProduct)
                     <a href="/products/{{ $this->featuredProduct->slug }}" class="group block relative bg-white rounded-[24px] border border-black/[0.06] shadow-sm overflow-hidden">
-                        <div class="aspect-[4/5] bg-gradient-to-br from-[#fafafa] to-[#f0fdf4] relative">
+                        <div class="aspect-3/2 bg-gradient-to-br from-[#fafafa] to-[#f0fdf4] relative">
                             <div class="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-gray-300 uppercase tracking-widest">
                                 {{ __('No image') }}
                             </div>
@@ -176,7 +176,7 @@ new #[Title('TechShop'), Layout('layouts.shop')] class extends Component
                 {{ __('Shop by category') }}
             </div>
             <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.8px]">
-                {{ __('Find your kit.') }}
+                {{ __('Find your kit') }}
             </h2>
         </div>
 
@@ -224,7 +224,7 @@ new #[Title('TechShop'), Layout('layouts.shop')] class extends Component
                     {{ __('New arrivals') }}
                 </div>
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.8px]">
-                    {{ __('Just landed.') }}
+                    {{ __('Just landed') }}
                 </h2>
             </div>
             <a href="{{ route('products') }}" class="hidden sm:inline-flex items-center gap-1 text-[14px] font-medium text-[#0d0d0d] hover:text-[#0fa76e] transition-colors" wire:navigate>
