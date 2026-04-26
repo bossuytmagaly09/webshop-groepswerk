@@ -3,15 +3,19 @@
 namespace App\Actions\Products;
 
 use App\Models\Product;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 
 class CreateProductAction
 {
-    /**
-     * Handelt de business logic af voor het aanmaken van een product.
-     */
-    public function execute(array $data): Product
+    public function handle(array $data, ?UploadedFile $image): Product
     {
-        // Implementatie volgt later - Stub voor architectuur fase 1
+        $data['slug'] ??= Str::slug($data['name']);
+
+        if ($image) {
+            $data['image'] = $image->store('products', 'public');
+        }
+
         return Product::create($data);
     }
 }

@@ -29,9 +29,9 @@ Doel: Het verder uitbouwen van het bestaande Livewire/Fortify dashboard om te di
 - [x] **Categorie Beheer (CRUD)**
   - [x] Categorieën overzicht pagina (Lijst met actieve webshop categorieën).
   - [x] Livewire component voor het toevoegen, bewerken en verwijderen (soft deletes) van categorieën.
-- [ ] **Product Beheer (CRUD)**
-  - [ ] Producten overzicht met zoek- en de filterfunctionaliteit.
-  - [ ] Formulieren voor nieuwe/bestaande producten (Titel, Beschrijving, Prijs, Voorraad, Afbeelding upload, Categorie toewijzing).
+- [x] **Product Beheer (CRUD)**
+  - [x] Producten overzicht met zoek- en de filterfunctionaliteit.
+  - [x] Formulieren voor nieuwe/bestaande producten (Titel, Beschrijving, Prijs, Voorraad, Afbeelding upload, Categorie toewijzing).
 - [ ] **Order/Bestellingen Beheer**
   - [ ] Overzicht van alle bestellingen en hun statussen (Wachtend, Verzonden, Geannuleerd).
   - [ ] Order detailpagina implementeren voor de webshop admin.
