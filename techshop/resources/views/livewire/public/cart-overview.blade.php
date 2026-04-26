@@ -25,7 +25,15 @@
                     </div>
 
                     <div class="flex-1">
-                        <h4 class="font-medium text-[16px] text-[#0d0d0d] dark:text-zinc-50">{{ $item->product->name }}</h4>
+                        <h4 class="font-medium text-[16px] text-[#0d0d0d] dark:text-zinc-50">
+                            <a
+                                href="{{ route('products.show', $item->product->slug) }}"
+                                class="hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors"
+                                wire:navigate
+                            >
+                                {{ $item->product->name }}
+                            </a>
+                        </h4>
                         <div class="text-[#666666] dark:text-zinc-400 text-[14px] mb-4">&euro;{{ number_format($item->unit_price, 2) }} {{ __('per item') }}</div>
 
                         <div class="flex items-center gap-4">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\CartService;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -9,9 +10,7 @@ new class extends Component
     #[Computed]
     public function cartCount(): int
     {
-        $cart = session('cart', []);
-
-        return array_sum(array_column($cart, 'quantity'));
+        return app(CartService::class)->itemCount();
     }
 
     #[On('cart-updated')]

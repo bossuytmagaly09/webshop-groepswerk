@@ -10,11 +10,15 @@ class CartOverview extends Component
     public function updateQuantity(CartService $cartService, $itemId, $productId, $quantity)
     {
         $cartService->updateQuantity($itemId, $productId, $quantity);
+
+        $this->dispatch('cart-updated');
     }
 
     public function removeItem(CartService $cartService, $itemId, $productId)
     {
         $cartService->removeItem($itemId, $productId);
+
+        $this->dispatch('cart-updated');
     }
 
     public function render(CartService $cartService)

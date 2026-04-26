@@ -1,8 +1,10 @@
 <?php
 
+use App\Livewire\Public\CartOverview;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
@@ -56,4 +58,39 @@ test('cart page lists session items with remove and quantity controls', function
     $response->assertSeeText('Mech Keyboard');
     $response->assertSeeText('Remove');
     $response->assertSeeText('per item');
+});
+
+test('product titles in the cart link to the product detail page', function () {
+    $product = Product::factory()->for(Category::factory())->create([
+        'name' => 'Mech Keyboard',
+        'slug' => 'mech-keyboard',
+        'stock' => 10,
+    ]);
+
+    $this->withSession(['cart' => [$product->id => ['quantity' => 1]]]);
+
+    $response = $this->get(route('cart.index'));
+
+    $response->assertOk();
+    $response->assertSeeHtml('href="'.route('products.show', $product->slug).'"');
+});
+
+test('updating quantity on the cart dispatches cart-updated', function () {
+    $product = Product::factory()->for(Category::factory())->create(['stock' => 10]);
+
+    session()->put('cart', [$product->id => ['quantity' => 1]]);
+
+    Livewire::test(CartOverview::class)
+        ->call('updateQuantity', "session_{$product->id}", $product->id, 3)
+        ->assertDispatched('cart-updated');
+});
+
+test('removing an item from the cart dispatches cart-updated', function () {
+    $product = Product::factory()->for(Category::factory())->create(['stock' => 10]);
+
+    session()->put('cart', [$product->id => ['quantity' => 1]]);
+
+    Livewire::test(CartOverview::class)
+        ->call('removeItem', "session_{$product->id}", $product->id)
+        ->assertDispatched('cart-updated');
 });
