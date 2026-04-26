@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\SocialLoginController;
+use App\Livewire\Public\CartOverview;
+use App\Livewire\Public\MyOrders;
 use Illuminate\Support\Facades\Route;
 
 Route::livewire('/', 'pages::home')->name('home');
 Route::livewire('/products', 'pages::product-catalog')->name('products');
+Route::livewire('/products/{product:slug}', 'pages::product-detail')->name('products.show');
 
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::view('/faq', 'pages.faq')->name('faq');
@@ -13,11 +17,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::livewire('dashboard/categories', 'pages::dashboard.category-manager')->name('dashboard.categories');
     Route::livewire('dashboard/products', 'pages::dashboard.product-manager')->name('dashboard.products');
-    Route::get('mijn-orders', \App\Livewire\Public\MyOrders::class)->name('my-orders');
+    Route::get('mijn-orders', MyOrders::class)->name('my-orders');
 });
-
-use App\Http\Controllers\SocialLoginController;
-use App\Livewire\Public\CartOverview;
 
 Route::get('/cart', CartOverview::class)->name('cart.index');
 
