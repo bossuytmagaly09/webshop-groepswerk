@@ -144,7 +144,7 @@ new class extends Component
             </a>
 
             @auth
-                <div class="pt-3 mt-2 border-t border-black/[0.05] flex flex-col gap-1">
+                <div class="pt-3 mt-2 border-t border-black/[0.05] dark:border-white/[0.05] flex flex-col gap-1">
                     <a href="{{ route('dashboard') }}" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors">
                         {{ __('Dashboard') }}
                     </a>
@@ -156,7 +156,7 @@ new class extends Component
                     </form>
                 </div>
             @else
-                <div class="pt-3 mt-2 border-t border-black/[0.05]">
+                <div class="pt-3 mt-2 border-t border-black/[0.05] dark:border-white/[0.05]">
                     <a href="{{ route('login') }}" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors block">
                         {{ __('Log in') }}
                     </a>

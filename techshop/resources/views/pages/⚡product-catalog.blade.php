@@ -67,7 +67,7 @@ new #[Title('Products'), Layout('layouts.shop')] class extends Component
         {{-- Search + filters --}}
         <div class="mb-8 space-y-4">
             <div class="relative max-w-sm">
-                <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-[#999999] pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-[#999999] dark:text-zinc-500 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
                 </svg>
                 <input
