@@ -48,6 +48,7 @@ Doel: Het opbouwen van de voorkant van de webshop die naadloos communiceert met 
 - [ ] **Basis Layout & Design System**
   - [x] Opzetten van de master layout via TailwindCSS.
   - [x] Integratie van het navigatie menu (inclusief dynamische categorie weergave) en de footer.
+  - [x] Integratie van Dark Mode (Toggle en CSS instellingen) in het design systeem.
 - [ ] **Home & Catalogus**
   - [ ] Homepage opzetten (Uitgelichte producten, Banners, Recente toevoegingen).
   - [ ] Product overzicht (Shop/Catalogus) pagina maken met Livewire (dynamisch inladen zonder page reloads).
