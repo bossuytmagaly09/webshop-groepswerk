@@ -14,6 +14,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 use App\Http\Controllers\SocialLoginController;
+use App\Livewire\Public\CartOverview;
+
+Route::get('/cart', CartOverview::class)->name('cart.index');
 
 Route::get('/auth/{provider}/redirect', [SocialLoginController::class, 'redirect'])->name('social.redirect');
 Route::get('/auth/{provider}/callback', [SocialLoginController::class, 'callback'])->name('social.callback');
