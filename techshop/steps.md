@@ -46,8 +46,9 @@ Doel: Het verder uitbouwen van het bestaande Livewire/Fortify dashboard om te di
 Doel: Het opbouwen van de voorkant van de webshop die naadloos communiceert met de backend en database.
 
 - [ ] **Basis Layout & Design System**
-  - [ ] Opzetten van de master layout via TailwindCSS.
-  - [ ] Integratie van het navigatie menu (inclusief dynamische categorie weergave) en de footer.
+  - [x] Opzetten van de master layout via TailwindCSS.
+  - [x] Integratie van het navigatie menu (inclusief dynamische categorie weergave) en de footer.
+  - [x] Integratie van Dark Mode (Toggle en CSS instellingen) in het design systeem.
 - [ ] **Home & Catalogus**
   - [ ] Homepage opzetten (Uitgelichte producten, Banners, Recente toevoegingen).
   - [ ] Product overzicht (Shop/Catalogus) pagina maken met Livewire (dynamisch inladen zonder page reloads).

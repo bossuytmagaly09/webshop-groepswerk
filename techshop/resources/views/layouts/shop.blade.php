@@ -22,7 +22,7 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="min-h-screen bg-white text-[#0d0d0d] font-['Inter'] antialiased">
+<body class="min-h-screen bg-white dark:bg-zinc-950 text-[#0d0d0d] dark:text-zinc-50 font-['Inter'] antialiased transition-colors duration-200">
     <livewire:shop-navigation />
 
     <main class="pt-16">
