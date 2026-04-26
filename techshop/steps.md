@@ -65,6 +65,7 @@ Doel: Het opbouwen van de voorkant van de webshop die naadloos communiceert met 
 Doel: De afhandeling van betalingen en het omzetten van winkelwagen-items naar daadwerkelijke orders in het CMS.
 
 - [ ] **Afrekenen (Checkout flow)**
+  - [x] Backend logica: Action bouwen voor het omzetten van winkelmand naar definitieve Order (inclusief snapshots).
   - [ ] Verzamelen van klant- en verzendgegevens.
   - [ ] Order samenvatting tonen voordat definitief betaald wordt.
 - [ ] **Betalingssysteem**
