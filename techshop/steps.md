@@ -38,6 +38,7 @@ Doel: Het verder uitbouwen van het bestaande Livewire/Fortify dashboard om te di
 - [ ] **Gebruikers & Klanten Beheer**
   - [ ] Overzicht van alle geregistreerde klanten.
   - [ ] Bewerkingsmogelijkheden voor admin accounts (binnen de vastgestelde security rules).
+  - [x] Mijn Orders: Overzicht voor de ingelogde klant op de frontend.
 
 ---
 

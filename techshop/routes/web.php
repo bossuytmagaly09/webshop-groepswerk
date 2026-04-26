@@ -11,6 +11,7 @@ Route::view('/shipping-returns', 'pages.shipping-returns')->name('shipping-retur
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('mijn-orders', \App\Livewire\Public\MyOrders::class)->name('my-orders');
 });
 
 use App\Http\Controllers\SocialLoginController;
