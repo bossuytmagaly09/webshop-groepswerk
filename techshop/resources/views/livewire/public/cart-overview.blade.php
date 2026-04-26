@@ -123,17 +123,23 @@
                     <span>&euro;{{ number_format($grandTotal, 2) }}</span>
                 </div>
 
-                <button
-                    type="button"
-                    @class([
-                        'w-full px-8 py-3 rounded-full text-[15px] font-medium shadow-md dark:shadow-none transition-all',
-                        'bg-[#0d0d0d] dark:bg-white text-white dark:text-[#0d0d0d] hover:opacity-90' => $items->isNotEmpty(),
-                        'bg-[#0d0d0d]/40 dark:bg-white/30 text-white dark:text-[#0d0d0d]/60 cursor-not-allowed' => $items->isEmpty(),
-                    ])
-                    @disabled($items->isEmpty())
-                >
-                    {{ __('Proceed to Checkout') }}
-                </button>
+                @if($items->isNotEmpty())
+                    <a
+                        href="{{ route('checkout.index') }}"
+                        wire:navigate
+                        class="block w-full text-center bg-[#0d0d0d] dark:bg-white text-white dark:text-[#0d0d0d] px-8 py-3 rounded-full text-[15px] font-medium shadow-md dark:shadow-none hover:opacity-90 transition-all"
+                    >
+                        {{ __('Proceed to Checkout') }}
+                    </a>
+                @else
+                    <button
+                        type="button"
+                        disabled
+                        class="w-full px-8 py-3 rounded-full text-[15px] font-medium bg-[#0d0d0d]/40 dark:bg-white/30 text-white dark:text-[#0d0d0d]/60 cursor-not-allowed"
+                    >
+                        {{ __('Proceed to Checkout') }}
+                    </button>
+                @endif
 
                 <a
                     href="{{ route('products') }}"

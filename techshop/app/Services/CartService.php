@@ -16,7 +16,7 @@ class CartService
     public function getCartItems()
     {
         if (Auth::check()) {
-            $order = Order::where('user_id', Auth::id())->where('status', 'pending')->with('orderItems.product')->first();
+            $order = Order::where('user_id', Auth::id())->where('status', 'pending')->whereNull('checked_out_at')->with('orderItems.product')->first();
 
             return $order ? $order->orderItems : collect();
         }
@@ -78,6 +78,18 @@ class CartService
         });
     }
 
+    public function clearCart(): void
+    {
+        if (Auth::check()) {
+            // Checked-out orders are excluded from cart queries via whereNull('checked_out_at'),
+            // so clearing is handled by setting checked_out_at in CheckoutAction.
+            // This method handles the guest case only.
+            return;
+        }
+
+        Session::forget('cart');
+    }
+
     /**
      * Totaal aantal stuks in de cart, geünificeerd voor DB en Sessie.
      */
@@ -100,7 +112,7 @@ class CartService
         }
 
         $order = Order::firstOrCreate(
-            ['user_id' => $userId, 'status' => 'pending'],
+            ['user_id' => $userId, 'status' => 'pending', 'checked_out_at' => null],
             ['total_price' => 0]
         );
 

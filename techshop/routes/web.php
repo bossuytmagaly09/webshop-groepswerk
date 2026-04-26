@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\SocialLoginController;
 use App\Livewire\Public\CartOverview;
+use App\Livewire\Public\Checkout;
+use App\Livewire\Public\CheckoutSuccess;
 use App\Livewire\Public\MyOrders;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::get('/cart', CartOverview::class)->name('cart.index');
+Route::get('/checkout', Checkout::class)->name('checkout.index');
+Route::get('/checkout/success/{order}', CheckoutSuccess::class)->name('checkout.success');
 
 Route::get('/auth/{provider}/redirect', [SocialLoginController::class, 'redirect'])->name('social.redirect');
 Route::get('/auth/{provider}/callback', [SocialLoginController::class, 'callback'])->name('social.callback');
