@@ -9,13 +9,13 @@ Elke stap is voorzien van een checkbox (`[ ]`), zodat deze kan worden afgevinkt 
 ## Fase 1: Project & Architectuur Setup
 Doel: Het opzetten van de ontwikkelomgeving en het in kaart brengen van de datastructuur.
 
-- [ ] Controleren en inladen van de actuele `rules.md` (Zorg dat deze opgeslagen is in je IDE)
-- [ ] Database ontwerp uittekenen (ERD): Producten, Categorieën, Gebruikers (Rollen), Bestellingen, Bestelregels, Reviews.
+- [x] Controleren en inladen van de actuele `rules.md` (Zorg dat deze opgeslagen is in je IDE)
+- [x] Database ontwerp uittekenen (ERD): Producten, Categorieën, Gebruikers (Rollen), Bestellingen, Bestelregels, Reviews.
 - [x] Maken en configureren van de Laravel Modellen & Relaties (Eloquent) `Product`, `Category`, `Order`, `OrderItem`, `User`.
 - [x] Backed Enums aanmaken (`OrderStatus`, `UserRole`).
 - [x] Aanmaken van de bijbehorende database Migrations.
 - [x] Aanmaken van Factories en Seeders (dummy data) voor testdoeleinden.
-- [ ] Repository / Service Layer architectuur opzetten (indien we logica willen scheiden van controllers/Livewire componenten).
+- [x] Repository / Service Layer architectuur opzetten (indien we logica willen scheiden van controllers/Livewire componenten).
 
 ---
 
@@ -57,9 +57,9 @@ Doel: Het opbouwen van de voorkant van de webshop die naadloos communiceert met 
   - [ ] Uitgebreide detailpagina (Titel, afbeeldingsgalerij, specificaties, review weergave).
   - [ ] 'Toevoegen aan winkelwagen' knop (dynamisch via Livewire/Sessie of Database cart).
 - [ ] **Winkelwagen (Shopping Cart)**
-  - [ ] Cart overzicht pagina of 'slide-over'/modal (weergave toegevoegde items).
-  - [ ] Aanpassen van hoeveelheden en verwijderen van items.
-  - [ ] Prijs/Totaal calculaties (inclusief en exclusief de eventuele BTW).
+  - [x] Cart overzicht pagina of 'slide-over'/modal (weergave toegevoegde items).
+  - [x] Aanpassen van hoeveelheden en verwijderen van items.
+  - [x] Prijs/Totaal calculaties (inclusief en exclusief de eventuele BTW).
 
 ---
 
