@@ -45,14 +45,14 @@ Doel: Het verder uitbouwen van het bestaande Livewire/Fortify dashboard om te di
 ## Fase 3: Frontend Development (Techshop Applicatie)
 Doel: Het opbouwen van de voorkant van de webshop die naadloos communiceert met de backend en database.
 
-- [ ] **Basis Layout & Design System**
+- [x] **Basis Layout & Design System**
   - [x] Opzetten van de master layout via TailwindCSS.
   - [x] Integratie van het navigatie menu (inclusief dynamische categorie weergave) en de footer.
   - [x] Integratie van Dark Mode (Toggle en CSS instellingen) in het design systeem.
-- [ ] **Home & Catalogus**
-  - [ ] Homepage opzetten (Uitgelichte producten, Banners, Recente toevoegingen).
-  - [ ] Product overzicht (Shop/Catalogus) pagina maken met Livewire (dynamisch inladen zonder page reloads).
-  - [ ] Filters en zoekbalk implementeren (bijv. zoeken op naam of categorie).
+- [x] **Home & Catalogus**
+  - [x] Homepage opzetten (Uitgelichte producten, Banners, Recente toevoegingen).
+  - [x] Product overzicht (Shop/Catalogus) pagina maken met Livewire (dynamisch inladen zonder page reloads).
+  - [x] Filters en zoekbalk implementeren (bijv. zoeken op naam of categorie).
 - [ ] **Product Detail Pagina**
   - [ ] Uitgebreide detailpagina (Titel, afbeeldingsgalerij, specificaties, review weergave).
   - [ ] 'Toevoegen aan winkelwagen' knop (dynamisch via Livewire/Sessie of Database cart).

@@ -2,9 +2,8 @@
 
 namespace App\Livewire\Public;
 
-use Livewire\Component;
 use App\Services\CartService;
-use App\Actions\Cart\AddItemToCartAction;
+use Livewire\Component;
 
 class CartOverview extends Component
 {
@@ -22,14 +21,14 @@ class CartOverview extends Component
     {
         $items = $cartService->getCartItems();
         $total = $cartService->getTotal();
-        $vat = $total * 0.21; // 21% BTW calculatie
+        $vat = $total * 0.21;
         $grandTotal = $total + $vat;
 
         return view('livewire.public.cart-overview', [
             'items' => $items,
             'total' => $total,
             'vat' => $vat,
-            'grandTotal' => $grandTotal
-        ])->layout('components.layouts.frontend'); // Aangepast naar frontend design layout
+            'grandTotal' => $grandTotal,
+        ])->layout('layouts.shop');
     }
 }
