@@ -1,0 +1,38 @@
+@props(['product'])
+
+<a
+    href="/products/{{ $product->slug }}"
+    class="group block"
+>
+    <div class="aspect-square bg-[#fafafa] rounded-[16px] border border-black/[0.05] mb-4 overflow-hidden relative">
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#18E299]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="w-full h-full flex items-center justify-center font-mono text-[10px] text-gray-300 uppercase tracking-widest">
+            {{ __('No image') }}
+        </div>
+
+        @if ($product->stock === 0)
+            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] font-medium text-[#999999] uppercase tracking-widest px-2.5 py-1 rounded-full border border-black/[0.05]">
+                {{ __('Out of stock') }}
+            </div>
+        @elseif ($product->stock <= 5)
+            <div class="absolute top-3 left-3 bg-[#fff8e1]/90 backdrop-blur-sm text-[10px] font-medium text-[#b45309] uppercase tracking-widest px-2.5 py-1 rounded-full border border-[#f59e0b]/20">
+                {{ __('Low stock') }}
+            </div>
+        @endif
+    </div>
+
+    <div class="text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase mb-1">
+        {{ $product->category?->name ?? '—' }}
+    </div>
+    <h3 class="text-[16px] font-medium mb-1 group-hover:text-[#18E299] transition-colors leading-snug">
+        {{ $product->name }}
+    </h3>
+    @if (filled($product->description))
+        <p class="text-[13px] text-[#666666] mb-2 line-clamp-2">
+            {{ $product->description }}
+        </p>
+    @endif
+    <div class="text-[15px] font-semibold">
+        {{ $product->formatted_price }}
+    </div>
+</a>
