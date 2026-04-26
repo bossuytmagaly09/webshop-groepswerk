@@ -1,58 +1,58 @@
-<footer class="mt-24 border-t border-black/[0.05] bg-white">
+<footer class="mt-24 border-t border-black/[0.05] dark:border-white/[0.05] bg-white dark:bg-zinc-950">
     <div class="max-w-[1200px] mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-5 gap-10">
         {{-- Logo & tagline --}}
         <div class="md:col-span-2">
-            <a href="{{ route('home') }}" class="text-xl font-semibold tracking-tight" wire:navigate>
+            <a href="{{ route('home') }}" class="text-xl font-semibold tracking-tight dark:text-white" wire:navigate>
                 TECH<span class="text-[#18E299]">SHOP</span>
             </a>
-            <p class="mt-4 text-[14px] text-[#666666] max-w-sm leading-relaxed">
+            <p class="mt-4 text-[14px] text-[#666666] dark:text-zinc-400 max-w-sm leading-relaxed">
                 {{ __('High-performance hardware engineered for developers, designers, and digital architects.') }}
             </p>
         </div>
 
         {{-- Shop --}}
         <div>
-            <div class="text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase mb-4">
+            <div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-4">
                 {{ __('Shop') }}
             </div>
             <ul class="space-y-2 text-[14px]">
-                <li><a href="{{ route('products') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>{{ __('All Products') }}</a></li>
-                <li><a href="{{ route('products') }}?sort=newest" class="hover:text-[#18E299] transition-colors">{{ __('New Arrivals') }}</a></li>
-                <li><a href="{{ route('products') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Categories') }}</a></li>
+                <li><a href="{{ route('products') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('All Products') }}</a></li>
+                <li><a href="{{ route('products') }}?sort=newest" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors">{{ __('New Arrivals') }}</a></li>
+                <li><a href="{{ route('products') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Categories') }}</a></li>
             </ul>
         </div>
 
         {{-- Account --}}
         <div>
-            <div class="text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase mb-4">
+            <div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-4">
                 {{ __('Account') }}
             </div>
             <ul class="space-y-2 text-[14px]">
                 @auth
-                    <li><a href="{{ route('dashboard') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Dashboard') }}</a></li>
+                    <li><a href="{{ route('dashboard') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Dashboard') }}</a></li>
                 @else
-                    <li><a href="{{ route('login') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Log in') }}</a></li>
-                    <li><a href="{{ route('register') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Register') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Log in') }}</a></li>
+                    <li><a href="{{ route('register') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Register') }}</a></li>
                 @endauth
             </ul>
         </div>
 
         {{-- Support --}}
         <div>
-            <div class="text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase mb-4">
+            <div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-4">
                 {{ __('Support') }}
             </div>
             <ul class="space-y-2 text-[14px]">
-                <li><a href="{{ route('contact') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Contact') }}</a></li>
-                <li><a href="{{ route('faq') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>{{ __('FAQ') }}</a></li>
-                <li><a href="{{ route('shipping-returns') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Shipping & Returns') }}</a></li>
+                <li><a href="{{ route('contact') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Contact') }}</a></li>
+                <li><a href="{{ route('faq') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('FAQ') }}</a></li>
+                <li><a href="{{ route('shipping-returns') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Shipping & Returns') }}</a></li>
             </ul>
         </div>
     </div>
 
     {{-- Bottom bar --}}
-    <div class="border-t border-black/[0.05]">
-        <div class="max-w-[1200px] mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#666666]">
+    <div class="border-t border-black/[0.05] dark:border-white/[0.05]">
+        <div class="max-w-[1200px] mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#666666] dark:text-zinc-400">
             <div>&copy; {{ date('Y') }} TechShop. {{ __('All rights reserved.') }}</div>
 
             {{-- Social icons --}}
