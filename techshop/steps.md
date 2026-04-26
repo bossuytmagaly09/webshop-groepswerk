@@ -26,9 +26,9 @@ Doel: Het verder uitbouwen van het bestaande Livewire/Fortify dashboard om te di
   - [x] [Auth] Social Login Integreren (Google & GitHub) met accountkoppeling.
   - [ ] Role-based Access Control (RBAC) invoeren: Onderscheid tussen Admin en normale Klanten.
   - [ ] Dashboard toegang beveiligen met middleware via Livewire/Fortify.
-- [ ] **Categorie Beheer (CRUD)**
-  - [ ] Categorieën overzicht pagina (Lijst met actieve webshop categorieën).
-  - [ ] Livewire component voor het toevoegen, bewerken en verwijderen (soft deletes) van categorieën.
+- [x] **Categorie Beheer (CRUD)**
+  - [x] Categorieën overzicht pagina (Lijst met actieve webshop categorieën).
+  - [x] Livewire component voor het toevoegen, bewerken en verwijderen (soft deletes) van categorieën.
 - [ ] **Product Beheer (CRUD)**
   - [ ] Producten overzicht met zoek- en de filterfunctionaliteit.
   - [ ] Formulieren voor nieuwe/bestaande producten (Titel, Beschrijving, Prijs, Voorraad, Afbeelding upload, Categorie toewijzing).
