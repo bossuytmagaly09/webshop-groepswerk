@@ -49,6 +49,14 @@
             </div>
         </form>
 
+        <div class="flex items-center gap-4">
+            <hr class="flex-1 border-zinc-200 dark:border-zinc-800">
+            <span class="text-sm text-zinc-500">Of log in via QR-code</span>
+            <hr class="flex-1 border-zinc-200 dark:border-zinc-800">
+        </div>
+
+        <livewire:auth.qr-login />
+
         @if (Route::has('register'))
             <div class="space-x-1 text-sm text-center rtl:space-x-reverse text-zinc-600 dark:text-zinc-400">
                 <span>{{ __('Don\'t have an account?') }}</span>

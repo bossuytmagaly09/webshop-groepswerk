@@ -89,3 +89,14 @@ Doel: Kwaliteitswaarborging voor de Techshop op het gebied van performance en be
 - [ ] Foutafhandeling controleren (Gaan de 404 en 500 errors goed afgevangen worden?).
 - [ ] Klaarmaken voor definitieve deployment (Caching, config optimizers via artisan). 
 - [ ] Oplevering (Launch).
+
+---
+
+## Bonus: QR-code Login
+Doel: Een veilige, snelle login-optie toevoegen via een scanbare QR-code op de loginpagina.
+
+- [x] Installatie of hergebruik van de benodigde package (`bacon/bacon-qr-code`).
+- [x] Migratie en Model aanmaken voor `QrLoginToken`.
+- [x] `QrLogin` Livewire component (Desktop weergave op inlogpagina met polling).
+- [x] `QrLoginConfirm` Livewire component (Smartphone weergave).
+- [x] Route en middleware configuratie.
