@@ -14,6 +14,10 @@ class SocialLoginController extends Controller
      */
     public function redirect(string $provider)
     {
+        if ($provider === 'github') {
+            return Socialite::driver($provider)->scopes(['read:user', 'user:email'])->redirect();
+        }
+
         return Socialite::driver($provider)->redirect();
     }
 
@@ -25,6 +29,10 @@ class SocialLoginController extends Controller
         try {
             $socialUser = Socialite::driver($provider)->user();
 
+            if (! $socialUser->getEmail()) {
+                throw new \Exception('Geen e-mailadres ontvangen van ' . ucfirst($provider));
+            }
+
             $user = User::where('email', $socialUser->getEmail())->first();
 
             if ($user) {
@@ -35,10 +43,11 @@ class SocialLoginController extends Controller
             } else {
                 // Nieuwe registratie via Social Login
                 $user = User::create([
-                    'name' => $socialUser->getName() ?? $socialUser->getNickname(),
+                    'name' => $socialUser->getName() ?? $socialUser->getNickname() ?? 'User',
                     'email' => $socialUser->getEmail(),
                     "{$provider}_id" => $socialUser->getId(),
-                    'password' => bcrypt(Str::random(24)),
+                    'role' => 'customer',
+                    'password' => \Illuminate\Support\Facades\Hash::make(\Illuminate\Support\Str::random(24)),
                 ]);
             }
 
@@ -46,7 +55,9 @@ class SocialLoginController extends Controller
 
             return redirect()->intended('/dashboard');
         } catch (\Exception $e) {
-            return redirect('/login')->withErrors(['social' => 'Er is een probleem opgetreden met de authenticatie via ' . ucfirst($provider)]);
+            \Illuminate\Support\Facades\Log::error('Social Login Error [' . $provider . ']: ' . $e->getMessage());
+
+            return redirect('/login')->withErrors(['social' => 'Er is een probleem opgetreden met de authenticatie via ' . ucfirst($provider) . ': ' . $e->getMessage()]);
         }
     }
 }

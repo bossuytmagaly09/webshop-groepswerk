@@ -8,6 +8,12 @@
         <!-- Session Status -->
         <x-auth-session-status class="text-center" :status="session('status')" />
 
+        @error('social')
+            <div class="p-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-sm rounded-xl text-center">
+                {{ $message }}
+            </div>
+        @enderror
+
         <div class="flex flex-col items-stretch gap-8 lg:flex-row">
             {{-- Left column: Login form --}}
             <div class="flex-1 p-8 bg-white dark:bg-zinc-900 border border-black/[0.05] dark:border-white/[0.1] rounded-[24px] shadow-[0_2px_4px_rgba(0,0,0,0.03)]">
