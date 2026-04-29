@@ -18,6 +18,7 @@ Route::view('/shipping-returns', 'pages.shipping-returns')->name('shipping-retur
 Route::middleware(['auth', 'verified'])->group(function () {
     // Voor alle ingelogde gebruikers
     Route::get('mijn-orders', MyOrders::class)->name('my-orders');
+    Route::livewire('mijn-profiel', 'pages::user-profile')->name('profile.edit');
     Route::livewire('qr-login/{token}', 'auth.qr-login-confirm')->name('qr.login');
 
     // Specifiek afgeschermd voor admins

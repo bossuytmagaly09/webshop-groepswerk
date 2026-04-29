@@ -60,7 +60,7 @@
                     @if(auth()->user()->role === 'admin')
                         <li><a href="{{ route('dashboard') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Dashboard') }}</a></li>
                     @else
-                        <li><a href="#" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors">{{ __('Edit Profile') }}</a></li>
+                        <li><a href="{{ route('profile.edit') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Edit Profile') }}</a></li>
                     @endif
                 @else
                     <li><a href="{{ route('login') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Log in') }}</a></li>

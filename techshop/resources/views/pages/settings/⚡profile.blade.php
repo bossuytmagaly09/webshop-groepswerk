@@ -13,14 +13,27 @@ new #[Title('Profile settings')] class extends Component {
 
     public string $name = '';
     public string $email = '';
+    public string $address_line_1 = '';
+    public string $address_line_2 = '';
+    public string $postcode = '';
+    public string $city = '';
+    public string $country = '';
+    public string $phone = '';
 
     /**
      * Mount the component.
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
-        $this->email = Auth::user()->email;
+        $user = Auth::user();
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->address_line_1 = $user->address_line_1 ?? '';
+        $this->address_line_2 = $user->address_line_2 ?? '';
+        $this->postcode = $user->postcode ?? '';
+        $this->city = $user->city ?? '';
+        $this->country = $user->country ?? '';
+        $this->phone = $user->phone ?? '';
     }
 
     /**
@@ -80,7 +93,7 @@ new #[Title('Profile settings')] class extends Component {
 
     <flux:heading class="sr-only">{{ __('Profile settings') }}</flux:heading>
 
-    <x-pages::settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
+    <x-pages::settings.layout :heading="__('Profile')" :subheading="__('Update your personal and address details')">
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
@@ -101,9 +114,22 @@ new #[Title('Profile settings')] class extends Component {
                 @endif
             </div>
 
+            <flux:separator variant="subtle" />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <flux:input wire:model="address_line_1" :label="__('Address Line 1')" type="text" autocomplete="address-line1" />
+                <flux:input wire:model="address_line_2" :label="__('Address Line 2 (Optional)')" type="text" autocomplete="address-line2" />
+                
+                <flux:input wire:model="postcode" :label="__('Postcode')" type="text" autocomplete="postal-code" />
+                <flux:input wire:model="city" :label="__('City')" type="text" autocomplete="address-level2" />
+                
+                <flux:input wire:model="country" :label="__('Country')" type="text" autocomplete="country-name" />
+                <flux:input wire:model="phone" :label="__('Phone Number')" type="tel" autocomplete="tel" />
+            </div>
+
             <div class="flex items-center gap-4">
                 <flux:button variant="primary" type="submit" data-test="update-profile-button">
-                    {{ __('Save') }}
+                    {{ __('Save Changes') }}
                 </flux:button>
             </div>
         </form>
