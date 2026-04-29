@@ -38,7 +38,7 @@ new class extends Component
             <button
                 type="button"
                 x-data="{ dark: document.documentElement.classList.contains('dark') }"
-                @click="document.documentElement.classList.toggle('dark'); dark = !dark; localStorage.setItem('flux.appearance', dark ? 'dark' : 'light')"
+                @click="dark = window.techshopToggleTheme(dark)"
                 class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
                 aria-label="{{ __('Toggle dark mode') }}"
             >

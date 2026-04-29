@@ -43,7 +43,7 @@
                 <button
                     type="button"
                     x-data="{ dark: document.documentElement.classList.contains('dark') }"
-                    @click="document.documentElement.classList.toggle('dark'); dark = !dark; localStorage.setItem('flux.appearance', dark ? 'dark' : 'light')"
+                    @click="dark = window.techshopToggleTheme(dark)"
                     class="relative flex items-center w-full p-1 rounded-xl bg-zinc-100/50 dark:bg-zinc-800/50 border border-black/[0.03] dark:border-white/[0.03] hover:border-black/[0.08] dark:hover:border-white/[0.08] transition-all group"
                 >
                     <div 
