@@ -15,15 +15,20 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Route::view('/faq', 'pages.faq')->name('faq');
 Route::view('/shipping-returns', 'pages.shipping-returns')->name('shipping-returns');
 
-Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::livewire('dashboard', 'pages::dashboard.analytics')->name('dashboard');
-    Route::livewire('dashboard/categories', 'pages::dashboard.category-manager')->name('dashboard.categories');
-    Route::livewire('dashboard/products', 'pages::dashboard.product-manager')->name('dashboard.products');
-    Route::livewire('dashboard/users', 'pages::dashboard.user-manager')->name('dashboard.users');
-    Route::livewire('dashboard/orders', 'pages::dashboard.orders')->name('dashboard.orders');
-    Route::livewire('dashboard/orders/{order}', 'pages::dashboard.order-detail')->name('dashboard.orders.show');
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Voor alle ingelogde gebruikers
     Route::get('mijn-orders', MyOrders::class)->name('my-orders');
     Route::livewire('qr-login/{token}', 'auth.qr-login-confirm')->name('qr.login');
+
+    // Specifiek afgeschermd voor admins
+    Route::middleware(['admin'])->group(function () {
+        Route::livewire('dashboard', 'pages::dashboard.analytics')->name('dashboard');
+        Route::livewire('dashboard/categories', 'pages::dashboard.category-manager')->name('dashboard.categories');
+        Route::livewire('dashboard/products', 'pages::dashboard.product-manager')->name('dashboard.products');
+        Route::livewire('dashboard/users', 'pages::dashboard.user-manager')->name('dashboard.users');
+        Route::livewire('dashboard/orders', 'pages::dashboard.orders')->name('dashboard.orders');
+        Route::livewire('dashboard/orders/{order}', 'pages::dashboard.order-detail')->name('dashboard.orders.show');
+    });
 });
 
 Route::get('/cart', CartOverview::class)->name('cart.index');

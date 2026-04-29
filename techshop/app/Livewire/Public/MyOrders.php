@@ -12,7 +12,7 @@ class MyOrders extends Component
     public function render()
     {
         // Haal alle orders van de momenteel ingelogde user op, gesorteerd van nieuw naar oud
-        $orders = Auth::user()->orders()->with('items')->latest()->get();
+        $orders = Auth::user()->orders()->with('orderItems')->latest()->get();
 
         return view('livewire.public.my-orders', [
             'orders' => $orders
