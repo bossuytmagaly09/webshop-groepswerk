@@ -60,9 +60,9 @@ class Checkout extends Component
     {
         $this->form->validate();
 
-        $order = $action->execute($this->form, $this->cartItems);
+        $result = $action->execute($this->form, $this->cartItems);
 
-        $this->redirectRoute('checkout.success', ['order' => $order->id]);
+        $this->redirect($result['stripe_url']);
     }
 
     public function render(): View

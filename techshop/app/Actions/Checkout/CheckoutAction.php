@@ -5,13 +5,23 @@ namespace App\Actions\Checkout;
 use App\Livewire\Forms\CheckoutForm;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Services\StripeService;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CheckoutAction
 {
-    public function execute(CheckoutForm $form, Collection $cartItems): Order
+    public function __construct(
+        private StripeService $stripeService
+    ) {}
+
+    /**
+     * Create/finalize the order and start a Stripe Checkout Session.
+     *
+     * @return array{order: Order, stripe_url: string}
+     */
+    public function execute(CheckoutForm $form, Collection $cartItems): array
     {
         $shippingData = [
             'email' => $form->email,
@@ -27,10 +37,19 @@ class CheckoutAction
         ];
 
         if (Auth::check()) {
-            return $this->checkoutAuthUser($shippingData, $cartItems);
+            $order = $this->checkoutAuthUser($shippingData, $cartItems);
+        } else {
+            $order = $this->checkoutGuest($shippingData, $cartItems);
         }
 
-        return $this->checkoutGuest($shippingData, $cartItems);
+        $session = $this->createStripeSession($order);
+
+        $order->update(['stripe_session_id' => $session->id]);
+
+        return [
+            'order' => $order,
+            'stripe_url' => $session->url,
+        ];
     }
 
     private function checkoutAuthUser(array $shippingData, Collection $cartItems): Order
@@ -91,5 +110,21 @@ class CheckoutAction
         Session::forget('cart');
 
         return $order->fresh();
+    }
+
+    private function createStripeSession(Order $order): object
+    {
+        $order->load('orderItems');
+
+        $lineItems = $order->orderItems->map(fn (OrderItem $item): array => [
+            'name' => $item->product_name ?? 'Product',
+            'quantity' => $item->quantity,
+            'unit_price' => (float) $item->unit_price,
+        ])->all();
+
+        $successUrl = route('checkout.success', ['order' => $order->id]).'?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl = route('checkout.index');
+
+        return $this->stripeService->createCheckoutSession($order, $lineItems, $successUrl, $cancelUrl);
     }
 }

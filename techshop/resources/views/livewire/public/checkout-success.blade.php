@@ -14,10 +14,10 @@
     </h1>
 
     <p class="text-[#666666] dark:text-zinc-400 text-[16px] mb-2">
-        {{ __('Your order has been placed successfully.') }}
+        {{ __('Your order has been placed and payment confirmed successfully.') }}
     </p>
     <p class="text-[#666666] dark:text-zinc-400 text-[15px] mb-8">
-        {{ __('Payment will be processed once our team confirms your order.') }}
+        {{ __('You will receive a confirmation email shortly.') }}
     </p>
 
     {{-- Order reference card --}}

@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
     'shipping_address_line_1', 'shipping_address_line_2',
     'shipping_postcode', 'shipping_city', 'shipping_country',
     'shipping_phone', 'checked_out_at',
+    'stripe_session_id', 'stripe_payment_intent_id',
 ])]
 class Order extends Model
 {
