@@ -19,6 +19,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::livewire('dashboard/categories', 'pages::dashboard.category-manager')->name('dashboard.categories');
     Route::livewire('dashboard/products', 'pages::dashboard.product-manager')->name('dashboard.products');
+    Route::livewire('dashboard/users', 'pages::dashboard.user-manager')->name('dashboard.users');
     Route::livewire('dashboard/orders', 'pages::dashboard.orders')->name('dashboard.orders');
     Route::livewire('dashboard/orders/{order}', 'pages::dashboard.order-detail')->name('dashboard.orders.show');
     Route::get('mijn-orders', MyOrders::class)->name('my-orders');
