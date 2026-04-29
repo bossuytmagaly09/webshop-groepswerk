@@ -89,7 +89,8 @@ new class extends Component
                             </a>
                         @else
                             <a
-                                href="#"
+                                href="{{ route('profile.edit') }}"
+                                wire:navigate
                                 @click="accountOpen = false"
                                 class="flex items-center gap-2 px-4 py-2.5 text-[14px] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
                             >
@@ -171,7 +172,7 @@ new class extends Component
                             {{ __('Dashboard') }}
                         </a>
                     @else
-                        <a href="#" @click="open = false" class="py-2 hover:text-[#18E299] transition-colors">
+                        <a href="{{ route('profile.edit') }}" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors">
                             {{ __('Edit Profile') }}
                         </a>
                     @endif
