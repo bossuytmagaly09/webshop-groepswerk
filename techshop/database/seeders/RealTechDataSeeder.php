@@ -13,10 +13,10 @@ class RealTechDataSeeder extends Seeder
     public function run(): void
     {
         // Clear existing data to start fresh (force delete to avoid keeping soft deleted records)
-        \Illuminate\Support\Facades\DB::statement('PRAGMA foreign_keys = OFF;');
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
         \App\Models\Product::withTrashed()->forceDelete();
         \App\Models\Category::withTrashed()->forceDelete();
-        \Illuminate\Support\Facades\DB::statement('PRAGMA foreign_keys = ON;');
+        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
 
         $data = [
             'E-readers' => [
