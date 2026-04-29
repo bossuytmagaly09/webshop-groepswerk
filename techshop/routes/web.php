@@ -11,7 +11,7 @@ Route::livewire('/', 'pages::home')->name('home');
 Route::livewire('/products', 'pages::product-catalog')->name('products');
 Route::livewire('/products/{product:slug}', 'pages::product-detail')->name('products.show');
 
-Route::view('/contact', 'pages.contact')->name('contact');
+Route::get('/contact', \App\Livewire\Public\Contact::class)->name('contact');
 Route::view('/faq', 'pages.faq')->name('faq');
 Route::view('/shipping-returns', 'pages.shipping-returns')->name('shipping-returns');
 
