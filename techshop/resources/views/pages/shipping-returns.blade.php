@@ -15,7 +15,7 @@
         </div>
 
         {{-- Content + sidebar --}}
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
 
             {{-- Main: policy content --}}
             <div class="lg:col-span-2 space-y-16">

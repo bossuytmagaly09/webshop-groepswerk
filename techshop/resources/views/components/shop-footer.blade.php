@@ -17,8 +17,36 @@
             </div>
             <ul class="space-y-2 text-[14px]">
                 <li><a href="{{ route('products') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('All Products') }}</a></li>
-                <li><a href="{{ route('products') }}?sort=newest" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors">{{ __('New Arrivals') }}</a></li>
-                <li><a href="{{ route('products') }}" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate>{{ __('Categories') }}</a></li>
+                <li>
+                    <a
+                        x-data
+                        href="{{ route('home') }}#new-arrivals"
+                        @click.prevent="
+                            const homePath = new URL('{{ route('home') }}').pathname;
+                            if (window.location.pathname === homePath) {
+                                document.getElementById('new-arrivals').scrollIntoView({behavior: 'smooth'});
+                            } else {
+                                window.location.href = '{{ route('home') }}#new-arrivals';
+                            }
+                        "
+                        class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors"
+                    >{{ __('New Arrivals') }}</a>
+                </li>
+                <li>
+                    <a
+                        x-data
+                        href="{{ route('home') }}#categories"
+                        @click.prevent="
+                            const homePath = new URL('{{ route('home') }}').pathname;
+                            if (window.location.pathname === homePath) {
+                                document.getElementById('categories').scrollIntoView({behavior: 'smooth'});
+                            } else {
+                                window.location.href = '{{ route('home') }}#categories';
+                            }
+                        "
+                        class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors"
+                    >{{ __('Categories') }}</a>
+                </li>
             </ul>
         </div>
 

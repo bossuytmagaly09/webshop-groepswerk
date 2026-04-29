@@ -15,7 +15,7 @@
         </div>
 
         {{-- Content + sidebar --}}
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
 
             {{-- Main: accordion categories --}}
             <div class="lg:col-span-2 space-y-14">
@@ -212,21 +212,21 @@
                         <div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-4">
                             Browse by topic
                         </div>
-                        <ul class="space-y-1">
+                        <ul class="space-y-1" x-data>
                             <li>
-                                <a href="#orders" class="flex items-center gap-2 py-1.5 text-[14px] text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors">
+                                <a href="#orders" @click.prevent="document.getElementById('orders').scrollIntoView({behavior: 'smooth'})" class="flex items-center gap-2 py-1.5 text-[14px] text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#0fa76e] dark:text-[#18E299]"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
                                     Orders &amp; Payment
                                 </a>
                             </li>
                             <li>
-                                <a href="#shipping" class="flex items-center gap-2 py-1.5 text-[14px] text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors">
+                                <a href="#shipping" @click.prevent="document.getElementById('shipping').scrollIntoView({behavior: 'smooth'})" class="flex items-center gap-2 py-1.5 text-[14px] text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#0fa76e] dark:text-[#18E299]"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
                                     Shipping &amp; Delivery
                                 </a>
                             </li>
                             <li>
-                                <a href="#returns" class="flex items-center gap-2 py-1.5 text-[14px] text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors">
+                                <a href="#returns" @click.prevent="document.getElementById('returns').scrollIntoView({behavior: 'smooth'})" class="flex items-center gap-2 py-1.5 text-[14px] text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#0fa76e] dark:text-[#18E299]"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
                                     Returns &amp; Products
                                 </a>
