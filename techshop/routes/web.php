@@ -23,6 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::livewire('dashboard/orders', 'pages::dashboard.orders')->name('dashboard.orders');
     Route::livewire('dashboard/orders/{order}', 'pages::dashboard.order-detail')->name('dashboard.orders.show');
     Route::get('mijn-orders', MyOrders::class)->name('my-orders');
+    Route::livewire('qr-login/{token}', 'auth.qr-login-confirm')->name('qr.login');
 });
 
 Route::get('/cart', CartOverview::class)->name('cart.index');
