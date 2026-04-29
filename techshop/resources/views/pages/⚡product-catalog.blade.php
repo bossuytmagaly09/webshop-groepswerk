@@ -21,6 +21,9 @@ new #[Title('Products'), Layout('layouts.shop')] class extends Component
     #[Url]
     public string $category = '';
 
+    #[Url]
+    public string $sort = 'latest';
+
     public function updatedSearch(): void
     {
         $this->resetPage();
@@ -31,15 +34,28 @@ new #[Title('Products'), Layout('layouts.shop')] class extends Component
         $this->resetPage();
     }
 
+    public function updatedSort(): void
+    {
+        $this->resetPage();
+    }
+
     #[Computed]
     public function products(): LengthAwarePaginator
     {
-        return Product::query()
+        $query = Product::query()
             ->with('category')
             ->search($this->search)
-            ->inCategory($this->category)
-            ->orderBy('name')
-            ->paginate(12);
+            ->inCategory($this->category);
+
+        match ($this->sort) {
+            'price_asc' => $query->orderBy('price', 'asc'),
+            'price_desc' => $query->orderBy('price', 'desc'),
+            'name_asc' => $query->orderBy('name', 'asc'),
+            'name_desc' => $query->orderBy('name', 'desc'),
+            default => $query->latest(),
+        };
+
+        return $query->paginate(12);
     }
 
     #[Computed]
@@ -66,16 +82,46 @@ new #[Title('Products'), Layout('layouts.shop')] class extends Component
 
         {{-- Search + filters --}}
         <div class="mb-8 space-y-4">
-            <div class="relative max-w-sm">
-                <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-[#999999] dark:text-zinc-500 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-                </svg>
-                <input
-                    wire:model.live.debounce.300ms="search"
-                    type="search"
-                    placeholder="{{ __('Search products…') }}"
-                    class="w-full pl-9 pr-4 py-2.5 text-[14px] rounded-full border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-950 text-[#0d0d0d] dark:text-white placeholder:text-[#999999] dark:placeholder:text-zinc-500 focus:outline-none focus:border-[#18E299] focus:ring-2 focus:ring-[#18E299]/20 transition-all"
-                />
+            <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                <div class="relative w-full max-w-sm">
+                    <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-[#999999] dark:text-zinc-500 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                    </svg>
+                    <input
+                        wire:model.live.debounce.300ms="search"
+                        type="search"
+                        placeholder="{{ __('Search products…') }}"
+                        class="w-full pl-9 pr-4 py-2.5 text-[14px] rounded-full border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-950 text-[#0d0d0d] dark:text-white placeholder:text-[#999999] dark:placeholder:text-zinc-500 focus:outline-none focus:border-[#18E299] focus:ring-2 focus:ring-[#18E299]/20 transition-all"
+                    />
+                </div>
+
+                <flux:dropdown>
+                    <flux:button variant="ghost" class="rounded-full border border-black/[0.08] dark:border-white/[0.08] px-5 bg-white dark:bg-zinc-950 hover:bg-gray-50 dark:hover:bg-zinc-900 transition-colors" icon-trailing="chevron-down">
+                        <span class="text-[14px] text-[#0d0d0d] dark:text-zinc-300 font-medium">
+                            {{ __('Sort') }}: 
+                            <span class="text-[#0fa76e] dark:text-[#18E299]">
+                                {{ match($this->sort) {
+                                    'price_asc' => __('Price: Low to High'),
+                                    'price_desc' => __('Price: High to Low'),
+                                    'name_asc' => __('A-Z'),
+                                    'name_desc' => __('Z-A'),
+                                    default => __('Latest'),
+                                } }}
+                            </span>
+                        </span>
+                    </flux:button>
+
+                    <flux:menu class="min-w-[200px]">
+                        <flux:menu.radio.group wire:model.live="sort">
+                            <flux:menu.radio value="latest">{{ __('Latest Arrivals') }}</flux:menu.radio>
+                            <flux:menu.radio value="price_asc">{{ __('Price: Low to High') }}</flux:menu.radio>
+                            <flux:menu.radio value="price_desc">{{ __('Price: High to Low') }}</flux:menu.radio>
+                            <flux:menu.separator />
+                            <flux:menu.radio value="name_asc">{{ __('A-Z') }}</flux:menu.radio>
+                            <flux:menu.radio value="name_desc">{{ __('Z-A') }}</flux:menu.radio>
+                        </flux:menu.radio.group>
+                    </flux:menu>
+                </flux:dropdown>
             </div>
 
             <div class="flex flex-wrap gap-2 pb-1">
