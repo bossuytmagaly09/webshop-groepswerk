@@ -21,6 +21,9 @@
                     <flux:sidebar.item icon="tag" :href="route('dashboard.products')" :current="request()->routeIs('dashboard.products')" wire:navigate>
                         {{ __('Products') }}
                     </flux:sidebar.item>
+                    <flux:sidebar.item icon="users" :href="route('dashboard.users')" :current="request()->routeIs('dashboard.users')" wire:navigate>
+                        {{ __('Users') }}
+                    </flux:sidebar.item>
                     <flux:sidebar.item icon="shopping-cart" :href="route('dashboard.orders')" :current="request()->routeIs('dashboard.orders*')" wire:navigate>
                         {{ __('Orders') }}
                     </flux:sidebar.item>
