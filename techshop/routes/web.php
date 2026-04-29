@@ -15,7 +15,7 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Route::view('/faq', 'pages.faq')->name('faq');
 Route::view('/shipping-returns', 'pages.shipping-returns')->name('shipping-returns');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::livewire('dashboard/categories', 'pages::dashboard.category-manager')->name('dashboard.categories');
     Route::livewire('dashboard/products', 'pages::dashboard.product-manager')->name('dashboard.products');
