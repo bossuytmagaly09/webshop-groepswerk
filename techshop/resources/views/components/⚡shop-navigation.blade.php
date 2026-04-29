@@ -24,6 +24,11 @@ new class extends Component
                 <a href="{{ route('products') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>
                     {{ __('Shop') }}
                 </a>
+                @auth
+                    <a href="{{ route('my-orders') }}" class="hover:text-[#18E299] transition-colors" wire:navigate>
+                        {{ __('My Orders') }}
+                    </a>
+                @endauth
             </div>
         </div>
 
@@ -142,6 +147,12 @@ new class extends Component
             <a href="{{ route('products') }}" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors">
                 {{ __('Shop') }}
             </a>
+
+            @auth
+                <a href="{{ route('my-orders') }}" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors">
+                    {{ __('My Orders') }}
+                </a>
+            @endauth
 
             @auth
                 <div class="pt-3 mt-2 border-t border-black/[0.05] dark:border-white/[0.05] flex flex-col gap-1">
