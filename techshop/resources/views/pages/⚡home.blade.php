@@ -15,7 +15,7 @@ new #[Title('TechShop'), Layout('layouts.shop')] class extends Component
     {
         return Category::query()
             ->orderBy('name')
-            ->get(['id', 'name', 'slug']);
+            ->get(['id', 'name', 'slug', 'image']);
     }
 
     #[Computed]
@@ -77,9 +77,13 @@ new #[Title('TechShop'), Layout('layouts.shop')] class extends Component
                 @if ($this->featuredProduct)
                     <a href="/products/{{ $this->featuredProduct->slug }}" class="group block relative bg-white dark:bg-zinc-900 rounded-[24px] border border-black/[0.06] dark:border-white/[0.05] shadow-sm dark:shadow-none overflow-hidden transition-colors">
                         <div class="aspect-3/2 bg-gradient-to-br from-[#fafafa] to-[#f0fdf4] dark:from-zinc-900 dark:to-[#0fa76e]/10 relative">
-                            <div class="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-gray-300 dark:text-zinc-700 uppercase tracking-widest">
-                                {{ __('No image') }}
-                            </div>
+                            @if ($this->featuredProduct->image)
+                                <img src="{{ Storage::disk('public')->url($this->featuredProduct->image) }}" alt="{{ $this->featuredProduct->name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                            @else
+                                <div class="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-gray-300 dark:text-zinc-700 uppercase tracking-widest">
+                                    {{ __('No image') }}
+                                </div>
+                            @endif
 
                             <div class="absolute top-4 left-4 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm text-[10px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase px-2.5 py-1 rounded-full border border-black/[0.05] dark:border-white/[0.06]">
                                 {{ __('Featured') }}
@@ -191,7 +195,12 @@ new #[Title('TechShop'), Layout('layouts.shop')] class extends Component
                         class="group relative block aspect-[4/5] rounded-[16px] border border-black/[0.05] dark:border-white/[0.05] overflow-hidden bg-gradient-to-br from-[#fafafa] to-[#f0fdf4] dark:from-zinc-900 dark:to-[#0fa76e]/10 hover:border-[#18E299]/30 dark:hover:border-[#18E299]/40 transition-all"
                         wire:navigate
                     >
-                        <div class="absolute inset-0 bg-gradient-to-tr from-[#18E299]/10 to-transparent dark:from-[#18E299]/15 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        @if ($category->image)
+                            <img src="{{ Storage::disk('public')->url($category->image) }}" alt="{{ $category->name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        @endif
+                        <div class="absolute inset-0 bg-black/10 dark:bg-black/20 group-hover:bg-black/5 transition-colors"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-[#18E299]/20 to-transparent dark:from-[#18E299]/30 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                         <div class="absolute top-5 left-5 right-5">
                             <div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase">
@@ -200,7 +209,7 @@ new #[Title('TechShop'), Layout('layouts.shop')] class extends Component
                         </div>
 
                         <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
-                            <h3 class="text-[20px] font-medium tracking-[-0.4px] text-[#0d0d0d] dark:text-zinc-50 group-hover:text-[#0fa76e] dark:group-hover:text-[#18E299] transition-colors">
+                            <h3 class="text-[20px] font-semibold tracking-[-0.4px] text-white transition-colors drop-shadow-md">
                                 {{ $category->name }}
                             </h3>
                             <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-zinc-900 text-[#0d0d0d] dark:text-zinc-200 border border-black/[0.06] dark:border-white/[0.08] shrink-0 group-hover:bg-[#0d0d0d] dark:group-hover:bg-[#18E299] group-hover:text-white dark:group-hover:text-[#0d0d0d] transition-all">

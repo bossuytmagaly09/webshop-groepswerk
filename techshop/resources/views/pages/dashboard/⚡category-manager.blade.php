@@ -2,13 +2,15 @@
 
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 new #[Layout('layouts.app')] #[Title('Categories')] class extends Component {
-    use WithPagination;
+    use WithPagination, WithFileUploads;
 
     public $isEditing = false;
     public $categoryId = null;
@@ -16,6 +18,8 @@ new #[Layout('layouts.app')] #[Title('Categories')] class extends Component {
     public string $name = '';
     public string $slug = '';
     public string $description = '';
+    public $image = null; // Temporary upload
+    public ?string $existingImage = null;
 
     public function updatedName()
     {
@@ -26,7 +30,7 @@ new #[Layout('layouts.app')] #[Title('Categories')] class extends Component {
 
     public function create()
     {
-        $this->reset(['name', 'slug', 'description', 'categoryId', 'isEditing']);
+        $this->reset(['name', 'slug', 'description', 'image', 'existingImage', 'categoryId', 'isEditing']);
         $this->resetValidation();
     }
 
@@ -39,6 +43,8 @@ new #[Layout('layouts.app')] #[Title('Categories')] class extends Component {
         $this->name = $category->name;
         $this->slug = $category->slug;
         $this->description = $category->description ?? '';
+        $this->existingImage = $category->image;
+        $this->image = null;
         $this->isEditing = true;
     }
 
@@ -48,9 +54,18 @@ new #[Layout('layouts.app')] #[Title('Categories')] class extends Component {
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:categories,slug,' . $this->categoryId,
             'description' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
         ];
         
         $validatedData = $this->validate($rules);
+        unset($validatedData['image']);
+
+        if ($this->image) {
+            if ($this->existingImage) {
+                Storage::disk('public')->delete($this->existingImage);
+            }
+            $validatedData['image'] = $this->image->store('categories', 'public');
+        }
 
         Category::withTrashed()->updateOrCreate(
             ['id' => $this->categoryId],
@@ -114,6 +129,7 @@ new #[Layout('layouts.app')] #[Title('Categories')] class extends Component {
                 <table class="w-full text-[14px] text-left">
                     <thead class="border-b border-black/[0.05] dark:border-white/[0.06]">
                         <tr>
+                            <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium w-24"></th>
                             <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium">{{ __('Name') }}</th>
                             <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium">{{ __('Slug') }}</th>
                             <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium">{{ __('Status') }}</th>
@@ -123,6 +139,15 @@ new #[Layout('layouts.app')] #[Title('Categories')] class extends Component {
                     <tbody class="divide-y divide-black/[0.04] dark:divide-white/[0.04]">
                         @foreach ($categories as $category)
                             <tr class="group hover:bg-[#fafafa] dark:hover:bg-zinc-800/50 transition-colors">
+                                <td class="pl-6 pr-2 py-5">
+                                    @if ($category->image)
+                                        <img src="{{ Storage::disk('public')->url($category->image) }}" alt="{{ $category->name }}" class="w-10 h-10 rounded-lg object-cover border border-black/[0.06] dark:border-white/[0.06]" />
+                                    @else
+                                        <div class="w-10 h-10 rounded-lg bg-[#f0fdf4] dark:bg-zinc-800 border border-black/[0.05] dark:border-white/[0.05] flex items-center justify-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-[#cccccc] dark:text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                        </div>
+                                    @endif
+                                </td>
                                 <td class="px-6 py-5">
                                     <span class="font-medium text-[#0d0d0d] dark:text-white group-hover:text-[#0fa76e] transition-colors">
                                         {{ $category->name }}
@@ -207,6 +232,26 @@ new #[Layout('layouts.app')] #[Title('Categories')] class extends Component {
                     <flux:label class="text-[13px] font-medium">{{ __('Description') }}</flux:label>
                     <flux:textarea wire:model="description" placeholder="{{ __('Optional short description...') }}" rows="3" />
                     <flux:error name="description" />
+                </flux:field>
+
+                <flux:field>
+                    <flux:label class="text-[13px] font-medium">{{ __('Image') }}</flux:label>
+                    
+                    @if ($existingImage && ! $image)
+                        <div class="mb-2 flex items-center gap-3">
+                            <img src="{{ Storage::disk('public')->url($existingImage) }}" class="w-16 h-16 rounded-lg object-cover border border-black/[0.06] dark:border-white/[0.06]" alt="Current" />
+                            <span class="text-[12px] text-[#999999]">{{ __('Current image') }}</span>
+                        </div>
+                    @endif
+
+                    @if ($image)
+                        <div class="mb-2">
+                            <img src="{{ $image->temporaryUrl() }}" class="w-16 h-16 rounded-lg object-cover border border-[#18E299]/30" alt="Preview" />
+                        </div>
+                    @endif
+
+                    <input type="file" wire:model="image" accept="image/*" class="text-[13px] text-[#666666] dark:text-zinc-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-[12px] file:font-medium file:bg-[#d4fae8] file:text-[#0fa76e] hover:file:bg-[#18E299]/20 cursor-pointer" />
+                    <flux:error name="image" />
                 </flux:field>
             </div>
 

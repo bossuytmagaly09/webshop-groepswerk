@@ -37,9 +37,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 5 categorieën
-        $categories = Category::factory(5)->create();
+        // $categories = Category::factory(5)->create();
 
         // 20 producten verdeeld over de categorieën
-        Product::factory(20)->recycle($categories)->create();
+        // Product::factory(20)->recycle($categories)->create();
+
+        $this->call(RealTechDataSeeder::class);
     }
 }

@@ -6,9 +6,13 @@
 >
     <div class="aspect-square bg-[#fafafa] dark:bg-zinc-900 rounded-[16px] border border-black/[0.05] dark:border-white/[0.05] mb-4 overflow-hidden relative">
         <div class="absolute inset-0 bg-gradient-to-tr from-[#18E299]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <div class="w-full h-full flex items-center justify-center font-mono text-[10px] text-gray-300 dark:text-zinc-700 uppercase tracking-widest">
-            {{ __('No image') }}
-        </div>
+        @if ($product->image)
+            <img src="{{ Storage::disk('public')->url($product->image) }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        @else
+            <div class="w-full h-full flex items-center justify-center font-mono text-[10px] text-gray-300 dark:text-zinc-700 uppercase tracking-widest">
+                {{ __('No image') }}
+            </div>
+        @endif
 
         @if ($product->stock === 0)
             <div class="absolute top-3 left-3 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm text-[10px] font-medium text-[#999999] dark:text-zinc-400 uppercase tracking-widest px-2.5 py-1 rounded-full border border-black/[0.05] dark:border-white/[0.05]">
