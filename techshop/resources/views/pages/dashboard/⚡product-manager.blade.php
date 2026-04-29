@@ -77,9 +77,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
         // Verwijder image uit validated array — Actions verwerken dit apart
         unset($validated['image']);
 
-        $uploadedImage = $this->image instanceof \Livewire\Features\SupportFileUploads\TemporaryUploadedFile
-            ? $this->image->toUploadedFile()
-            : null;
+        $uploadedImage = $this->image;
 
         if ($this->isEditing) {
             $product = Product::withTrashed()->findOrFail($this->productId);
@@ -147,7 +145,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
                 <table class="w-full text-[14px] text-left">
                     <thead class="border-b border-black/[0.05] dark:border-white/[0.06]">
                         <tr>
-                            <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium w-10"></th>
+                            <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium w-24"></th>
                             <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium">{{ __('Name') }}</th>
                             <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium">{{ __('Category') }}</th>
                             <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase font-medium">{{ __('Price') }}</th>
@@ -160,7 +158,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
                         @foreach ($products as $product)
                             <tr class="group hover:bg-[#fafafa] dark:hover:bg-zinc-800/50 transition-colors">
                                 {{-- Thumbnail --}}
-                                <td class="px-6 py-4">
+                                <td class="pl-6 pr-2 py-4">
                                     @if ($product->image)
                                         <img
                                             src="{{ Storage::disk('public')->url($product->image) }}"
