@@ -78,14 +78,24 @@ new class extends Component
                         x-transition:leave-end="opacity-0 scale-95"
                         class="absolute right-0 mt-2 w-44 bg-white dark:bg-zinc-900 rounded-xl border border-black/[0.07] dark:border-white/[0.07] shadow-lg py-1 z-50"
                     >
-                        <a
-                            href="{{ route('dashboard') }}"
-                            wire:navigate
-                            @click="accountOpen = false"
-                            class="flex items-center gap-2 px-4 py-2.5 text-[14px] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
-                        >
-                            {{ __('Dashboard') }}
-                        </a>
+                        @if(auth()->user()->role === 'admin')
+                            <a
+                                href="{{ route('dashboard') }}"
+                                wire:navigate
+                                @click="accountOpen = false"
+                                class="flex items-center gap-2 px-4 py-2.5 text-[14px] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
+                            >
+                                {{ __('Dashboard') }}
+                            </a>
+                        @else
+                            <a
+                                href="#"
+                                @click="accountOpen = false"
+                                class="flex items-center gap-2 px-4 py-2.5 text-[14px] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
+                            >
+                                {{ __('Edit Profile') }}
+                            </a>
+                        @endif
                         <div class="my-1 border-t border-black/[0.05] dark:border-white/[0.05]"></div>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -156,9 +166,15 @@ new class extends Component
 
             @auth
                 <div class="pt-3 mt-2 border-t border-black/[0.05] dark:border-white/[0.05] flex flex-col gap-1">
-                    <a href="{{ route('dashboard') }}" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors">
-                        {{ __('Dashboard') }}
-                    </a>
+                    @if(auth()->user()->role === 'admin')
+                        <a href="{{ route('dashboard') }}" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors">
+                            {{ __('Dashboard') }}
+                        </a>
+                    @else
+                        <a href="#" @click="open = false" class="py-2 hover:text-[#18E299] transition-colors">
+                            {{ __('Edit Profile') }}
+                        </a>
+                    @endif
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="py-2 text-red-500 hover:opacity-80 transition-opacity text-left w-full">
