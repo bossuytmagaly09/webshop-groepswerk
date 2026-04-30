@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/Applications/MAMP/htdocs/webshop-groepswerk/techshop/phpunit.xml" tests="141" assertions="308" errors="1" failures="13" skipped="0" time="3.398951">
+    <testsuite name="Unit" tests="13" assertions="23" errors="0" failures="0" skipped="0" time="0.389754">
+      <testsuite name="Tests\Unit\CreateOrderActionTest" file="tests/Unit/CreateOrderActionTest.php" tests="4" assertions="9" errors="0" failures="0" skipped="0" time="0.266331">
+        <testcase name="CreateOrderAction creates order with pending status" file="tests/Unit/CreateOrderActionTest.php::CreateOrderAction creates order with pending status" class="Tests\Unit\CreateOrderActionTest" classname="Tests.Unit.CreateOrderActionTest" assertions="2" time="0.226221"/>
+        <testcase name="CreateOrderAction creates order items with correct snapshots" file="tests/Unit/CreateOrderActionTest.php::CreateOrderAction creates order items with correct snapshots" class="Tests\Unit\CreateOrderActionTest" classname="Tests.Unit.CreateOrderActionTest" assertions="5" time="0.011403"/>
+        <testcase name="CreateOrderAction calculates total price correctly" file="tests/Unit/CreateOrderActionTest.php::CreateOrderAction calculates total price correctly" class="Tests\Unit\CreateOrderActionTest" classname="Tests.Unit.CreateOrderActionTest" assertions="1" time="0.010815"/>
+        <testcase name="CreateOrderAction assigns correct user id" file="tests/Unit/CreateOrderActionTest.php::CreateOrderAction assigns correct user id" class="Tests\Unit\CreateOrderActionTest" classname="Tests.Unit.CreateOrderActionTest" assertions="1" time="0.017891"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\ExampleTest" file="tests/Unit/ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.007199">
+        <testcase name="that true is true" file="tests/Unit/ExampleTest.php::that true is true" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.007199"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\ProductScopeTest" file="tests/Unit/ProductScopeTest.php" tests="8" assertions="13" errors="0" failures="0" skipped="0" time="0.116224">
+        <testcase name="scopeAvailable returns only products with stock greater than zero" file="tests/Unit/ProductScopeTest.php::scopeAvailable returns only products with stock greater than zero" class="Tests\Unit\ProductScopeTest" classname="Tests.Unit.ProductScopeTest" assertions="2" time="0.010176"/>
+        <testcase name="scopeAvailable excludes products with exactly zero stock" file="tests/Unit/ProductScopeTest.php::scopeAvailable excludes products with exactly zero stock" class="Tests\Unit\ProductScopeTest" classname="Tests.Unit.ProductScopeTest" assertions="2" time="0.009010"/>
+        <testcase name="formattedPrice accessor returns European format with euro sign" file="tests/Unit/ProductScopeTest.php::formattedPrice accessor returns European format with euro sign" class="Tests\Unit\ProductScopeTest" classname="Tests.Unit.ProductScopeTest" assertions="1" time="0.009420"/>
+        <testcase name="formattedPrice accessor handles single digit price" file="tests/Unit/ProductScopeTest.php::formattedPrice accessor handles single digit price" class="Tests\Unit\ProductScopeTest" classname="Tests.Unit.ProductScopeTest" assertions="1" time="0.009526"/>
+        <testcase name="scopeSearch filters products by name" file="tests/Unit/ProductScopeTest.php::scopeSearch filters products by name" class="Tests\Unit\ProductScopeTest" classname="Tests.Unit.ProductScopeTest" assertions="2" time="0.008730"/>
+        <testcase name="scopeSearch returns all products when search is empty" file="tests/Unit/ProductScopeTest.php::scopeSearch returns all products when search is empty" class="Tests\Unit\ProductScopeTest" classname="Tests.Unit.ProductScopeTest" assertions="1" time="0.009376"/>
+        <testcase name="scopeInCategory filters products by category id" file="tests/Unit/ProductScopeTest.php::scopeInCategory filters products by category id" class="Tests\Unit\ProductScopeTest" classname="Tests.Unit.ProductScopeTest" assertions="2" time="0.009399"/>
+        <testcase name="scopeInCategory filters products by category slug" file="tests/Unit/ProductScopeTest.php::scopeInCategory filters products by category slug" class="Tests\Unit\ProductScopeTest" classname="Tests.Unit.ProductScopeTest" assertions="2" time="0.050587"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="128" assertions="285" errors="1" failures="13" skipped="0" time="3.009197">
+      <testsuite name="Tests\Feature\Admin\OrderManagementTest" file="tests/Feature/Admin/OrderManagementTest.php" tests="23" assertions="40" errors="0" failures="4" skipped="0" time="0.309992">
+        <testcase name="guests are redirected to login for the orders index" file="tests/Feature/Admin/OrderManagementTest.php::guests are redirected to login for the orders index" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.032219"/>
+        <testcase name="guests are redirected to login for an order detail page" file="tests/Feature/Admin/OrderManagementTest.php::guests are redirected to login for an order detail page" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.010930"/>
+        <testcase name="authenticated users can visit the orders index" file="tests/Feature/Admin/OrderManagementTest.php::authenticated users can visit the orders index" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="1" time="0.018408">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">authenticated users can visit the orders indexExpected response status code [200] but received 403.
+Failed asserting that 403 is identical to 200.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:176
+at vendor/laravel/framework/src/Illuminate/Testing/Concerns/AssertsStatusCodes.php:16
+at tests/Feature/Admin/OrderManagementTest.php:32</failure>
+        </testcase>
+        <testcase name="orders index shows orders" file="tests/Feature/Admin/OrderManagementTest.php::orders index shows orders" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="1" time="0.012295">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">orders index shows ordersExpected response status code [200] but received 403.
+Failed asserting that 403 is identical to 200.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:176
+at vendor/laravel/framework/src/Illuminate/Testing/Concerns/AssertsStatusCodes.php:16
+at tests/Feature/Admin/OrderManagementTest.php:40</failure>
+        </testcase>
+        <testcase name="orders index filters by status" file="tests/Feature/Admin/OrderManagementTest.php::orders index filters by status" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.023965"/>
+        <testcase name="authenticated users can visit an order detail page" file="tests/Feature/Admin/OrderManagementTest.php::authenticated users can visit an order detail page" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="1" time="0.015820">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">authenticated users can visit an order detail pageExpected response status code [200] but received 403.
+Failed asserting that 403 is identical to 200.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:176
+at vendor/laravel/framework/src/Illuminate/Testing/Concerns/AssertsStatusCodes.php:16
+at tests/Feature/Admin/OrderManagementTest.php:64</failure>
+        </testcase>
+        <testcase name="order detail shows customer info for registered user" file="tests/Feature/Admin/OrderManagementTest.php::order detail shows customer info for registered user" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="1" time="0.013317">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">order detail shows customer info for registered userExpected response status code [200] but received 403.
+Failed asserting that 403 is identical to 200.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:176
+at vendor/laravel/framework/src/Illuminate/Testing/Concerns/AssertsStatusCodes.php:16
+at tests/Feature/Admin/OrderManagementTest.php:75</failure>
+        </testcase>
+        <testcase name="admin can update order status with a valid transition" file="tests/Feature/Admin/OrderManagementTest.php::admin can update order status with a valid transition" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.023905"/>
+        <testcase name="admin cannot update order status with an invalid transition" file="tests/Feature/Admin/OrderManagementTest.php::admin cannot update order status with an invalid transition" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="1" time="0.017097"/>
+        <testcase name="validation fails when no new status is selected" file="tests/Feature/Admin/OrderManagementTest.php::validation fails when no new status is selected" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="3" time="0.021910"/>
+        <testcase name="cancelled order has no allowed transitions" file="tests/Feature/Admin/OrderManagementTest.php::cancelled order has no allowed transitions" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="1" time="0.009000"/>
+        <testcase name="refunded order has no allowed transitions" file="tests/Feature/Admin/OrderManagementTest.php::refunded order has no allowed transitions" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="1" time="0.008535"/>
+        <testcase name="pending order can transition to paid or cancelled" file="tests/Feature/Admin/OrderManagementTest.php::pending order can transition to paid or cancelled" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.008536"/>
+        <testsuite name="OrderStatus color returns a non-empty string for each case" tests="5" assertions="10" errors="0" failures="0" skipped="0" time="0.049611">
+          <testcase name="OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (PENDING, 'pending'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (PENDING, 'pending'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.011116"/>
+          <testcase name="OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (PAID, 'paid'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (PAID, 'paid'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.008180"/>
+          <testcase name="OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (SHIPPED, 'shipped'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (SHIPPED, 'shipped'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.008884"/>
+          <testcase name="OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (CANCELLED, 'cancelled'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (CANCELLED, 'cancelled'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.009036"/>
+          <testcase name="OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (REFUNDED, 'refunded'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus color returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (REFUNDED, 'refunded'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.012395"/>
+        </testsuite>
+        <testsuite name="OrderStatus label returns a non-empty string for each case" tests="5" assertions="10" errors="0" failures="0" skipped="0" time="0.044443">
+          <testcase name="OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (PENDING, 'pending'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (PENDING, 'pending'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.007977"/>
+          <testcase name="OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (PAID, 'paid'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (PAID, 'paid'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.009316"/>
+          <testcase name="OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (SHIPPED, 'shipped'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (SHIPPED, 'shipped'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.009819"/>
+          <testcase name="OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (CANCELLED, 'cancelled'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (CANCELLED, 'cancelled'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.009206"/>
+          <testcase name="OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (REFUNDED, 'refunded'))&quot;" file="tests/Feature/Admin/OrderManagementTest.php::OrderStatus label returns a non-empty string for each case with data set &quot;(App\Enums\OrderStatus Enum (REFUNDED, 'refunded'))&quot;" class="Tests\Feature\Admin\OrderManagementTest" classname="Tests.Feature.Admin.OrderManagementTest" assertions="2" time="0.008125"/>
+        </testsuite>
+      </testsuite>
+      <testsuite name="Tests\Feature\AdminProductManagementTest" file="tests/Feature/AdminProductManagementTest.php" tests="5" assertions="14" errors="0" failures="0" skipped="0" time="0.073328">
+        <testcase name="admin can create a product via action" file="tests/Feature/AdminProductManagementTest.php::admin can create a product via action" class="Tests\Feature\AdminProductManagementTest" classname="Tests.Feature.AdminProductManagementTest" assertions="6" time="0.012044"/>
+        <testcase name="admin can create a product with an image" file="tests/Feature/AdminProductManagementTest.php::admin can create a product with an image" class="Tests\Feature\AdminProductManagementTest" classname="Tests.Feature.AdminProductManagementTest" assertions="2" time="0.027359"/>
+        <testcase name="admin can update an existing product via action" file="tests/Feature/AdminProductManagementTest.php::admin can update an existing product via action" class="Tests\Feature\AdminProductManagementTest" classname="Tests.Feature.AdminProductManagementTest" assertions="3" time="0.015225"/>
+        <testcase name="admin can soft delete a product" file="tests/Feature/AdminProductManagementTest.php::admin can soft delete a product" class="Tests\Feature\AdminProductManagementTest" classname="Tests.Feature.AdminProductManagementTest" assertions="2" time="0.009811"/>
+        <testcase name="soft deleted product is excluded from default queries" file="tests/Feature/AdminProductManagementTest.php::soft deleted product is excluded from default queries" class="Tests\Feature\AdminProductManagementTest" classname="Tests.Feature.AdminProductManagementTest" assertions="1" time="0.008888"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\AdminRouteProtectionTest" file="tests/Feature/AdminRouteProtectionTest.php" tests="12" assertions="13" errors="0" failures="0" skipped="0" time="0.272858">
+        <testcase name="guest is redirected to login for admin dashboard" file="tests/Feature/AdminRouteProtectionTest.php::guest is redirected to login for admin dashboard" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="2" time="0.009873"/>
+        <testcase name="non-admin user gets 403 on admin dashboard" file="tests/Feature/AdminRouteProtectionTest.php::non-admin user gets 403 on admin dashboard" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.011656"/>
+        <testcase name="admin user can access the dashboard" file="tests/Feature/AdminRouteProtectionTest.php::admin user can access the dashboard" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.033281"/>
+        <testcase name="non-admin user gets 403 on admin product manager" file="tests/Feature/AdminRouteProtectionTest.php::non-admin user gets 403 on admin product manager" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.012139"/>
+        <testcase name="non-admin user gets 403 on admin category manager" file="tests/Feature/AdminRouteProtectionTest.php::non-admin user gets 403 on admin category manager" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.010579"/>
+        <testcase name="non-admin user gets 403 on admin user manager" file="tests/Feature/AdminRouteProtectionTest.php::non-admin user gets 403 on admin user manager" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.010657"/>
+        <testcase name="non-admin user gets 403 on admin orders page" file="tests/Feature/AdminRouteProtectionTest.php::non-admin user gets 403 on admin orders page" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.010577"/>
+        <testsuite name="admin can access all dashboard routes" tests="5" assertions="5" errors="0" failures="0" skipped="0" time="0.174095">
+          <testcase name="admin can access all dashboard routes with data set &quot;('dashboard')&quot;" file="tests/Feature/AdminRouteProtectionTest.php::admin can access all dashboard routes with data set &quot;('dashboard')&quot;" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.029034"/>
+          <testcase name="admin can access all dashboard routes with data set &quot;('dashboard.products')&quot;" file="tests/Feature/AdminRouteProtectionTest.php::admin can access all dashboard routes with data set &quot;('dashboard.products')&quot;" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.042491"/>
+          <testcase name="admin can access all dashboard routes with data set &quot;('dashboard.categories')&quot;" file="tests/Feature/AdminRouteProtectionTest.php::admin can access all dashboard routes with data set &quot;('dashboard.categories')&quot;" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.037628"/>
+          <testcase name="admin can access all dashboard routes with data set &quot;('dashboard.users')&quot;" file="tests/Feature/AdminRouteProtectionTest.php::admin can access all dashboard routes with data set &quot;('dashboard.users')&quot;" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.035485"/>
+          <testcase name="admin can access all dashboard routes with data set &quot;('dashboard.orders')&quot;" file="tests/Feature/AdminRouteProtectionTest.php::admin can access all dashboard routes with data set &quot;('dashboard.orders')&quot;" class="Tests\Feature\AdminRouteProtectionTest" classname="Tests.Feature.AdminRouteProtectionTest" assertions="1" time="0.029457"/>
+        </testsuite>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\AuthenticationTest" file="tests/Feature/Auth/AuthenticationTest.php" tests="5" assertions="12" errors="0" failures="1" skipped="0" time="0.123287">
+        <testcase name="login screen can be rendered" file="tests/Feature/Auth/AuthenticationTest.php::login screen can be rendered" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="1" time="0.064105"/>
+        <testcase name="users can authenticate using the login screen" file="tests/Feature/Auth/AuthenticationTest.php::users can authenticate using the login screen" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="3" time="0.023570">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">users can authenticate using the login screenFailed asserting that two strings are equal.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:433
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:207
+at tests/Feature/Auth/AuthenticationTest.php:22</failure>
+        </testcase>
+        <testcase name="users can not authenticate with invalid password" file="tests/Feature/Auth/AuthenticationTest.php::users can not authenticate with invalid password" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="2" time="0.011842"/>
+        <testcase name="users with two factor enabled are redirected to two factor challenge" file="tests/Feature/Auth/AuthenticationTest.php::users with two factor enabled are redirected to two factor challenge" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="3" time="0.012958"/>
+        <testcase name="users can logout" file="tests/Feature/Auth/AuthenticationTest.php::users can logout" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" assertions="3" time="0.010811"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\EmailVerificationTest" file="tests/Feature/Auth/EmailVerificationTest.php" tests="4" assertions="8" errors="0" failures="2" skipped="0" time="0.049892">
+        <testcase name="email verification screen can be rendered" file="tests/Feature/Auth/EmailVerificationTest.php::email verification screen can be rendered" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" assertions="1" time="0.014521"/>
+        <testcase name="email can be verified" file="tests/Feature/Auth/EmailVerificationTest.php::email can be verified" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" assertions="4" time="0.014087">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">email can be verifiedFailed asserting that two strings are equal.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:433
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:207
+at tests/Feature/Auth/EmailVerificationTest.php:37</failure>
+        </testcase>
+        <testcase name="email is not verified with invalid hash" file="tests/Feature/Auth/EmailVerificationTest.php::email is not verified with invalid hash" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" assertions="1" time="0.011032"/>
+        <testcase name="already verified user visiting verification link is redirected without firing event again" file="tests/Feature/Auth/EmailVerificationTest.php::already verified user visiting verification link is redirected without firing event again" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" assertions="2" time="0.010252">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">already verified user visiting verification link is redirected without firing event againFailed asserting that two strings are equal.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:433
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:207
+at tests/Feature/Auth/EmailVerificationTest.php:68</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\PasswordConfirmationTest" file="tests/Feature/Auth/PasswordConfirmationTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.018320">
+        <testcase name="confirm password screen can be rendered" file="tests/Feature/Auth/PasswordConfirmationTest.php::confirm password screen can be rendered" class="Tests\Feature\Auth\PasswordConfirmationTest" classname="Tests.Feature.Auth.PasswordConfirmationTest" assertions="1" time="0.018320"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\PasswordResetTest" file="tests/Feature/Auth/PasswordResetTest.php" tests="4" assertions="8" errors="0" failures="0" skipped="0" time="0.684010">
+        <testcase name="reset password link screen can be rendered" file="tests/Feature/Auth/PasswordResetTest.php::reset password link screen can be rendered" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" assertions="1" time="0.013800"/>
+        <testcase name="reset password link can be requested" file="tests/Feature/Auth/PasswordResetTest.php::reset password link can be requested" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" assertions="1" time="0.222628"/>
+        <testcase name="reset password screen can be rendered" file="tests/Feature/Auth/PasswordResetTest.php::reset password screen can be rendered" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" assertions="2" time="0.228014"/>
+        <testcase name="password can be reset with valid token" file="tests/Feature/Auth/PasswordResetTest.php::password can be reset with valid token" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" assertions="4" time="0.219568"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\RegistrationTest" file="tests/Feature/Auth/RegistrationTest.php" tests="2" assertions="4" errors="0" failures="1" skipped="0" time="0.033077">
+        <testcase name="registration screen can be rendered" file="tests/Feature/Auth/RegistrationTest.php::registration screen can be rendered" class="Tests\Feature\Auth\RegistrationTest" classname="Tests.Feature.Auth.RegistrationTest" assertions="1" time="0.018407"/>
+        <testcase name="new users can register" file="tests/Feature/Auth/RegistrationTest.php::new users can register" class="Tests\Feature\Auth\RegistrationTest" classname="Tests.Feature.Auth.RegistrationTest" assertions="3" time="0.014670">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">new users can registerFailed asserting that two strings are equal.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:433
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:207
+at tests/Feature/Auth/RegistrationTest.php:24</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\Auth\TwoFactorChallengeTest" file="tests/Feature/Auth/TwoFactorChallengeTest.php" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.021415">
+        <testcase name="two factor challenge redirects to login when not authenticated" file="tests/Feature/Auth/TwoFactorChallengeTest.php::two factor challenge redirects to login when not authenticated" class="Tests\Feature\Auth\TwoFactorChallengeTest" classname="Tests.Feature.Auth.TwoFactorChallengeTest" assertions="2" time="0.009721"/>
+        <testcase name="two factor challenge can be rendered" file="tests/Feature/Auth/TwoFactorChallengeTest.php::two factor challenge can be rendered" class="Tests\Feature\Auth\TwoFactorChallengeTest" classname="Tests.Feature.Auth.TwoFactorChallengeTest" assertions="2" time="0.011694"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\CartMergeOnLoginTest" file="tests/Feature/CartMergeOnLoginTest.php" tests="4" assertions="7" errors="0" failures="0" skipped="0" time="0.040240">
+        <testcase name="session cart merges into a fresh database cart on login" file="tests/Feature/CartMergeOnLoginTest.php::session cart merges into a fresh database cart on login" class="Tests\Feature\CartMergeOnLoginTest" classname="Tests.Feature.CartMergeOnLoginTest" assertions="3" time="0.010535"/>
+        <testcase name="session cart adds quantities to existing database cart items on login" file="tests/Feature/CartMergeOnLoginTest.php::session cart adds quantities to existing database cart items on login" class="Tests\Feature\CartMergeOnLoginTest" classname="Tests.Feature.CartMergeOnLoginTest" assertions="2" time="0.010280"/>
+        <testcase name="item count uses database for authenticated users" file="tests/Feature/CartMergeOnLoginTest.php::item count uses database for authenticated users" class="Tests\Feature\CartMergeOnLoginTest" classname="Tests.Feature.CartMergeOnLoginTest" assertions="1" time="0.010486"/>
+        <testcase name="item count uses session for guests" file="tests/Feature/CartMergeOnLoginTest.php::item count uses session for guests" class="Tests\Feature\CartMergeOnLoginTest" classname="Tests.Feature.CartMergeOnLoginTest" assertions="1" time="0.008940"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\CartOverviewTest" file="tests/Feature/CartOverviewTest.php" tests="7" assertions="27" errors="0" failures="0" skipped="0" time="0.108023">
+        <testcase name="cart page renders inside the main shop layout" file="tests/Feature/CartOverviewTest.php::cart page renders inside the main shop layout" class="Tests\Feature\CartOverviewTest" classname="Tests.Feature.CartOverviewTest" assertions="3" time="0.018183"/>
+        <testcase name="cart page is fully translated to english" file="tests/Feature/CartOverviewTest.php::cart page is fully translated to english" class="Tests\Feature\CartOverviewTest" classname="Tests.Feature.CartOverviewTest" assertions="13" time="0.018176"/>
+        <testcase name="empty cart shows english empty state and a browse cta" file="tests/Feature/CartOverviewTest.php::empty cart shows english empty state and a browse cta" class="Tests\Feature\CartOverviewTest" classname="Tests.Feature.CartOverviewTest" assertions="3" time="0.013913"/>
+        <testcase name="cart page lists session items with remove and quantity controls" file="tests/Feature/CartOverviewTest.php::cart page lists session items with remove and quantity controls" class="Tests\Feature\CartOverviewTest" classname="Tests.Feature.CartOverviewTest" assertions="4" time="0.015157"/>
+        <testcase name="product titles in the cart link to the product detail page" file="tests/Feature/CartOverviewTest.php::product titles in the cart link to the product detail page" class="Tests\Feature\CartOverviewTest" classname="Tests.Feature.CartOverviewTest" assertions="2" time="0.015563"/>
+        <testcase name="updating quantity on the cart dispatches cart-updated" file="tests/Feature/CartOverviewTest.php::updating quantity on the cart dispatches cart-updated" class="Tests\Feature\CartOverviewTest" classname="Tests.Feature.CartOverviewTest" assertions="1" time="0.014475"/>
+        <testcase name="removing an item from the cart dispatches cart-updated" file="tests/Feature/CartOverviewTest.php::removing an item from the cart dispatches cart-updated" class="Tests\Feature\CartOverviewTest" classname="Tests.Feature.CartOverviewTest" assertions="1" time="0.012556"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\DashboardTest" file="tests/Feature/DashboardTest.php" tests="2" assertions="3" errors="0" failures="1" skipped="0" time="0.021308">
+        <testcase name="guests are redirected to the login page" file="tests/Feature/DashboardTest.php::guests are redirected to the login page" class="Tests\Feature\DashboardTest" classname="Tests.Feature.DashboardTest" assertions="2" time="0.010105"/>
+        <testcase name="authenticated users can visit the dashboard" file="tests/Feature/DashboardTest.php::authenticated users can visit the dashboard" class="Tests\Feature\DashboardTest" classname="Tests.Feature.DashboardTest" assertions="1" time="0.011203">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">authenticated users can visit the dashboardExpected response status code [200] but received 403.
+Failed asserting that 403 is identical to 200.
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:176
+at vendor/laravel/framework/src/Illuminate/Testing/Concerns/AssertsStatusCodes.php:16
+at tests/Feature/DashboardTest.php:15</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\ExampleTest" file="tests/Feature/ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.021189">
+        <testcase name="returns a successful response" file="tests/Feature/ExampleTest.php::returns a successful response" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="1" time="0.021189"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\GuestCartTest" file="tests/Feature/GuestCartTest.php" tests="4" assertions="10" errors="0" failures="0" skipped="0" time="0.064178">
+        <testcase name="guest can add a product to the session cart" file="tests/Feature/GuestCartTest.php::guest can add a product to the session cart" class="Tests\Feature\GuestCartTest" classname="Tests.Feature.GuestCartTest" assertions="3" time="0.017002"/>
+        <testcase name="guest session cart persists across requests" file="tests/Feature/GuestCartTest.php::guest session cart persists across requests" class="Tests\Feature\GuestCartTest" classname="Tests.Feature.GuestCartTest" assertions="2" time="0.014806"/>
+        <testcase name="guest can add multiple products to the session cart" file="tests/Feature/GuestCartTest.php::guest can add multiple products to the session cart" class="Tests\Feature\GuestCartTest" classname="Tests.Feature.GuestCartTest" assertions="3" time="0.015813"/>
+        <testcase name="guest cart is empty by default" file="tests/Feature/GuestCartTest.php::guest cart is empty by default" class="Tests\Feature\GuestCartTest" classname="Tests.Feature.GuestCartTest" assertions="2" time="0.016557"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\HomePageTest" file="tests/Feature/HomePageTest.php" tests="7" assertions="22" errors="0" failures="0" skipped="0" time="0.109289">
+        <testcase name="homepage renders all main sections" file="tests/Feature/HomePageTest.php::homepage renders all main sections" class="Tests\Feature\HomePageTest" classname="Tests.Feature.HomePageTest" assertions="5" time="0.017255"/>
+        <testcase name="homepage lists every category and links to filtered catalog by slug" file="tests/Feature/HomePageTest.php::homepage lists every category and links to filtered catalog by slug" class="Tests\Feature\HomePageTest" classname="Tests.Feature.HomePageTest" assertions="5" time="0.017929"/>
+        <testcase name="homepage shows the four newest available products" file="tests/Feature/HomePageTest.php::homepage shows the four newest available products" class="Tests\Feature\HomePageTest" classname="Tests.Feature.HomePageTest" assertions="7" time="0.026448"/>
+        <testcase name="homepage skips out-of-stock products in new arrivals" file="tests/Feature/HomePageTest.php::homepage skips out-of-stock products in new arrivals" class="Tests\Feature\HomePageTest" classname="Tests.Feature.HomePageTest" assertions="2" time="0.018393"/>
+        <testcase name="product newest scope orders by most recent and limits results" file="tests/Feature/HomePageTest.php::product newest scope orders by most recent and limits results" class="Tests\Feature\HomePageTest" classname="Tests.Feature.HomePageTest" assertions="1" time="0.011566"/>
+        <testcase name="product formatted_price accessor returns euro string" file="tests/Feature/HomePageTest.php::product formatted_price accessor returns euro string" class="Tests\Feature\HomePageTest" classname="Tests.Feature.HomePageTest" assertions="1" time="0.008250"/>
+        <testcase name="inCategory scope filters by slug" file="tests/Feature/HomePageTest.php::inCategory scope filters by slug" class="Tests\Feature\HomePageTest" classname="Tests.Feature.HomePageTest" assertions="1" time="0.009447"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\OrderConfirmationMailTest" file="tests/Feature/OrderConfirmationMailTest.php" tests="6" assertions="10" errors="0" failures="0" skipped="0" time="0.152869">
+        <testcase name="order paid event has a queued listener for confirmation email" file="tests/Feature/OrderConfirmationMailTest.php::order paid event has a queued listener for confirmation email" class="Tests\Feature\OrderConfirmationMailTest" classname="Tests.Feature.OrderConfirmationMailTest" assertions="1" time="0.009947"/>
+        <testcase name="listener sends order confirmation email" file="tests/Feature/OrderConfirmationMailTest.php::listener sends order confirmation email" class="Tests\Feature\OrderConfirmationMailTest" classname="Tests.Feature.OrderConfirmationMailTest" assertions="1" time="0.016165"/>
+        <testcase name="confirmation email contains order details" file="tests/Feature/OrderConfirmationMailTest.php::confirmation email contains order details" class="Tests\Feature\OrderConfirmationMailTest" classname="Tests.Feature.OrderConfirmationMailTest" assertions="5" time="0.082387"/>
+        <testcase name="confirmation email has correct subject line" file="tests/Feature/OrderConfirmationMailTest.php::confirmation email has correct subject line" class="Tests\Feature\OrderConfirmationMailTest" classname="Tests.Feature.OrderConfirmationMailTest" assertions="1" time="0.014931"/>
+        <testcase name="listener implements should queue" file="tests/Feature/OrderConfirmationMailTest.php::listener implements should queue" class="Tests\Feature\OrderConfirmationMailTest" classname="Tests.Feature.OrderConfirmationMailTest" assertions="1" time="0.008591"/>
+        <testcase name="dispatching order paid event triggers email" file="tests/Feature/OrderConfirmationMailTest.php::dispatching order paid event triggers email" class="Tests\Feature\OrderConfirmationMailTest" classname="Tests.Feature.OrderConfirmationMailTest" assertions="1" time="0.020848"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\OrderPlacementTest" file="tests/Feature/OrderPlacementTest.php" tests="2" assertions="6" errors="0" failures="0" skipped="0" time="0.020340">
+        <testcase name="authenticated user can place an order with pending status" file="tests/Feature/OrderPlacementTest.php::authenticated user can place an order with pending status" class="Tests\Feature\OrderPlacementTest" classname="Tests.Feature.OrderPlacementTest" assertions="5" time="0.010559"/>
+        <testcase name="order items are created with correct snapshot data" file="tests/Feature/OrderPlacementTest.php::order items are created with correct snapshot data" class="Tests\Feature\OrderPlacementTest" classname="Tests.Feature.OrderPlacementTest" assertions="1" time="0.009781"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\OrderPolicyTest" file="tests/Feature/OrderPolicyTest.php" tests="6" assertions="9" errors="0" failures="0" skipped="0" time="0.071290">
+        <testcase name="user can view their own order via policy" file="tests/Feature/OrderPolicyTest.php::user can view their own order via policy" class="Tests\Feature\OrderPolicyTest" classname="Tests.Feature.OrderPolicyTest" assertions="1" time="0.009111"/>
+        <testcase name="user cannot view another users order via policy" file="tests/Feature/OrderPolicyTest.php::user cannot view another users order via policy" class="Tests\Feature\OrderPolicyTest" classname="Tests.Feature.OrderPolicyTest" assertions="1" time="0.009496"/>
+        <testcase name="admin can view any order via policy" file="tests/Feature/OrderPolicyTest.php::admin can view any order via policy" class="Tests\Feature\OrderPolicyTest" classname="Tests.Feature.OrderPolicyTest" assertions="1" time="0.009244"/>
+        <testcase name="user can see their own orders on the my-orders page" file="tests/Feature/OrderPolicyTest.php::user can see their own orders on the my-orders page" class="Tests\Feature\OrderPolicyTest" classname="Tests.Feature.OrderPolicyTest" assertions="2" time="0.017715"/>
+        <testcase name="user cannot see orders of another user on the my-orders page" file="tests/Feature/OrderPolicyTest.php::user cannot see orders of another user on the my-orders page" class="Tests\Feature\OrderPolicyTest" classname="Tests.Feature.OrderPolicyTest" assertions="2" time="0.017281"/>
+        <testcase name="only admin can view all orders via viewAny policy" file="tests/Feature/OrderPolicyTest.php::only admin can view all orders via viewAny policy" class="Tests\Feature\OrderPolicyTest" classname="Tests.Feature.OrderPolicyTest" assertions="2" time="0.008442"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ProductDetailTest" file="tests/Feature/ProductDetailTest.php" tests="7" assertions="22" errors="0" failures="0" skipped="0" time="0.122499">
+        <testcase name="product detail page renders for an existing slug" file="tests/Feature/ProductDetailTest.php::product detail page renders for an existing slug" class="Tests\Feature\ProductDetailTest" classname="Tests.Feature.ProductDetailTest" assertions="6" time="0.019828"/>
+        <testcase name="product detail returns 404 for unknown slugs" file="tests/Feature/ProductDetailTest.php::product detail returns 404 for unknown slugs" class="Tests\Feature\ProductDetailTest" classname="Tests.Feature.ProductDetailTest" assertions="1" time="0.011018"/>
+        <testcase name="product detail returns 404 for soft-deleted products" file="tests/Feature/ProductDetailTest.php::product detail returns 404 for soft-deleted products" class="Tests\Feature\ProductDetailTest" classname="Tests.Feature.ProductDetailTest" assertions="1" time="0.011161"/>
+        <testcase name="product detail shows low stock warning when stock is at or below 5" file="tests/Feature/ProductDetailTest.php::product detail shows low stock warning when stock is at or below 5" class="Tests\Feature\ProductDetailTest" classname="Tests.Feature.ProductDetailTest" assertions="3" time="0.016182"/>
+        <testcase name="product detail disables add to cart and shows out-of-stock when stock is zero" file="tests/Feature/ProductDetailTest.php::product detail disables add to cart and shows out-of-stock when stock is zero" class="Tests\Feature\ProductDetailTest" classname="Tests.Feature.ProductDetailTest" assertions="4" time="0.017142"/>
+        <testcase name="add-to-cart action stores guest cart in session and dispatches cart-updated event" file="tests/Feature/ProductDetailTest.php::add-to-cart action stores guest cart in session and dispatches cart-updated event" class="Tests\Feature\ProductDetailTest" classname="Tests.Feature.ProductDetailTest" assertions="3" time="0.025821"/>
+        <testcase name="add-to-cart validates that quantity does not exceed stock" file="tests/Feature/ProductDetailTest.php::add-to-cart validates that quantity does not exceed stock" class="Tests\Feature\ProductDetailTest" classname="Tests.Feature.ProductDetailTest" assertions="4" time="0.021346"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Settings\ProfileUpdateTest" file="tests/Feature/Settings/ProfileUpdateTest.php" tests="5" assertions="15" errors="0" failures="1" skipped="0" time="0.232063">
+        <testcase name="profile page is displayed" file="tests/Feature/Settings/ProfileUpdateTest.php::profile page is displayed" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="1" time="0.030570"/>
+        <testcase name="profile information can be updated" file="tests/Feature/Settings/ProfileUpdateTest.php::profile information can be updated" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="4" time="0.073303"/>
+        <testcase name="email verification status is unchanged when email address is unchanged" file="tests/Feature/Settings/ProfileUpdateTest.php::email verification status is unchanged when email address is unchanged" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="2" time="0.069047"/>
+        <testcase name="user can delete their account" file="tests/Feature/Settings/ProfileUpdateTest.php::user can delete their account" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="4" time="0.027049">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">user can delete their accountFailed asserting that App\Models\User Object #10476 (
+    'connection' =&gt; 'sqlite',
+    'table' =&gt; 'users',
+    'primaryKey' =&gt; 'id',
+    'keyType' =&gt; 'int',
+    'incrementing' =&gt; true,
+    'with' =&gt; Array &amp;0 [],
+    'withCount' =&gt; Array &amp;1 [],
+    'preventsLazyLoading' =&gt; false,
+    'perPage' =&gt; 15,
+    'exists' =&gt; true,
+    'wasRecentlyCreated' =&gt; false,
+    'escapeWhenCastingToString' =&gt; false,
+    'attributes' =&gt; Array &amp;2 [
+        'id' =&gt; 1,
+        'name' =&gt; 'Edison Hessel',
+        'email' =&gt; 'reinger.vesta@example.net',
+        'email_verified_at' =&gt; '2026-04-30 10:07:35',
+        'password' =&gt; '$2y$04$nwY4H3tEQh/xEiuc/X7jt.2eaD618cJpQeiZ7bb9/KYvTssk/wJTm',
+        'role' =&gt; 'customer',
+        'remember_token' =&gt; 'BcgTu3E0Xw5HeJHa0lM9S8D24c9cmmPpPrf7Rbv1NEmOr31w2eYQGgugxxOb',
+        'created_at' =&gt; '2026-04-30 10:07:35',
+        'updated_at' =&gt; '2026-04-30 10:07:35',
+        'deleted_at' =&gt; '2026-04-30 10:07:35',
+        'two_factor_secret' =&gt; null,
+        'two_factor_recovery_codes' =&gt; null,
+        'two_factor_confirmed_at' =&gt; null,
+        'github_id' =&gt; null,
+        'google_id' =&gt; null,
+        'address_line_1' =&gt; null,
+        'address_line_2' =&gt; null,
+        'postcode' =&gt; null,
+        'city' =&gt; null,
+        'country' =&gt; null,
+        'phone' =&gt; null,
+    ],
+    'original' =&gt; Array &amp;3 [
+        'id' =&gt; 1,
+        'name' =&gt; 'Edison Hessel',
+        'email' =&gt; 'reinger.vesta@example.net',
+        'email_verified_at' =&gt; '2026-04-30 10:07:35',
+        'password' =&gt; '$2y$04$nwY4H3tEQh/xEiuc/X7jt.2eaD618cJpQeiZ7bb9/KYvTssk/wJTm',
+        'role' =&gt; 'customer',
+        'remember_token' =&gt; 'BcgTu3E0Xw5HeJHa0lM9S8D24c9cmmPpPrf7Rbv1NEmOr31w2eYQGgugxxOb',
+        'created_at' =&gt; '2026-04-30 10:07:35',
+        'updated_at' =&gt; '2026-04-30 10:07:35',
+        'deleted_at' =&gt; '2026-04-30 10:07:35',
+        'two_factor_secret' =&gt; null,
+        'two_factor_recovery_codes' =&gt; null,
+        'two_factor_confirmed_at' =&gt; null,
+        'github_id' =&gt; null,
+        'google_id' =&gt; null,
+        'address_line_1' =&gt; null,
+        'address_line_2' =&gt; null,
+        'postcode' =&gt; null,
+        'city' =&gt; null,
+        'country' =&gt; null,
+        'phone' =&gt; null,
+    ],
+    'changes' =&gt; Array &amp;4 [],
+    'previous' =&gt; Array &amp;5 [],
+    'casts' =&gt; Array &amp;6 [
+        'email_verified_at' =&gt; 'datetime',
+        'password' =&gt; 'hashed',
+        'deleted_at' =&gt; 'datetime',
+    ],
+    'classCastCache' =&gt; Array &amp;7 [],
+    'attributeCastCache' =&gt; Array &amp;8 [],
+    'dateFormat' =&gt; null,
+    'appends' =&gt; Array &amp;9 [],
+    'dispatchesEvents' =&gt; Array &amp;10 [],
+    'observables' =&gt; Array &amp;11 [],
+    'relations' =&gt; Array &amp;12 [],
+    'touches' =&gt; Array &amp;13 [],
+    'relationAutoloadCallback' =&gt; null,
+    'relationAutoloadContext' =&gt; null,
+    'timestamps' =&gt; true,
+    'usesUniqueIds' =&gt; false,
+    'hidden' =&gt; Array &amp;14 [
+        0 =&gt; 'password',
+        1 =&gt; 'two_factor_secret',
+        2 =&gt; 'two_factor_recovery_codes',
+        3 =&gt; 'remember_token',
+    ],
+    'visible' =&gt; Array &amp;15 [],
+    'fillable' =&gt; Array &amp;16 [
+        0 =&gt; 'name',
+        1 =&gt; 'email',
+        2 =&gt; 'password',
+        3 =&gt; 'role',
+        4 =&gt; 'github_id',
+        5 =&gt; 'google_id',
+        6 =&gt; 'address_line_1',
+        7 =&gt; 'address_line_2',
+        8 =&gt; 'postcode',
+        9 =&gt; 'city',
+        10 =&gt; 'country',
+        11 =&gt; 'phone',
+    ],
+    'guarded' =&gt; Array &amp;17 [
+        0 =&gt; '*',
+    ],
+    'authPasswordName' =&gt; 'password',
+    'rememberTokenName' =&gt; 'remember_token',
+    'forceDeleting' =&gt; false,
+) is null.
+at tests/Feature/Settings/ProfileUpdateTest.php:59</failure>
+        </testcase>
+        <testcase name="correct password must be provided to delete account" file="tests/Feature/Settings/ProfileUpdateTest.php::correct password must be provided to delete account" class="Tests\Feature\Settings\ProfileUpdateTest" classname="Tests.Feature.Settings.ProfileUpdateTest" assertions="4" time="0.032093"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Settings\SecurityTest" file="tests/Feature/Settings/SecurityTest.php" tests="6" assertions="15" errors="0" failures="0" skipped="0" time="0.300561">
+        <testcase name="security settings page can be rendered" file="tests/Feature/Settings/SecurityTest.php::security settings page can be rendered" class="Tests\Feature\Settings\SecurityTest" classname="Tests.Feature.Settings.SecurityTest" assertions="3" time="0.049379"/>
+        <testcase name="security settings page requires password confirmation when enabled" file="tests/Feature/Settings/SecurityTest.php::security settings page requires password confirmation when enabled" class="Tests\Feature\Settings\SecurityTest" classname="Tests.Feature.Settings.SecurityTest" assertions="2" time="0.011084"/>
+        <testcase name="security settings page renders without two factor when feature is disabled" file="tests/Feature/Settings/SecurityTest.php::security settings page renders without two factor when feature is disabled" class="Tests\Feature\Settings\SecurityTest" classname="Tests.Feature.Settings.SecurityTest" assertions="3" time="0.039316"/>
+        <testcase name="two factor authentication disabled when confirmation abandoned between requests" file="tests/Feature/Settings/SecurityTest.php::two factor authentication disabled when confirmation abandoned between requests" class="Tests\Feature\Settings\SecurityTest" classname="Tests.Feature.Settings.SecurityTest" assertions="2" time="0.029964"/>
+        <testcase name="password can be updated" file="tests/Feature/Settings/SecurityTest.php::password can be updated" class="Tests\Feature\Settings\SecurityTest" classname="Tests.Feature.Settings.SecurityTest" assertions="2" time="0.082115"/>
+        <testcase name="correct password must be provided to update password" file="tests/Feature/Settings/SecurityTest.php::correct password must be provided to update password" class="Tests\Feature\Settings\SecurityTest" classname="Tests.Feature.Settings.SecurityTest" assertions="3" time="0.088703"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ShopNavigationTest" file="tests/Feature/ShopNavigationTest.php" tests="3" assertions="8" errors="0" failures="3" skipped="0" time="0.045015">
+        <testcase name="the homepage uses the shop layout and renders the navigation" file="tests/Feature/ShopNavigationTest.php::the homepage uses the shop layout and renders the navigation" class="Tests\Feature\ShopNavigationTest" classname="Tests.Feature.ShopNavigationTest" assertions="5" time="0.020019">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">the homepage uses the shop layout and renders the navigationFailed asserting that '&lt;!DOCTYPE html&gt;\n
+&lt;html lang="en"&gt;\n
+&lt;head&gt;\n
+    &lt;meta charset="utf-8" /&gt;\n
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;\n
+\n
+    &lt;title&gt;\n
+        Laravel - TechShop\n
+    &lt;/title&gt;\n
+\n
+    &lt;link rel="icon" href="/favicon.svg?v=1777543655" type="image/svg+xml"&gt;\n
+    &lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;\n
+\n
+    &lt;link rel="preconnect" href="https://fonts.bunny.net"&gt;\n
+    &lt;link href="https://fonts.bunny.net/css?family=inter:400,500,600,700&amp;display=swap" rel="stylesheet" /&gt;\n
+\n
+    &lt;style&gt;\n
+        html { background-color: #ffffff; }\n
+        html.dark { background-color: #09090b; }\n
+        body { background-color: transparent; }\n
+        [x-cloak] { display: none !important; }\n
+    &lt;/style&gt;\n
+\n
+    &lt;script&gt;\n
+        (function() {\n
+            const theme = localStorage.getItem('techshop.theme') || localStorage.getItem('flux.appearance');\n
+            const isDark = theme === 'dark' || (!theme &amp;&amp; window.matchMedia('(prefers-color-scheme: dark)').matches);\n
+            if (isDark) {\n
+                document.documentElement.classList.add('dark');\n
+            } else {\n
+                document.documentElement.classList.remove('dark');\n
+            }\n
+        })();\n
+    &lt;/script&gt;\n
+\n
+    &lt;script type="module" src="http://[::1]:5173/@vite/client" data-navigate-track="reload"&gt;&lt;/script&gt;&lt;link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" data-navigate-track="reload" /&gt;&lt;script type="module" src="http://[::1]:5173/resources/js/app.js" data-navigate-track="reload"&gt;&lt;/script&gt;    &lt;style&gt;\n
+    :root.dark {\n
+        color-scheme: dark;\n
+    }\n
+&lt;/style&gt;\n
+&lt;script&gt;\n
+    window.Flux = {\n
+        applyAppearance (appearance) {\n
+            let applyDark = () =&gt; document.documentElement.classList.add('dark')\n
+            let applyLight = () =&gt; document.documentElement.classList.remove('dark')\n
+\n
+            if (appearance === 'system') {\n
+                let media = window.matchMedia('(prefers-color-scheme: dark)')\n
+\n
+                window.localStorage.removeItem('flux.appearance')\n
+\n
+                media.matches ? applyDark() : applyLight()\n
+            } else if (appearance === 'dark') {\n
+                window.localStorage.setItem('flux.appearance', 'dark')\n
+\n
+                applyDark()\n
+            } else if (appearance === 'light') {\n
+                window.localStorage.setItem('flux.appearance', 'light')\n
+\n
+                applyLight()\n
+            }\n
+        }\n
+    }\n
+\n
+    window.Flux.applyAppearance(window.localStorage.getItem('flux.appearance') || 'system')\n
+&lt;/script&gt;\n
+&lt;!-- Livewire Styles --&gt;&lt;style &gt;[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.list-item][wire\:loading\.list-item], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}&lt;/style&gt;\n
+&lt;/head&gt;\n
+&lt;body class="min-h-screen bg-white dark:bg-zinc-950 text-[#0d0d0d] dark:text-zinc-50 font-['Inter'] antialiased"&gt;\n
+    &lt;nav wire:key="lw-1601873833-0" wire:snapshot="{&amp;quot;data&amp;quot;:[],&amp;quot;memo&amp;quot;:{&amp;quot;id&amp;quot;:&amp;quot;Nk4OWZPfNVElIIA1H3r3&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;shop-navigation&amp;quot;,&amp;quot;path&amp;quot;:&amp;quot;\/&amp;quot;,&amp;quot;method&amp;quot;:&amp;quot;GET&amp;quot;,&amp;quot;release&amp;quot;:&amp;quot;a-a-a&amp;quot;,&amp;quot;children&amp;quot;:{&amp;quot;lw-3702893065-0&amp;quot;:[&amp;quot;a&amp;quot;,&amp;quot;NiKdSPnRohJRumlil7Ki&amp;quot;]},&amp;quot;scripts&amp;quot;:[],&amp;quot;assets&amp;quot;:[],&amp;quot;errors&amp;quot;:[],&amp;quot;locale&amp;quot;:&amp;quot;en&amp;quot;,&amp;quot;islands&amp;quot;:[]},&amp;quot;checksum&amp;quot;:&amp;quot;e0c69c640701c69d9dae3845209de51dcce7426d30aa49f52f6ca2107898feee&amp;quot;}" wire:effects="[]" wire:id="Nk4OWZPfNVElIIA1H3r3" wire:name="shop-navigation"\n
+    x-data="{ open: false, accountOpen: false }"\n
+    class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-black/[0.05] dark:border-white/[0.05]"\n
+&gt;\n
+    &lt;div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between"&gt;\n
+        \n
+        &lt;div class="flex items-center gap-8"&gt;\n
+            &lt;a href="http://localhost" class="text-xl font-semibold tracking-tight" wire:navigate&gt;\n
+                TECH&lt;span class="text-[#18E299]"&gt;SHOP&lt;/span&gt;\n
+            &lt;/a&gt;\n
+\n
+            \n
+            &lt;div class="hidden md:flex items-center gap-6 text-[14px] font-medium"&gt;\n
+                &lt;a href="http://localhost/products" class="hover:text-[#18E299] transition-colors" wire:navigate&gt;\n
+                    Shop\n
+                &lt;/a&gt;\n
+                &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;            &lt;/div&gt;\n
+        &lt;/div&gt;\n
+\n
+        \n
+        &lt;div class="flex items-center gap-1"&gt;\n
+            \n
+            &lt;button\n
+                type="button"\n
+                x-data="{ dark: document.documentElement.classList.contains('dark') }"\n
+                @click="dark = window.techshopToggleTheme(dark)"\n
+                class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"\n
+                aria-label="Toggle dark mode"\n
+            &gt;\n
+                &lt;svg x-show="!dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/&gt;\n
+                &lt;/svg&gt;\n
+                &lt;svg x-show="dark" x-cloak xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;circle cx="12" cy="12" r="4"/&gt;\n
+                    &lt;path d="M12 2v2"/&gt;&lt;path d="M12 20v2"/&gt;&lt;path d="m4.93 4.93 1.41 1.41"/&gt;&lt;path d="m17.66 17.66 1.41 1.41"/&gt;&lt;path d="M2 12h2"/&gt;&lt;path d="M20 12h2"/&gt;&lt;path d="m6.34 17.66-1.41 1.41"/&gt;&lt;path d="m19.07 4.93-1.41 1.41"/&gt;\n
+                &lt;/svg&gt;\n
+            &lt;/button&gt;\n
+\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;\n
+            \n
+            &lt;div class="relative"&gt;\n
+                &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;                    &lt;a\n
+                        href="http://localhost/login"\n
+                        wire:navigate\n
+                        class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"\n
+                        aria-label="Log in"\n
+                    &gt;\n
+                        &lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                            &lt;circle cx="12" cy="8" r="4"/&gt;\n
+                            &lt;path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/&gt;\n
+                        &lt;/svg&gt;\n
+                    &lt;/a&gt;\n
+                &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;            &lt;/div&gt;\n
+\n
+            \n
+            &lt;a wire:key="lw-3702893065-0" wire:snapshot="{&amp;quot;data&amp;quot;:[],&amp;quot;memo&amp;quot;:{&amp;quot;id&amp;quot;:&amp;quot;NiKdSPnRohJRumlil7Ki&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;cart-icon&amp;quot;,&amp;quot;path&amp;quot;:&amp;quot;\/&amp;quot;,&amp;quot;method&amp;quot;:&amp;quot;GET&amp;quot;,&amp;quot;release&amp;quot;:&amp;quot;a-a-a&amp;quot;,&amp;quot;children&amp;quot;:[],&amp;quot;scripts&amp;quot;:[],&amp;quot;assets&amp;quot;:[],&amp;quot;errors&amp;quot;:[],&amp;quot;locale&amp;quot;:&amp;quot;en&amp;quot;,&amp;quot;islands&amp;quot;:[]},&amp;quot;checksum&amp;quot;:&amp;quot;a0d2f251e85d3bd3e1258aaf4623cc563ecc624b3d8eab7d3d64e11b4ccc3b63&amp;quot;}" wire:effects="{&amp;quot;listeners&amp;quot;:[&amp;quot;cart-updated&amp;quot;]}" wire:id="NiKdSPnRohJRumlil7Ki" wire:name="cart-icon" href="/cart" class="relative inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"&gt;\n
+    &lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+        &lt;circle cx="8" cy="21" r="1"/&gt;\n
+        &lt;circle cx="19" cy="21" r="1"/&gt;\n
+        &lt;path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/&gt;\n
+    &lt;/svg&gt;\n
+\n
+    &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;&lt;/a&gt;\n
+            \n
+            &lt;button\n
+                type="button"\n
+                @click="open = !open"\n
+                class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-black/[0.08] dark:border-white/[0.08] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors ml-1"\n
+                :aria-expanded="open"\n
+                aria-controls="shop-mobile-menu"\n
+                aria-label="Toggle menu"\n
+            &gt;\n
+                &lt;svg x-show="!open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;line x1="4" y1="7" x2="20" y2="7"/&gt;\n
+                    &lt;line x1="4" y1="12" x2="20" y2="12"/&gt;\n
+                    &lt;line x1="4" y1="17" x2="20" y2="17"/&gt;\n
+                &lt;/svg&gt;\n
+                &lt;svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;line x1="6" y1="6" x2="18" y2="18"/&gt;\n
+                    &lt;line x1="6" y1="18" x2="18" y2="6"/&gt;\n
+                &lt;/svg&gt;\n
+            &lt;/button&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+\n
+    \n
+    &lt;div\n
+        id="shop-mobile-menu"\n
+        x-show="open"\n
+        x-cloak\n
+        x-transition.opacity\n
+        @click.outside="open = false"\n
+        class="md:hidden border-t border-black/[0.05] dark:border-white/[0.05] bg-white dark:bg-zinc-950"\n
+    &gt;\n
+        &lt;div class="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1 text-[15px] font-medium"&gt;\n
+            &lt;a href="http://localhost/products" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors"&gt;\n
+                Shop\n
+            &lt;/a&gt;\n
+\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;                &lt;div class="pt-3 mt-2 border-t border-black/[0.05] dark:border-white/[0.05]"&gt;\n
+                    &lt;a href="http://localhost/login" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors block"&gt;\n
+                        Log in\n
+                    &lt;/a&gt;\n
+                &lt;/div&gt;\n
+            &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+&lt;/nav&gt;\n
+    &lt;main class="pt-16"&gt;\n
+        &lt;div wire:snapshot="{&amp;quot;data&amp;quot;:[],&amp;quot;memo&amp;quot;:{&amp;quot;id&amp;quot;:&amp;quot;7SYdiT3am4Pl3dfLQnLJ&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;pages::home&amp;quot;,&amp;quot;path&amp;quot;:&amp;quot;\/&amp;quot;,&amp;quot;method&amp;quot;:&amp;quot;GET&amp;quot;,&amp;quot;release&amp;quot;:&amp;quot;a-a-a&amp;quot;,&amp;quot;children&amp;quot;:[],&amp;quot;scripts&amp;quot;:[],&amp;quot;assets&amp;quot;:[],&amp;quot;errors&amp;quot;:[],&amp;quot;locale&amp;quot;:&amp;quot;en&amp;quot;,&amp;quot;islands&amp;quot;:[]},&amp;quot;checksum&amp;quot;:&amp;quot;3f84053e652b06f16a7ca4404f93ea10f5282be8a917ece268b31e5796a2ae7b&amp;quot;}" wire:effects="[]" wire:id="7SYdiT3am4Pl3dfLQnLJ" wire:name="pages::home"&gt;\n
+    \n
+    &lt;section class="relative pt-16 pb-20 overflow-hidden"&gt;\n
+        &lt;div class="absolute top-0 right-0 w-[700px] h-[700px] bg-[radial-gradient(circle_at_center,_#d4fae8_0%,_transparent_70%)] dark:bg-[radial-gradient(circle_at_center,_rgba(24,226,153,0.12)_0%,_transparent_70%)] opacity-50 dark:opacity-100 -z-10"&gt;&lt;/div&gt;\n
+\n
+        &lt;div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"&gt;\n
+            \n
+            &lt;div&gt;\n
+                &lt;div class="inline-block bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] text-[12px] font-bold tracking-[0.6px] uppercase px-3 py-1 rounded-full mb-6"&gt;\n
+                    In stock — ships today\n
+                &lt;/div&gt;\n
+\n
+                &lt;h1 class="text-5xl md:text-[64px] font-semibold leading-[1.1] tracking-[-1.28px] mb-6 text-[#0d0d0d] dark:text-zinc-50"&gt;\n
+                    Hardware that gets out of your way.\n
+                &lt;/h1&gt;\n
+\n
+                &lt;p class="text-lg text-[#666666] dark:text-zinc-400 max-w-xl mb-10 leading-relaxed"&gt;\n
+                    High-performance gear engineered for developers, designers, and digital architects who care about the details.\n
+                &lt;/p&gt;\n
+\n
+                &lt;div class="flex flex-wrap items-center gap-6"&gt;\n
+                    &lt;a href="http://localhost/products" class="bg-[#0d0d0d] dark:bg-white text-white dark:text-[#0d0d0d] px-8 py-3 rounded-full text-[15px] font-medium shadow-md dark:shadow-none hover:opacity-90 transition-all" wire:navigate&gt;\n
+                        Browse Collection\n
+                    &lt;/a&gt;\n
+                    &lt;a href="#new-arrivals" class="text-[14px] font-medium text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors inline-flex items-center gap-1"&gt;\n
+                        View new arrivals\n
+                        &lt;span aria-hidden="true"&gt;&amp;rarr;&lt;/span&gt;\n
+                    &lt;/a&gt;\n
+                &lt;/div&gt;\n
+            &lt;/div&gt;\n
+\n
+            \n
+            &lt;div class="relative"&gt;\n
+                &lt;div class="absolute -inset-6 bg-gradient-to-tr from-[#18E299]/15 via-[#d4fae8]/20 to-transparent dark:from-[#18E299]/10 dark:via-[#18E299]/5 dark:to-transparent rounded-[32px] blur-xl -z-10"&gt;&lt;/div&gt;\n
+\n
+                &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;                    &lt;div class="aspect-[4/5] bg-gradient-to-br from-[#fafafa] to-[#d4fae8] dark:from-zinc-900 dark:to-[#0fa76e]/15 rounded-[24px] border border-black/[0.06] dark:border-white/[0.05] flex items-center justify-center"&gt;\n
+                        &lt;span class="font-mono text-[11px] text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase"&gt;TechShop&lt;/span&gt;\n
+                    &lt;/div&gt;\n
+                &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;            &lt;/div&gt;\n
+        &lt;/div&gt;\n
+    &lt;/section&gt;\n
+\n
+    \n
+    &lt;section class="border-y border-black/[0.05] dark:border-white/[0.05] bg-[#fafafa]/60 dark:bg-zinc-900/40 transition-colors"&gt;\n
+        &lt;div class="max-w-[1200px] mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6"&gt;\n
+            \n
+            &lt;div class="flex items-center gap-3"&gt;\n
+                &lt;span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] shrink-0"&gt;\n
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                        &lt;path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/&gt;\n
+                        &lt;path d="M15 18H9"/&gt;\n
+                        &lt;path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/&gt;\n
+                        &lt;circle cx="17" cy="18" r="2"/&gt;\n
+                        &lt;circle cx="7" cy="18" r="2"/&gt;\n
+                    &lt;/svg&gt;\n
+                &lt;/span&gt;\n
+                &lt;div&gt;\n
+                    &lt;div class="text-[13px] font-medium leading-tight text-[#0d0d0d] dark:text-zinc-100"&gt;Free shipping&lt;/div&gt;\n
+                    &lt;div class="text-[12px] text-[#666666] dark:text-zinc-400 leading-tight"&gt;On orders over €50&lt;/div&gt;\n
+                &lt;/div&gt;\n
+            &lt;/div&gt;\n
+\n
+            \n
+            &lt;div class="flex items-center gap-3"&gt;\n
+                &lt;span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] shrink-0"&gt;\n
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                        &lt;path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/&gt;\n
+                    &lt;/svg&gt;\n
+                &lt;/span&gt;\n
+                &lt;div&gt;\n
+                    &lt;div class="text-[13px] font-medium leading-tight text-[#0d0d0d] dark:text-zinc-100"&gt;2-year warranty&lt;/div&gt;\n
+                    &lt;div class="text-[12px] text-[#666666] dark:text-zinc-400 leading-tight"&gt;On every product&lt;/div&gt;\n
+                &lt;/div&gt;\n
+            &lt;/div&gt;\n
+\n
+            \n
+            &lt;div class="flex items-center gap-3"&gt;\n
+                &lt;span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] shrink-0"&gt;\n
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                        &lt;rect width="18" height="11" x="3" y="11" rx="2" ry="2"/&gt;\n
+                        &lt;path d="M7 11V7a5 5 0 0 1 10 0v4"/&gt;\n
+                    &lt;/svg&gt;\n
+                &lt;/span&gt;\n
+                &lt;div&gt;\n
+                    &lt;div class="text-[13px] font-medium leading-tight text-[#0d0d0d] dark:text-zinc-100"&gt;Secure checkout&lt;/div&gt;\n
+                    &lt;div class="text-[12px] text-[#666666] dark:text-zinc-400 leading-tight"&gt;Powered by Stripe&lt;/div&gt;\n
+                &lt;/div&gt;\n
+            &lt;/div&gt;\n
+\n
+            \n
+            &lt;div class="flex items-center gap-3"&gt;\n
+                &lt;span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] shrink-0"&gt;\n
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                        &lt;path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/&gt;\n
+                    &lt;/svg&gt;\n
+                &lt;/span&gt;\n
+                &lt;div&gt;\n
+                    &lt;div class="text-[13px] font-medium leading-tight text-[#0d0d0d] dark:text-zinc-100"&gt;Built for creators&lt;/div&gt;\n
+                    &lt;div class="text-[12px] text-[#666666] dark:text-zinc-400 leading-tight"&gt;Picked by makers&lt;/div&gt;\n
+                &lt;/div&gt;\n
+            &lt;/div&gt;\n
+        &lt;/div&gt;\n
+    &lt;/section&gt;\n
+\n
+    \n
+    &lt;section id="categories" class="pt-20 pb-16 max-w-[1200px] mx-auto px-6 scroll-mt-20"&gt;\n
+        &lt;div class="mb-10"&gt;\n
+            &lt;div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-3"&gt;\n
+                Shop by category\n
+            &lt;/div&gt;\n
+            &lt;h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.8px] text-[#0d0d0d] dark:text-zinc-50"&gt;\n
+                Find your kit\n
+            &lt;/h2&gt;\n
+        &lt;/div&gt;\n
+\n
+        &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;            &lt;p class="text-[#666666] dark:text-zinc-400 text-[15px]"&gt;No categories yet.&lt;/p&gt;\n
+        &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;    &lt;/section&gt;\n
+\n
+    \n
+    &lt;section id="new-arrivals" class="pt-16 pb-24 max-w-[1200px] mx-auto px-6 scroll-mt-20"&gt;\n
+        &lt;div class="mb-10 flex items-end justify-between gap-6"&gt;\n
+            &lt;div&gt;\n
+                &lt;div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-3"&gt;\n
+                    New arrivals\n
+                &lt;/div&gt;\n
+                &lt;h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.8px] text-[#0d0d0d] dark:text-zinc-50"&gt;\n
+                    Just landed\n
+                &lt;/h2&gt;\n
+            &lt;/div&gt;\n
+            &lt;a href="http://localhost/products" class="hidden sm:inline-flex items-center gap-1 text-[14px] font-medium text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors" wire:navigate&gt;\n
+                View all\n
+                &lt;span aria-hidden="true"&gt;&amp;rarr;&lt;/span&gt;\n
+            &lt;/a&gt;\n
+        &lt;/div&gt;\n
+\n
+        &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;            &lt;p class="text-[#666666] dark:text-zinc-400 text-[15px]"&gt;No products available yet.&lt;/p&gt;\n
+        &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;    &lt;/section&gt;\n
+&lt;/div&gt;\n
+    &lt;/main&gt;\n
+\n
+    &lt;div\n
+    x-data="{ \n
+        show: false, \n
+        message: '', \n
+        title: '',\n
+        link: null,\n
+        linkText: null,\n
+        timeout: null,\n
+        notify(event) {\n
+            this.title = event.detail.title || 'Success';\n
+            this.message = event.detail.message || '';\n
+            this.link = event.detail.link || null;\n
+            this.linkText = event.detail.linkText || null;\n
+            this.show = true;\n
+            \n
+            if (this.timeout) clearTimeout(this.timeout);\n
+            this.timeout = setTimeout(() =&gt; { this.show = false }, 5000);\n
+        }\n
+    }"\n
+    @notify.window="notify($event)"\n
+    x-show="show"\n
+    x-transition:enter="transition ease-out duration-300"\n
+    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:translate-x-4"\n
+    x-transition:enter-end="opacity-100 translate-y-0 sm:translate-x-0"\n
+    x-transition:leave="transition ease-in duration-200"\n
+    x-transition:leave-start="opacity-100"\n
+    x-transition:leave-end="opacity-0"\n
+    class="fixed top-20 right-6 z-[100] max-w-sm w-full bg-white dark:bg-zinc-900 border border-black/[0.08] dark:border-white/[0.08] rounded-[20px] shadow-2xl shadow-black/10 p-4 overflow-hidden"\n
+    x-cloak\n
+&gt;\n
+    &lt;div class="flex items-start gap-4"&gt;\n
+        &lt;div class="size-10 rounded-full bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] flex items-center justify-center shrink-0"&gt;\n
+            &lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M20 6 9 17l-5-5"/&gt;&lt;/svg&gt;\n
+        &lt;/div&gt;\n
+        \n
+        &lt;div class="flex-1 min-w-0"&gt;\n
+            &lt;div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-1" x-text="title"&gt;&lt;/div&gt;\n
+            &lt;div class="text-[14px] font-medium text-[#0d0d0d] dark:text-zinc-50 leading-snug mb-3" x-text="message"&gt;&lt;/div&gt;\n
+            \n
+            &lt;template x-if="link"&gt;\n
+                &lt;a \n
+                    :href="link" \n
+                    wire:navigate\n
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0fa76e] dark:bg-[#18E299] text-white dark:text-[#0d0d0d] text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition-opacity"\n
+                &gt;\n
+                    &lt;span x-text="linkText"&gt;&lt;/span&gt;\n
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M5 12h14"/&gt;&lt;path d="m12 5 7 7-7 7"/&gt;&lt;/svg&gt;\n
+                &lt;/a&gt;\n
+            &lt;/template&gt;\n
+        &lt;/div&gt;\n
+\n
+        &lt;button @click="show = false" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors"&gt;\n
+            &lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M18 6 6 18"/&gt;&lt;path d="m6 6 12 12"/&gt;&lt;/svg&gt;\n
+        &lt;/button&gt;\n
+    &lt;/div&gt;\n
+\n
+    \n
+    &lt;div class="absolute bottom-0 left-0 h-1 bg-[#0fa76e] dark:bg-[#18E299] transition-all duration-5000 ease-linear" :style="show ? 'width: 100%' : 'width: 0%'" x-show="show"&gt;&lt;/div&gt;\n
+&lt;/div&gt;\n
+    &lt;footer class="mt-24 border-t border-black/[0.05] dark:border-white/[0.05] bg-white dark:bg-zinc-950"&gt;\n
+    &lt;div class="max-w-[1200px] mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-5 gap-10"&gt;\n
+        \n
+        &lt;div class="md:col-span-2"&gt;\n
+            &lt;a href="http://localhost" class="text-xl font-semibold tracking-tight dark:text-white" wire:navigate&gt;\n
+                TECH&lt;span class="text-[#18E299]"&gt;SHOP&lt;/span&gt;\n
+            &lt;/a&gt;\n
+            &lt;p class="mt-4 text-[14px] text-[#666666] dark:text-zinc-400 max-w-sm leading-relaxed"&gt;\n
+                High-performance hardware engineered for developers, designers, and digital architects.\n
+            &lt;/p&gt;\n
+        &lt;/div&gt;\n
+\n
+        \n
+        &lt;div&gt;\n
+            &lt;div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-4"&gt;\n
+                Shop\n
+            &lt;/div&gt;\n
+            &lt;ul class="space-y-2 text-[14px]"&gt;\n
+                &lt;li&gt;&lt;a href="http://localhost/products" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate&gt;All Products&lt;/a&gt;&lt;/li&gt;\n
+                &lt;li&gt;\n
+                    &lt;a\n
+                        x-data\n
+                        href="http://localhost#new-arrivals"\n
+                        @click.prevent="\n
+                            const homePath = new URL('http://localhost').pathname;\n
+                            if (window.location.pathname === homePath) {\n
+                                document.getElementById('new-arrivals').scrollIntoView({behavior: 'smooth'});\n
+                            } else {\n
+                                window.location.href = 'http://localhost#new-arrivals';\n
+                            }\n
+                        "\n
+                        class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors"\n
+                    &gt;New Arrivals&lt;/a&gt;\n
+                &lt;/li&gt;\n
+                &lt;li&gt;\n
+                    &lt;a\n
+                        x-data\n
+                        href="http://localhost#categories"\n
+                        @click.prevent="\n
+                            const homePath = new URL('http://localhost').pathname;\n
+                            if (window.location.pathname === homePath) {\n
+                                document.getElementById('categories').scrollIntoView({behavior: 'smooth'});\n
+                            } else {\n
+                                window.location.href = 'http://localhost#categories';\n
+                            }\n
+                        "\n
+                        class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors"\n
+                    &gt;Categories&lt;/a&gt;\n
+                &lt;/li&gt;\n
+            &lt;/ul&gt;\n
+        &lt;/div&gt;\n
+\n
+        \n
+        &lt;div&gt;\n
+            &lt;div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-4"&gt;\n
+                Account\n
+            &lt;/div&gt;\n
+            &lt;ul class="space-y-2 text-[14px]"&gt;\n
+                                    &lt;li&gt;&lt;a href="http://localhost/login" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate&gt;Log in&lt;/a&gt;&lt;/li&gt;\n
+                    &lt;li&gt;&lt;a href="http://localhost/register" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate&gt;Register&lt;/a&gt;&lt;/li&gt;\n
+                            &lt;/ul&gt;\n
+        &lt;/div&gt;\n
+\n
+        \n
+        &lt;div&gt;\n
+            &lt;div class="text-[11px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest uppercase mb-4"&gt;\n
+                Support\n
+            &lt;/div&gt;\n
+            &lt;ul class="space-y-2 text-[14px]"&gt;\n
+                &lt;li&gt;&lt;a href="http://localhost/contact" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate&gt;Contact&lt;/a&gt;&lt;/li&gt;\n
+                &lt;li&gt;&lt;a href="http://localhost/faq" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate&gt;FAQ&lt;/a&gt;&lt;/li&gt;\n
+                &lt;li&gt;&lt;a href="http://localhost/shipping-returns" class="text-[#0d0d0d] dark:text-zinc-300 hover:text-[#18E299] transition-colors" wire:navigate&gt;Shipping &amp;amp; Returns&lt;/a&gt;&lt;/li&gt;\n
+            &lt;/ul&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+\n
+    \n
+    &lt;div class="border-t border-black/[0.05] dark:border-white/[0.05]"&gt;\n
+        &lt;div class="max-w-[1200px] mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#666666] dark:text-zinc-400"&gt;\n
+            &lt;div&gt;&amp;copy; 2026 TechShop. All rights reserved.&lt;/div&gt;\n
+\n
+            \n
+            &lt;div class="flex items-center gap-4"&gt;\n
+                \n
+                &lt;a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-[#999999] dark:text-zinc-500 hover:text-[#18E299] dark:hover:text-[#18E299] transition-colors"&gt;\n
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                        &lt;path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/&gt;\n
+                        &lt;path d="M9 18c-4.51 2-5-2-7-2"/&gt;\n
+                    &lt;/svg&gt;\n
+                &lt;/a&gt;\n
+\n
+                \n
+                &lt;a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" class="text-[#999999] dark:text-zinc-500 hover:text-[#18E299] dark:hover:text-[#18E299] transition-colors"&gt;\n
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"&gt;\n
+                        &lt;path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/&gt;\n
+                    &lt;/svg&gt;\n
+                &lt;/a&gt;\n
+\n
+                \n
+                &lt;a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-[#999999] dark:text-zinc-500 hover:text-[#18E299] dark:hover:text-[#18E299] transition-colors"&gt;\n
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                        &lt;rect width="20" height="20" x="2" y="2" rx="5" ry="5"/&gt;\n
+                        &lt;path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/&gt;\n
+                        &lt;line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/&gt;\n
+                    &lt;/svg&gt;\n
+                &lt;/a&gt;\n
+            &lt;/div&gt;\n
+\n
+            &lt;div class="font-mono tracking-widest uppercase"&gt;Built for creators&lt;/div&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+&lt;/footer&gt;\n
+\n
+    &lt;script src="http://localhost/flux/flux.js?id=497da1a7" data-navigate-once&gt;&lt;/script&gt;\n
+&lt;!-- Livewire Scripts --&gt;\n
+&lt;script src="http://localhost/livewire-e3fd0143/livewire.js?id=6b3709b1"   data-csrf="Eq6HVMONNSQzUA63sxk09vb6k6NOnybOOEnRm4Uc" data-module-url="http://localhost/livewire-e3fd0143" data-update-uri="http://localhost/livewire-e3fd0143/update" data-navigate-once="true"&gt;&lt;/script&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+' [UTF-8](length: 31280) contains "Shop Now" [ASCII](length: 8).
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+at vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:711
+at tests/Feature/ShopNavigationTest.php:16</failure>
+        </testcase>
+        <testcase name="navigation lists existing categories dynamically" file="tests/Feature/ShopNavigationTest.php::navigation lists existing categories dynamically" class="Tests\Feature\ShopNavigationTest" classname="Tests.Feature.ShopNavigationTest" assertions="1" time="0.013600">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">navigation lists existing categories dynamicallyFailed asserting that '&lt;nav wire:key="lw-1264730135-0" wire:snapshot="" wire:effects="" wire:id="OMLuAs2vWywd5o2aee50" wire:name="shop-navigation"\n
+    x-data="{ open: false, accountOpen: false }"\n
+    class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-black/[0.05] dark:border-white/[0.05]"\n
+&gt;\n
+    &lt;div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between"&gt;\n
+        \n
+        &lt;div class="flex items-center gap-8"&gt;\n
+            &lt;a href="http://localhost" class="text-xl font-semibold tracking-tight" wire:navigate&gt;\n
+                TECH&lt;span class="text-[#18E299]"&gt;SHOP&lt;/span&gt;\n
+            &lt;/a&gt;\n
+\n
+            \n
+            &lt;div class="hidden md:flex items-center gap-6 text-[14px] font-medium"&gt;\n
+                &lt;a href="http://localhost/products" class="hover:text-[#18E299] transition-colors" wire:navigate&gt;\n
+                    Shop\n
+                &lt;/a&gt;\n
+                &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;            &lt;/div&gt;\n
+        &lt;/div&gt;\n
+\n
+        \n
+        &lt;div class="flex items-center gap-1"&gt;\n
+            \n
+            &lt;button\n
+                type="button"\n
+                x-data="{ dark: document.documentElement.classList.contains('dark') }"\n
+                @click="dark = window.techshopToggleTheme(dark)"\n
+                class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"\n
+                aria-label="Toggle dark mode"\n
+            &gt;\n
+                &lt;svg x-show="!dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/&gt;\n
+                &lt;/svg&gt;\n
+                &lt;svg x-show="dark" x-cloak xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;circle cx="12" cy="12" r="4"/&gt;\n
+                    &lt;path d="M12 2v2"/&gt;&lt;path d="M12 20v2"/&gt;&lt;path d="m4.93 4.93 1.41 1.41"/&gt;&lt;path d="m17.66 17.66 1.41 1.41"/&gt;&lt;path d="M2 12h2"/&gt;&lt;path d="M20 12h2"/&gt;&lt;path d="m6.34 17.66-1.41 1.41"/&gt;&lt;path d="m19.07 4.93-1.41 1.41"/&gt;\n
+                &lt;/svg&gt;\n
+            &lt;/button&gt;\n
+\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;\n
+            \n
+            &lt;div class="relative"&gt;\n
+                &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;                    &lt;a\n
+                        href="http://localhost/login"\n
+                        wire:navigate\n
+                        class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"\n
+                        aria-label="Log in"\n
+                    &gt;\n
+                        &lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                            &lt;circle cx="12" cy="8" r="4"/&gt;\n
+                            &lt;path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/&gt;\n
+                        &lt;/svg&gt;\n
+                    &lt;/a&gt;\n
+                &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;            &lt;/div&gt;\n
+\n
+            \n
+            &lt;a wire:key="lw-3702893065-0" wire:snapshot="{&amp;quot;data&amp;quot;:,&amp;quot;memo&amp;quot;:{&amp;quot;id&amp;quot;:&amp;quot;nckam7iTso8P4OidP2VJ&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;cart-icon&amp;quot;,&amp;quot;path&amp;quot;:&amp;quot;livewire-unit-test-endpoint\/cUuARxI9fFldf1QFWBDI&amp;quot;,&amp;quot;method&amp;quot;:&amp;quot;GET&amp;quot;,&amp;quot;release&amp;quot;:&amp;quot;a-a-a&amp;quot;,&amp;quot;children&amp;quot;:,&amp;quot;scripts&amp;quot;:,&amp;quot;assets&amp;quot;:,&amp;quot;errors&amp;quot;:,&amp;quot;locale&amp;quot;:&amp;quot;en&amp;quot;,&amp;quot;islands&amp;quot;:},&amp;quot;checksum&amp;quot;:&amp;quot;d6fe1ff2a30b1903e53001814f32e8d7088f98f603576e59242bc4c9c54bd292&amp;quot;}" wire:effects="{&amp;quot;listeners&amp;quot;:[&amp;quot;cart-updated&amp;quot;]}" wire:id="nckam7iTso8P4OidP2VJ" wire:name="cart-icon" href="/cart" class="relative inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"&gt;\n
+    &lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+        &lt;circle cx="8" cy="21" r="1"/&gt;\n
+        &lt;circle cx="19" cy="21" r="1"/&gt;\n
+        &lt;path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/&gt;\n
+    &lt;/svg&gt;\n
+\n
+    &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;&lt;/a&gt;\n
+            \n
+            &lt;button\n
+                type="button"\n
+                @click="open = !open"\n
+                class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-black/[0.08] dark:border-white/[0.08] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors ml-1"\n
+                :aria-expanded="open"\n
+                aria-controls="shop-mobile-menu"\n
+                aria-label="Toggle menu"\n
+            &gt;\n
+                &lt;svg x-show="!open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;line x1="4" y1="7" x2="20" y2="7"/&gt;\n
+                    &lt;line x1="4" y1="12" x2="20" y2="12"/&gt;\n
+                    &lt;line x1="4" y1="17" x2="20" y2="17"/&gt;\n
+                &lt;/svg&gt;\n
+                &lt;svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;line x1="6" y1="6" x2="18" y2="18"/&gt;\n
+                    &lt;line x1="6" y1="18" x2="18" y2="6"/&gt;\n
+                &lt;/svg&gt;\n
+            &lt;/button&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+\n
+    \n
+    &lt;div\n
+        id="shop-mobile-menu"\n
+        x-show="open"\n
+        x-cloak\n
+        x-transition.opacity\n
+        @click.outside="open = false"\n
+        class="md:hidden border-t border-black/[0.05] dark:border-white/[0.05] bg-white dark:bg-zinc-950"\n
+    &gt;\n
+        &lt;div class="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1 text-[15px] font-medium"&gt;\n
+            &lt;a href="http://localhost/products" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors"&gt;\n
+                Shop\n
+            &lt;/a&gt;\n
+\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;                &lt;div class="pt-3 mt-2 border-t border-black/[0.05] dark:border-white/[0.05]"&gt;\n
+                    &lt;a href="http://localhost/login" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors block"&gt;\n
+                        Log in\n
+                    &lt;/a&gt;\n
+                &lt;/div&gt;\n
+            &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+&lt;/nav&gt;' [ASCII](length: 6886) contains "Workstations" [ASCII](length: 12).
+at vendor/livewire/livewire/src/Features/SupportTesting/MakesAssertions.php:14
+at tests/Feature/ShopNavigationTest.php:24</failure>
+        </testcase>
+        <testcase name="navigation handles an empty category list gracefully" file="tests/Feature/ShopNavigationTest.php::navigation handles an empty category list gracefully" class="Tests\Feature\ShopNavigationTest" classname="Tests.Feature.ShopNavigationTest" assertions="2" time="0.011396">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">navigation handles an empty category list gracefullyFailed asserting that '&lt;nav wire:key="lw-1264730135-0" wire:snapshot="" wire:effects="" wire:id="xJwJIv8YY4LypNk8gjnf" wire:name="shop-navigation"\n
+    x-data="{ open: false, accountOpen: false }"\n
+    class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-black/[0.05] dark:border-white/[0.05]"\n
+&gt;\n
+    &lt;div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between"&gt;\n
+        \n
+        &lt;div class="flex items-center gap-8"&gt;\n
+            &lt;a href="http://localhost" class="text-xl font-semibold tracking-tight" wire:navigate&gt;\n
+                TECH&lt;span class="text-[#18E299]"&gt;SHOP&lt;/span&gt;\n
+            &lt;/a&gt;\n
+\n
+            \n
+            &lt;div class="hidden md:flex items-center gap-6 text-[14px] font-medium"&gt;\n
+                &lt;a href="http://localhost/products" class="hover:text-[#18E299] transition-colors" wire:navigate&gt;\n
+                    Shop\n
+                &lt;/a&gt;\n
+                &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;            &lt;/div&gt;\n
+        &lt;/div&gt;\n
+\n
+        \n
+        &lt;div class="flex items-center gap-1"&gt;\n
+            \n
+            &lt;button\n
+                type="button"\n
+                x-data="{ dark: document.documentElement.classList.contains('dark') }"\n
+                @click="dark = window.techshopToggleTheme(dark)"\n
+                class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"\n
+                aria-label="Toggle dark mode"\n
+            &gt;\n
+                &lt;svg x-show="!dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/&gt;\n
+                &lt;/svg&gt;\n
+                &lt;svg x-show="dark" x-cloak xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;circle cx="12" cy="12" r="4"/&gt;\n
+                    &lt;path d="M12 2v2"/&gt;&lt;path d="M12 20v2"/&gt;&lt;path d="m4.93 4.93 1.41 1.41"/&gt;&lt;path d="m17.66 17.66 1.41 1.41"/&gt;&lt;path d="M2 12h2"/&gt;&lt;path d="M20 12h2"/&gt;&lt;path d="m6.34 17.66-1.41 1.41"/&gt;&lt;path d="m19.07 4.93-1.41 1.41"/&gt;\n
+                &lt;/svg&gt;\n
+            &lt;/button&gt;\n
+\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;\n
+            \n
+            &lt;div class="relative"&gt;\n
+                &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;                    &lt;a\n
+                        href="http://localhost/login"\n
+                        wire:navigate\n
+                        class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"\n
+                        aria-label="Log in"\n
+                    &gt;\n
+                        &lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                            &lt;circle cx="12" cy="8" r="4"/&gt;\n
+                            &lt;path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/&gt;\n
+                        &lt;/svg&gt;\n
+                    &lt;/a&gt;\n
+                &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;            &lt;/div&gt;\n
+\n
+            \n
+            &lt;a wire:key="lw-3702893065-0" wire:snapshot="{&amp;quot;data&amp;quot;:,&amp;quot;memo&amp;quot;:{&amp;quot;id&amp;quot;:&amp;quot;arYuYJ5p4Gt3HNQJpNYH&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;cart-icon&amp;quot;,&amp;quot;path&amp;quot;:&amp;quot;livewire-unit-test-endpoint\/6nieya6LGw8m8bQPCa3j&amp;quot;,&amp;quot;method&amp;quot;:&amp;quot;GET&amp;quot;,&amp;quot;release&amp;quot;:&amp;quot;a-a-a&amp;quot;,&amp;quot;children&amp;quot;:,&amp;quot;scripts&amp;quot;:,&amp;quot;assets&amp;quot;:,&amp;quot;errors&amp;quot;:,&amp;quot;locale&amp;quot;:&amp;quot;en&amp;quot;,&amp;quot;islands&amp;quot;:},&amp;quot;checksum&amp;quot;:&amp;quot;5d13af6887cee7ad2e284d5407507fb43f0abeba7377a39dd46ea226e6522e1f&amp;quot;}" wire:effects="{&amp;quot;listeners&amp;quot;:[&amp;quot;cart-updated&amp;quot;]}" wire:id="arYuYJ5p4Gt3HNQJpNYH" wire:name="cart-icon" href="/cart" class="relative inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"&gt;\n
+    &lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+        &lt;circle cx="8" cy="21" r="1"/&gt;\n
+        &lt;circle cx="19" cy="21" r="1"/&gt;\n
+        &lt;path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/&gt;\n
+    &lt;/svg&gt;\n
+\n
+    &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;&lt;/a&gt;\n
+            \n
+            &lt;button\n
+                type="button"\n
+                @click="open = !open"\n
+                class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-black/[0.08] dark:border-white/[0.08] hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors ml-1"\n
+                :aria-expanded="open"\n
+                aria-controls="shop-mobile-menu"\n
+                aria-label="Toggle menu"\n
+            &gt;\n
+                &lt;svg x-show="!open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;line x1="4" y1="7" x2="20" y2="7"/&gt;\n
+                    &lt;line x1="4" y1="12" x2="20" y2="12"/&gt;\n
+                    &lt;line x1="4" y1="17" x2="20" y2="17"/&gt;\n
+                &lt;/svg&gt;\n
+                &lt;svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;\n
+                    &lt;line x1="6" y1="6" x2="18" y2="18"/&gt;\n
+                    &lt;line x1="6" y1="18" x2="18" y2="6"/&gt;\n
+                &lt;/svg&gt;\n
+            &lt;/button&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+\n
+    \n
+    &lt;div\n
+        id="shop-mobile-menu"\n
+        x-show="open"\n
+        x-cloak\n
+        x-transition.opacity\n
+        @click.outside="open = false"\n
+        class="md:hidden border-t border-black/[0.05] dark:border-white/[0.05] bg-white dark:bg-zinc-950"\n
+    &gt;\n
+        &lt;div class="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1 text-[15px] font-medium"&gt;\n
+            &lt;a href="http://localhost/products" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors"&gt;\n
+                Shop\n
+            &lt;/a&gt;\n
+\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;&lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;\n
+            &lt;!--[if BLOCK]&gt;&lt;![endif]--&gt;                &lt;div class="pt-3 mt-2 border-t border-black/[0.05] dark:border-white/[0.05]"&gt;\n
+                    &lt;a href="http://localhost/login" wire:navigate @click="open = false" class="py-2 hover:text-[#18E299] transition-colors block"&gt;\n
+                        Log in\n
+                    &lt;/a&gt;\n
+                &lt;/div&gt;\n
+            &lt;!--[if ENDBLOCK]&gt;&lt;![endif]--&gt;        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+&lt;/nav&gt;' [ASCII](length: 6886) contains "Products" [ASCII](length: 8).
+at vendor/livewire/livewire/src/Features/SupportTesting/MakesAssertions.php:14
+at tests/Feature/ShopNavigationTest.php:33</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\StripeCheckoutTest" file="tests/Feature/StripeCheckoutTest.php" tests="10" assertions="26" errors="1" failures="0" skipped="0" time="0.114156">
+        <testcase name="checkout action creates order with pending status and redirects to stripe" file="tests/Feature/StripeCheckoutTest.php::checkout action creates order with pending status and redirects to stripe" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="8" time="0.021255"/>
+        <testcase name="verify payment action marks order as paid when stripe confirms payment" file="tests/Feature/StripeCheckoutTest.php::verify payment action marks order as paid when stripe confirms payment" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="6" time="0.011189"/>
+        <testcase name="verify payment action returns null for unknown session id" file="tests/Feature/StripeCheckoutTest.php::verify payment action returns null for unknown session id" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="1" time="0.009296"/>
+        <testcase name="verify payment action is idempotent for already paid orders" file="tests/Feature/StripeCheckoutTest.php::verify payment action is idempotent for already paid orders" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="4" time="0.010191"/>
+        <testcase name="verify payment action returns null when stripe reports unpaid" file="tests/Feature/StripeCheckoutTest.php::verify payment action returns null when stripe reports unpaid" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="2" time="0.009885">
+          <error type="ErrorException">verify payment action returns null when stripe reports unpaidErrorException: Undefined property: stdClass::$status
+at vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:258
+at app/Actions/Checkout/VerifyPaymentAction.php:47
+at tests/Feature/StripeCheckoutTest.php:175</error>
+        </testcase>
+        <testcase name="verify payment action returns null for cancelled orders" file="tests/Feature/StripeCheckoutTest.php::verify payment action returns null for cancelled orders" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="1" time="0.009983"/>
+        <testcase name="success page requires session_id parameter" file="tests/Feature/StripeCheckoutTest.php::success page requires session_id parameter" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="1" time="0.011638"/>
+        <testcase name="success page rejects mismatched session_id" file="tests/Feature/StripeCheckoutTest.php::success page rejects mismatched session_id" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="1" time="0.011615"/>
+        <testcase name="stripe service correctly identifies paid sessions" file="tests/Feature/StripeCheckoutTest.php::stripe service correctly identifies paid sessions" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="1" time="0.009444"/>
+        <testcase name="stripe service correctly identifies unpaid sessions" file="tests/Feature/StripeCheckoutTest.php::stripe service correctly identifies unpaid sessions" class="Tests\Feature\StripeCheckoutTest" classname="Tests.Feature.StripeCheckoutTest" assertions="1" time="0.009662"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

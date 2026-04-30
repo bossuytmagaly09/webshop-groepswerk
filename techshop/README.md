@@ -36,3 +36,17 @@ STRIPE_SECRET_KEY=sk_test_...
 
 Standaard staat `MAIL_MAILER=log` in `.env.example`. Mails worden dan naar `storage/logs/laravel.log` geschreven:
 
+
+## Tests Uitvoeren
+
+De applicatie is voorzien van geautomatiseerde Pest tests (unit en feature) om de stabiliteit van de codebase te garanderen.
+
+### Volledige Testsuite
+
+Om de volledige testsuite (inclusief unit en feature tests) uit te voeren, gebruik je de volgende opdracht in je terminal:
+
+```bash
+php artisan test
+```
+
+Alle tests in de applicatie zijn ontworpen om robuust en idempotent te zijn. We maken gebruik van de `RefreshDatabase` trait, wat betekent dat de database na elke test netjes wordt gereset en opgeschoond. Externe afhankelijkheden zoals de `StripeService` worden via Mocks overgeslagen zodat er geen onnodige API calls naar Stripe worden gemaakt tijdens het runnen van de tests.
