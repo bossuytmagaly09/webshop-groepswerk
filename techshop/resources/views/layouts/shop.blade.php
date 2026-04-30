@@ -38,13 +38,8 @@
         {{ $slot }}
     </main>
 
+    <x-shop-notification />
     <x-shop-footer />
-
-    @persist('toast')
-        <flux:toast.group>
-            <flux:toast />
-        </flux:toast.group>
-    @endpersist
 
     @fluxScripts
 </body>
