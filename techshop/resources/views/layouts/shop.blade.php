@@ -21,6 +21,16 @@
     </style>
 
     <script>
+        const theme = localStorage.getItem('techshop.theme') || localStorage.getItem('flux.appearance');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @fluxAppearance
 </head>
 <body class="min-h-screen bg-white dark:bg-zinc-950 text-[#0d0d0d] dark:text-zinc-50 font-['Inter'] antialiased transition-colors duration-200">
     <livewire:shop-navigation />
