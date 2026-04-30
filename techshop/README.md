@@ -75,6 +75,7 @@ Volg deze stappen om het project lokaal op te zetten:
     npm run dev
     ```
 
+
 ---
 
 ## 💳 Stripe Lokaal Testen
@@ -143,3 +144,19 @@ In de `SocialLoginController` hebben we bewust gekozen voor **Automatic Account 
 2.  **Data Snapshots**: In plaats van alleen een link naar een product-ID op te slaan in een bestelling, maken we een snapshot van de naam en prijs op het moment van aankoop. Dit is essentieel voor historische correctheid bij prijsverhogingen of productverwijderingen.
 3.  **Flux UI**: We hebben gekozen voor Flux UI vanwege de hoogwaardige, toegankelijke componenten die perfect aansluiten bij de moderne uitstraling die we wilden bereiken.
 4.  **Pest Framework**: Voor het testen hebben we Pest gekozen vanwege de elegante syntax, wat ons hielp om snel een hoge test-coverage te bereiken op de meest kritieke onderdelen (Stripe & Order flow).
+
+
+## Tests Uitvoeren
+
+De applicatie is voorzien van geautomatiseerde Pest tests (unit en feature) om de stabiliteit van de codebase te garanderen.
+
+### Volledige Testsuite
+
+Om de volledige testsuite (inclusief unit en feature tests) uit te voeren, gebruik je de volgende opdracht in je terminal:
+
+```bash
+php artisan test
+```
+
+Alle tests in de applicatie zijn ontworpen om robuust en idempotent te zijn. We maken gebruik van de `RefreshDatabase` trait, wat betekent dat de database na elke test netjes wordt gereset en opgeschoond. Externe afhankelijkheden zoals de `StripeService` worden via Mocks overgeslagen zodat er geen onnodige API calls naar Stripe worden gemaakt tijdens het runnen van de tests.
+
