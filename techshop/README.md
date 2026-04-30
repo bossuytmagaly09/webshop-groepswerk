@@ -122,6 +122,21 @@ Configuratie via `SERVICES_GOOGLE_*` en `SERVICES_GITHUB_*` in de `.env`.
 
 ---
 
+## 🛡️ Senior Decision: Account Linking & Edge Cases
+
+### **Scenario: E-mail/Wachtwoord registratie gevolgd door Social Login**
+Wat gebeurt er als een gebruiker zich eerst registreert met `user@example.com` en later inlogt via Google met datzelfde e-mailadres?
+
+**Onze Keuze: Automatische Accountkoppeling**
+In de `SocialLoginController` hebben we bewust gekozen voor **Automatic Account Linking**. Wanneer een social user wordt teruggegeven, zoeken we eerst in de database op e-mailadres. Als er een match is, updaten we de bestaande gebruiker met de `provider_id` (bijv. `google_id`).
+
+**Motivatie:**
+1.  **Optimale UX**: De gebruiker wordt niet geconfronteerd met foutmeldingen zoals "E-mailadres is al in gebruik". Ze kunnen naadloos overschakelen tussen inlogmethoden.
+2.  **Data Consolidatie**: We voorkomen dat een gebruiker twee aparte accounts krijgt (één voor e-mail/wachtwoord en één voor Google), wat zou leiden tot gefragmenteerde order-historie.
+3.  **Trust-based Security**: We vertrouwen erop dat Google en GitHub het e-mailadres reeds hebben geverifieerd. Hierdoor is het veilig om de identiteit van de social user te koppelen aan het bestaande account.
+
+---
+
 ## 🏛️ Motivatie Architectuurkeuzes
 
 1.  **Action Pattern**: We hebben gekozen voor Laravel **Actions** (`app/Actions`) om business logica (zoals `CreateOrderAction`) los te koppelen van de Livewire componenten. Dit maakt de code herbruikbaar en eenvoudiger te testen.
