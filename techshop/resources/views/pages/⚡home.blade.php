@@ -63,7 +63,7 @@ new #[Title('TechShop'), Layout('layouts.shop')] class extends Component
                     <a href="{{ route('products') }}" class="bg-[#0d0d0d] dark:bg-white text-white dark:text-[#0d0d0d] px-8 py-3 rounded-full text-[15px] font-medium shadow-md dark:shadow-none hover:opacity-90 transition-all" wire:navigate>
                         {{ __('Browse Collection') }}
                     </a>
-                    <a href="#new-arrivals" class="text-[14px] font-medium text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors inline-flex items-center gap-1">
+                    <a href="#new-arrivals" x-data @click.prevent="document.getElementById('new-arrivals').scrollIntoView({behavior: 'smooth'})" class="text-[14px] font-medium text-[#0d0d0d] dark:text-zinc-200 hover:text-[#0fa76e] dark:hover:text-[#18E299] transition-colors inline-flex items-center gap-1">
                         {{ __('View new arrivals') }}
                         <span aria-hidden="true">&rarr;</span>
                     </a>
