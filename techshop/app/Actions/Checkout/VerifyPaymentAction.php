@@ -58,8 +58,10 @@ class VerifyPaymentAction
             'stripe_payment_intent_id' => $session->payment_intent,
         ]);
 
-        OrderPaid::dispatch($order->fresh());
+        $order = $order->fresh()->load('orderItems');
 
-        return $order->fresh();
+        OrderPaid::dispatch($order);
+
+        return $order;
     }
 }

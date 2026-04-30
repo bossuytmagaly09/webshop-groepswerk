@@ -29,8 +29,10 @@ STRIPE_SECRET_KEY=sk_test_...
 4. Na betaling kom je terug op de bevestigingspagina
 5. De order status is nu `paid` — dit is pas na server-side verificatie bij Stripe
 
-### 4. Tests Uitvoeren
 
-```bash
-php artisan test --compact tests/Feature/StripeCheckoutTest.php
-```
+## Bevestigingsmail Lokaal Testen
+
+### Mail Driver
+
+Standaard staat `MAIL_MAILER=log` in `.env.example`. Mails worden dan naar `storage/logs/laravel.log` geschreven:
+
