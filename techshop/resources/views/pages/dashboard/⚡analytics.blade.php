@@ -11,13 +11,11 @@ use Livewire\Component;
 new #[Layout('layouts.app')] #[Title('Dashboard Analytics')] class extends Component {
     public function with(): array
     {
-        // Calculate basic stats
         $totalRevenue = Order::where('status', 'paid')->sum('total_price');
         $totalOrders = Order::count();
         $totalCustomers = User::where('role', 'customer')->count();
         $avgOrderValue = $totalOrders > 0 ? $totalRevenue / $totalOrders : 0;
 
-        // Revenue over the last 7 days for the chart
         $revenueData = Order::where('status', 'paid')
             ->where('created_at', '>=', now()->subDays(7))
             ->select(DB::raw('DATE(created_at) as date'), DB::raw('SUM(total_price) as total'))
@@ -25,7 +23,6 @@ new #[Layout('layouts.app')] #[Title('Dashboard Analytics')] class extends Compo
             ->orderBy('date')
             ->get();
 
-        // Top products
         $topProducts = DB::table('order_details')
             ->join('products', 'order_details.product_id', '=', 'products.id')
             ->select('products.name', 'products.image', DB::raw('SUM(order_details.quantity) as total_sold'))
@@ -34,7 +31,6 @@ new #[Layout('layouts.app')] #[Title('Dashboard Analytics')] class extends Compo
             ->limit(5)
             ->get();
 
-        // Recent orders
         $recentOrders = Order::with('user')->latest()->limit(8)->get();
 
         return [

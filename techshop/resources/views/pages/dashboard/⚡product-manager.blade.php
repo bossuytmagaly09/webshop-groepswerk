@@ -26,7 +26,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
     public ?int $category_id = null;
     public $image = null; // Livewire temp upload
 
-    // Huidig opgeslagen afbeelding pad (voor preview bij editeren)
+
     public ?string $existingImage = null;
 
     public function updatedName(): void
@@ -74,7 +74,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
 
         $validated = $this->validate($rules);
 
-        // Verwijder image uit validated array — Actions verwerken dit apart
+
         unset($validated['image']);
 
         $uploadedImage = $this->image;

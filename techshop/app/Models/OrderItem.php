@@ -13,7 +13,6 @@ class OrderItem extends Model
 {
     use HasFactory, SoftDeletes;
 
-    // Mappen naar de migratie tabel 'order_details'
     protected $table = 'order_details';
 
     protected function casts(): array
