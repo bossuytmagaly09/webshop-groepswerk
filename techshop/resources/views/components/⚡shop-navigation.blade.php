@@ -51,6 +51,14 @@ new class extends Component
                 </svg>
             </button>
 
+            @auth
+                <div class="hidden sm:flex items-center px-1">
+                    <span class="text-[13px] font-medium text-[#666666] dark:text-zinc-400">
+                        {{ auth()->user()->name }}
+                    </span>
+                </div>
+            @endauth
+
             {{-- Account icon --}}
             <div class="relative">
                 @auth
