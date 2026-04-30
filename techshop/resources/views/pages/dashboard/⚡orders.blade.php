@@ -62,12 +62,12 @@ new #[Layout('layouts.app')] #[Title('Orders')] class extends Component {
                     wire:model.live.debounce.300ms="search"
                     type="search"
                     placeholder="{{ __('Search by order #, name or email…') }}"
-                    class="w-full pl-10 pr-4 py-2.5 text-[14px] rounded-[12px] border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-900 text-[#0d0d0d] dark:text-white placeholder-[#cccccc] dark:placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-[#0fa76e]/30 focus:border-[#0fa76e]/50 transition-all"
+                    class="w-full pl-10 pr-4 py-2.5 text-[14px] rounded-[12px] border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-900 text-[#0d0d0d] dark:text-white placeholder-[#cccccc] dark:placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-[#0fa76e]/30 focus:border-[#0fa76e]/50"
                 />
             </div>
             <select
                 wire:model.live="statusFilter"
-                class="sm:w-44 px-4 py-2.5 text-[14px] rounded-[12px] border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-900 text-[#0d0d0d] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0fa76e]/30 focus:border-[#0fa76e]/50 transition-all"
+                class="sm:w-44 px-4 py-2.5 text-[14px] rounded-[12px] border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-900 text-[#0d0d0d] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0fa76e]/30 focus:border-[#0fa76e]/50"
             >
                 <option value="">{{ __('All statuses') }}</option>
                 @foreach ($statuses as $status)

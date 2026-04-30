@@ -25,9 +25,9 @@
                 </thead>
                 <tbody class="divide-y divide-black/[0.04] dark:divide-white/[0.04]">
                     @forelse ($orders as $order)
-                        <tr class="group hover:bg-[#fafafa] dark:hover:bg-zinc-800/50 transition-colors">
+                        <tr class="group hover:bg-[#fafafa] dark:hover:bg-zinc-800/50">
                             <td class="px-6 py-5">
-                                <span class="font-bold text-[#0d0d0d] dark:text-white group-hover:text-[#18E299] transition-colors">
+                                <span class="font-bold text-[#0d0d0d] dark:text-white group-hover:text-[#18E299]">
                                     #{{ $order->id }}
                                 </span>
                             </td>
@@ -74,10 +74,23 @@
                             </td>
                             <td class="px-6 py-5 text-right">
                                 <span class="text-lg font-bold text-[#0d0d0d] dark:text-white">
-                                    {{ $order->formatted_total }}
-                                </span>
+                                {{ $order->formatted_total }}
                             </td>
                         </tr>
+                        @if($order->stripe_session_id || $order->stripe_payment_intent_id)
+                            <tr class="bg-gray-50/30 dark:bg-white/[0.01]">
+                                <td colspan="5" class="px-6 py-2">
+                                    <div class="flex flex-wrap gap-4 text-[11px] text-[#999999] dark:text-zinc-500 font-mono uppercase tracking-wider">
+                                        @if($order->stripe_session_id)
+                                            <span>Stripe Session: <span class="text-zinc-500 dark:text-zinc-400">{{ $order->stripe_session_id }}</span></span>
+                                        @endif
+                                        @if($order->stripe_payment_intent_id)
+                                            <span>Transaction ID: <span class="text-zinc-500 dark:text-zinc-400">{{ $order->stripe_payment_intent_id }}</span></span>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
                     @empty
                         <tr>
                             <td colspan="5" class="py-16 text-center">

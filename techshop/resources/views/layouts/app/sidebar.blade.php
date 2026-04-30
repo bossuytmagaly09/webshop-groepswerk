@@ -44,10 +44,10 @@
                     type="button"
                     x-data="{ dark: document.documentElement.classList.contains('dark') }"
                     @click="dark = window.techshopToggleTheme(dark)"
-                    class="relative flex items-center w-full p-1 rounded-xl bg-zinc-100/50 dark:bg-zinc-800/50 border border-black/[0.03] dark:border-white/[0.03] hover:border-black/[0.08] dark:hover:border-white/[0.08] transition-all group"
+                    class="relative flex items-center w-full p-1 rounded-xl bg-zinc-100/50 dark:bg-zinc-800/50 border border-black/[0.03] dark:border-white/[0.03] hover:border-black/[0.08] dark:hover:border-white/[0.08] group"
                 >
                     <div 
-                        class="flex items-center justify-center gap-2 w-1/2 py-1.5 rounded-lg transition-all duration-300 z-10"
+                        class="flex items-center justify-center gap-2 w-1/2 py-1.5 rounded-lg z-10"
                         :class="!dark ? 'bg-white dark:bg-zinc-700 shadow-sm text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400'"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -56,7 +56,7 @@
                         <span class="text-[12px] font-semibold">{{ __('Light') }}</span>
                     </div>
                     <div 
-                        class="flex items-center justify-center gap-2 w-1/2 py-1.5 rounded-lg transition-all duration-300 z-10"
+                        class="flex items-center justify-center gap-2 w-1/2 py-1.5 rounded-lg z-10"
                         :class="dark ? 'bg-white dark:bg-zinc-700 shadow-sm text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400'"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

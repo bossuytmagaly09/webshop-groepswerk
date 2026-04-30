@@ -124,6 +124,26 @@ new #[Layout('layouts.app')] #[Title('Order Detail')] class extends Component {
                         </address>
                     </div>
                 @endif
+
+                @if ($this->order->stripe_session_id || $this->order->stripe_payment_intent_id)
+                    <div class="pt-4 mt-4 border-t border-black/[0.05] dark:border-white/[0.06]">
+                        <div class="text-[11px] font-mono text-[#0fa76e] tracking-widest uppercase mb-2">{{ __('Payment details (Stripe)') }}</div>
+                        <div class="space-y-2">
+                            @if ($this->order->stripe_session_id)
+                                <div>
+                                    <div class="text-[10px] text-[#999999] dark:text-zinc-500 uppercase">{{ __('Session ID') }}</div>
+                                    <div class="text-[12px] font-mono text-[#666666] dark:text-zinc-400 break-all">{{ $this->order->stripe_session_id }}</div>
+                                </div>
+                            @endif
+                            @if ($this->order->stripe_payment_intent_id)
+                                <div>
+                                    <div class="text-[10px] text-[#999999] dark:text-zinc-500 uppercase">{{ __('Payment Intent / Transaction ID') }}</div>
+                                    <div class="text-[12px] font-mono text-[#666666] dark:text-zinc-400 break-all">{{ $this->order->stripe_payment_intent_id }}</div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endif
             </div>
 
             {{-- Status change card --}}

@@ -44,6 +44,12 @@ class VerifyPaymentAction
         }
 
         if (! $this->stripeService->isSessionPaid($session)) {
+            if ($session->payment_status === 'unpaid' && ($session->status === 'expired' || $session->status === 'open')) {
+                // If it's been some time or if we want to be explicit
+                // But wait, if it's 'open', the user might still be trying.
+                // However, if they are back on our site and it's still unpaid, something went wrong or they cancelled.
+                $order->update(['status' => OrderStatus::CANCELLED]);
+            }
             return null;
         }
 

@@ -31,11 +31,9 @@ class CheckoutSuccess extends Component
 
         // Server-side verification with Stripe API
         $verifiedOrder = $verifyPayment->execute($sessionId);
-
-        // Stripe reports payment was not successful
-        abort_if(is_null($verifiedOrder), 402);
-
-        $this->order = $verifiedOrder;
+        
+        // We show the page regardless, but the status will reflect the outcome
+        $this->order = $verifiedOrder ?? $order->fresh();
     }
 
     public function render(): View

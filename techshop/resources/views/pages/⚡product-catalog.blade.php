@@ -91,12 +91,12 @@ new #[Title('Products'), Layout('layouts.shop')] class extends Component
                         wire:model.live.debounce.300ms="search"
                         type="search"
                         placeholder="{{ __('Search products…') }}"
-                        class="w-full pl-9 pr-4 py-2.5 text-[14px] rounded-full border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-950 text-[#0d0d0d] dark:text-white placeholder:text-[#999999] dark:placeholder:text-zinc-500 focus:outline-none focus:border-[#18E299] focus:ring-2 focus:ring-[#18E299]/20 transition-all"
+                        class="w-full pl-9 pr-4 py-2.5 text-[14px] rounded-full border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-950 text-[#0d0d0d] dark:text-white placeholder:text-[#999999] dark:placeholder:text-zinc-500 focus:outline-none focus:border-[#18E299] focus:ring-2 focus:ring-[#18E299]/20"
                     />
                 </div>
 
                 <flux:dropdown>
-                    <flux:button variant="ghost" class="rounded-full border border-black/[0.08] dark:border-white/[0.08] px-5 bg-white dark:bg-zinc-950 hover:bg-gray-50 dark:hover:bg-zinc-900 transition-colors" icon-trailing="chevron-down">
+                    <flux:button variant="ghost" class="rounded-full border border-black/[0.08] dark:border-white/[0.08] px-5 bg-white dark:bg-zinc-950 hover:bg-gray-50 dark:hover:bg-zinc-900" icon-trailing="chevron-down">
                         <span class="text-[14px] text-[#0d0d0d] dark:text-zinc-300 font-medium">
                             {{ __('Sort') }}: 
                             <span class="text-[#0fa76e] dark:text-[#18E299]">
@@ -127,7 +127,7 @@ new #[Title('Products'), Layout('layouts.shop')] class extends Component
             <div class="flex flex-wrap gap-2 pb-1">
                 <button
                     wire:click="$set('category', '')"
-                    class="{{ $category === '' ? 'bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] border-[#18E299]/20' : 'border-black/[0.08] dark:border-white/[0.08] hover:bg-gray-50 dark:hover:bg-zinc-800 text-[#0d0d0d] dark:text-zinc-300' }} px-4 py-1.5 rounded-full text-[13px] font-medium border transition-all cursor-pointer"
+                    class="{{ $category === '' ? 'bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] border-[#18E299]/20' : 'border-black/[0.08] dark:border-white/[0.08] hover:bg-gray-50 dark:hover:bg-zinc-800 text-[#0d0d0d] dark:text-zinc-300' }} px-4 py-1.5 rounded-full text-[13px] font-medium border cursor-pointer"
                 >
                     {{ __('All Items') }}
                 </button>
@@ -136,7 +136,7 @@ new #[Title('Products'), Layout('layouts.shop')] class extends Component
                     <button
                         wire:key="pill-{{ $cat->id }}"
                         wire:click="$set('category', '{{ $cat->slug }}')"
-                        class="{{ $cat->slug === $category ? 'bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] border-[#18E299]/20' : 'border-black/[0.08] dark:border-white/[0.08] hover:bg-gray-50 dark:hover:bg-zinc-800 text-[#0d0d0d] dark:text-zinc-300' }} px-4 py-1.5 rounded-full text-[13px] font-medium border transition-all cursor-pointer"
+                        class="{{ $cat->slug === $category ? 'bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] border-[#18E299]/20' : 'border-black/[0.08] dark:border-white/[0.08] hover:bg-gray-50 dark:hover:bg-zinc-800 text-[#0d0d0d] dark:text-zinc-300' }} px-4 py-1.5 rounded-full text-[13px] font-medium border cursor-pointer"
                     >
                         {{ $cat->name }}
                     </button>

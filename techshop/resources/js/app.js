@@ -23,7 +23,6 @@ applyTheme();
 // Run after Livewire navigation
 document.addEventListener('livewire:navigated', () => {
     applyTheme();
-    setTimeout(applyTheme, 50);
 });
 
 // Expose a global function for the toggle buttons

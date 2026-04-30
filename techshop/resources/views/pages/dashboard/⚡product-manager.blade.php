@@ -132,7 +132,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
             </div>
 
             <flux:modal.trigger name="product-modal">
-                <button wire:click="create" class="flex items-center gap-2 bg-[#0d0d0d] dark:bg-white text-white dark:text-[#0d0d0d] hover:opacity-80 transition-all text-[14px] font-medium px-6 py-2.5 rounded-full shadow-sm">
+                <button wire:click="create" class="flex items-center gap-2 bg-[#0d0d0d] dark:bg-white text-white dark:text-[#0d0d0d] hover:opacity-80 text-[14px] font-medium px-6 py-2.5 rounded-full shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                     {{ __('New Product') }}
                 </button>
@@ -156,7 +156,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
                     </thead>
                     <tbody class="divide-y divide-black/[0.04] dark:divide-white/[0.04]">
                         @foreach ($products as $product)
-                            <tr class="group hover:bg-[#fafafa] dark:hover:bg-zinc-800/50 transition-colors">
+                            <tr class="group hover:bg-[#fafafa] dark:hover:bg-zinc-800/50">
                                 {{-- Thumbnail --}}
                                 <td class="pl-6 pr-2 py-4">
                                     @if ($product->image)
@@ -173,7 +173,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
                                 </td>
                                 {{-- Name --}}
                                 <td class="px-6 py-4">
-                                    <span class="font-medium text-[#0d0d0d] dark:text-white group-hover:text-[#0fa76e] transition-colors">
+                                    <span class="font-medium text-[#0d0d0d] dark:text-white group-hover:text-[#0fa76e]">
                                         {{ $product->name }}
                                     </span>
                                     @if ($product->slug)
@@ -208,7 +208,7 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
                                 </td>
                                 {{-- Actions --}}
                                 <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center gap-3 justify-end text-[#cccccc] dark:text-zinc-600 group-hover:text-[#999999] dark:group-hover:text-zinc-400 transition-colors">
+                                    <div class="flex items-center gap-3 justify-end text-[#cccccc] dark:text-zinc-600 group-hover:text-[#999999] dark:group-hover:text-zinc-400">
                                         @if ($product->trashed())
                                             <button wire:click="restore({{ $product->id }})" class="hover:text-[#0fa76e] transition-colors" title="{{ __('Restore') }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/></svg>
@@ -339,11 +339,11 @@ new #[Layout('layouts.app')] #[Title('Products')] class extends Component {
 
             <div class="flex items-center gap-3 justify-end">
                 <flux:modal.close>
-                    <button type="button" class="text-[14px] font-medium text-[#666666] hover:text-[#0d0d0d] dark:hover:text-white transition-colors px-4 py-2">
+                    <button type="button" class="text-[14px] font-medium text-[#666666] hover:text-[#0d0d0d] dark:hover:text-white px-4 py-2">
                         {{ __('Cancel') }}
                     </button>
                 </flux:modal.close>
-                <button type="submit" class="bg-[#0d0d0d] dark:bg-[#18E299] hover:opacity-80 text-white dark:text-[#0d0d0d] text-[14px] font-medium px-6 py-2.5 rounded-full transition-all">
+                <button type="submit" class="bg-[#0d0d0d] dark:bg-[#18E299] hover:opacity-80 text-white dark:text-[#0d0d0d] text-[14px] font-medium px-6 py-2.5 rounded-full shadow-sm">
                     {{ __('Save changes') }}
                 </button>
             </div>
