@@ -22,22 +22,22 @@ Doel: Het opzetten van de ontwikkelomgeving en het in kaart brengen van de datas
 ## Fase 2: Backend Development (CMS/Dashboard)
 Doel: Het verder uitbouwen van het bestaande Livewire/Fortify dashboard om te dienen als het CMS van de techshop.
 
-- [ ] **Configuratie & Rechten**
+- [x] **Configuratie & Rechten**
   - [x] [Auth] Social Login Integreren (Google & GitHub) met accountkoppeling.
-  - [ ] Role-based Access Control (RBAC) invoeren: Onderscheid tussen Admin en normale Klanten.
-  - [ ] Dashboard toegang beveiligen met middleware via Livewire/Fortify.
+  - [x] Role-based Access Control (RBAC) invoeren: Onderscheid tussen Admin en normale Klanten.
+  - [x] Dashboard toegang beveiligen met middleware via Livewire/Fortify.
 - [x] **Categorie Beheer (CRUD)**
   - [x] Categorieën overzicht pagina (Lijst met actieve webshop categorieën).
   - [x] Livewire component voor het toevoegen, bewerken en verwijderen (soft deletes) van categorieën.
 - [x] **Product Beheer (CRUD)**
   - [x] Producten overzicht met zoek- en de filterfunctionaliteit.
   - [x] Formulieren voor nieuwe/bestaande producten (Titel, Beschrijving, Prijs, Voorraad, Afbeelding upload, Categorie toewijzing).
-- [ ] **Order/Bestellingen Beheer**
-  - [ ] Overzicht van alle bestellingen en hun statussen (Wachtend, Verzonden, Geannuleerd).
-  - [ ] Order detailpagina implementeren voor de webshop admin.
-- [ ] **Gebruikers & Klanten Beheer**
-  - [ ] Overzicht van alle geregistreerde klanten.
-  - [ ] Bewerkingsmogelijkheden voor admin accounts (binnen de vastgestelde security rules).
+- [x] **Order/Bestellingen Beheer**
+  - [x] Overzicht van alle bestellingen en hun statussen (Wachtend, Verzonden, Geannuleerd).
+  - [x] Order detailpagina implementeren voor de webshop admin.
+- [x] **Gebruikers & Klanten Beheer**
+  - [x] Overzicht van alle geregistreerde klanten.
+  - [x] Bewerkingsmogelijkheden voor admin accounts (binnen de vastgestelde security rules).
   - [x] Mijn Orders: Overzicht voor de ingelogde klant op de frontend.
 
 ---
@@ -53,10 +53,10 @@ Doel: Het opbouwen van de voorkant van de webshop die naadloos communiceert met 
   - [x] Homepage opzetten (Uitgelichte producten, Banners, Recente toevoegingen).
   - [x] Product overzicht (Shop/Catalogus) pagina maken met Livewire (dynamisch inladen zonder page reloads).
   - [x] Filters en zoekbalk implementeren (bijv. zoeken op naam of categorie).
-- [ ] **Product Detail Pagina**
-  - [ ] Uitgebreide detailpagina (Titel, afbeeldingsgalerij, specificaties, review weergave).
-  - [ ] 'Toevoegen aan winkelwagen' knop (dynamisch via Livewire/Sessie of Database cart).
-- [ ] **Winkelwagen (Shopping Cart)**
+- [x] **Product Detail Pagina**
+  - [x] Uitgebreide detailpagina (Titel, afbeeldingsgalerij, specificaties, review weergave).
+  - [x] 'Toevoegen aan winkelwagen' knop (dynamisch via Livewire/Sessie of Database cart).
+- [x] **Winkelwagen (Shopping Cart)**
   - [x] Cart overzicht pagina of 'slide-over'/modal (weergave toegevoegde items).
   - [x] Aanpassen van hoeveelheden en verwijderen van items.
   - [x] Prijs/Totaal calculaties (inclusief en exclusief de eventuele BTW).
@@ -66,27 +66,27 @@ Doel: Het opbouwen van de voorkant van de webshop die naadloos communiceert met 
 ## Fase 4: Checkout & Betaling (Integratie)
 Doel: De afhandeling van betalingen en het omzetten van winkelwagen-items naar daadwerkelijke orders in het CMS.
 
-- [ ] **Afrekenen (Checkout flow)**
+- [x] **Afrekenen (Checkout flow)**
   - [x] Backend logica: Action bouwen voor het omzetten van winkelmand naar definitieve Order (inclusief snapshots).
-  - [ ] Verzamelen van klant- en verzendgegevens.
-  - [ ] Order samenvatting tonen voordat definitief betaald wordt.
-- [ ] **Betalingssysteem**
-  - [ ] Integratie Mollie / Stripe of een test/dummy betaalprovider.
-  - [ ] Order bevestigingspagina ("Bedankt voor uw bestelling").
-  - [ ] Statussen correct laten wegschrijven naar het dashboard voor de Admin.
-- [ ] **E-mails & Notificaties**
-  - [ ] Orderbevestiging e-mail sturen naar de klant (Laravel Mail).
-  - [ ] (Optioneel) Notificatie naar de site beheerder voor de gemaakte order.
+  - [x] Verzamelen van klant- en verzendgegevens.
+  - [x] Order samenvatting tonen voordat definitief betaald wordt.
+- [x] **Betalingssysteem**
+  - [x] Integratie Mollie / Stripe of een test/dummy betaalprovider.
+  - [x] Order bevestigingspagina ("Bedankt voor uw bestelling").
+  - [x] Statussen correct laten wegschrijven naar het dashboard voor de Admin.
+- [x] **E-mails & Notificaties**
+  - [x] Orderbevestiging e-mail sturen naar de klant (Laravel Mail).
+  - [x] (Optioneel) Notificatie naar de site beheerder voor de gemaakte order.
 
 ---
 
 ## Fase 5: QA, Optimalisatie & Lancering
 Doel: Kwaliteitswaarborging voor de Techshop op het gebied van performance en beveiliging.
 
-- [ ] Nakijken van security policies en form validations (zoals vastgelegd in `rules.md`).
-- [ ] Afbeeldingen optimaliseren (compressie en responsive inladen).
-- [ ] Het runnen van Laravel Tests (Unit test en eventuele Feature tests voor de checkout).
-- [ ] Foutafhandeling controleren (Gaan de 404 en 500 errors goed afgevangen worden?).
+- [x] Nakijken van security policies en form validations (zoals vastgelegd in `rules.md`).
+- [x] Afbeeldingen optimaliseren (compressie en responsive inladen).
+- [x] Het runnen van Laravel Tests (Unit test en eventuele Feature tests voor de checkout).
+- [x] Foutafhandeling controleren (Gaan de 404 en 500 errors goed afgevangen worden?).
 - [ ] Klaarmaken voor definitieve deployment (Caching, config optimizers via artisan). 
 - [ ] Oplevering (Launch).
 
