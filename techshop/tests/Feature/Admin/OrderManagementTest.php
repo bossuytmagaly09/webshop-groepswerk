@@ -10,7 +10,7 @@ use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
 beforeEach(function () {
-    $this->admin = User::factory()->create();
+    $this->admin = User::factory()->admin()->create();
 });
 
 // --- Access control ---

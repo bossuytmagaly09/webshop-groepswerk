@@ -27,6 +27,7 @@ function makeFakeStripeSession(string $id, string $paymentStatus = 'unpaid', ?st
         'id' => $id,
         'url' => "https://checkout.stripe.com/pay/{$id}",
         'payment_status' => $paymentStatus,
+        'status' => 'open',
         'payment_intent' => $paymentIntent,
         'client_reference_id' => null,
     ];
@@ -177,7 +178,7 @@ test('verify payment action returns null when stripe reports unpaid', function (
     expect($result)->toBeNull();
 
     $order->refresh();
-    expect($order->status)->toBe(OrderStatus::PENDING);
+    expect($order->status)->toBe(OrderStatus::CANCELLED);
 });
 
 test('verify payment action returns null for cancelled orders', function () {
