@@ -11,67 +11,87 @@
         </p>
     </div>
 
-    @if($orders->isEmpty())
-        <div class="bg-gray-50 dark:bg-zinc-900/50 border border-gray-100 dark:border-white/[0.05] rounded-[32px] p-16 text-center shadow-sm">
-            <div class="w-16 h-16 bg-white dark:bg-zinc-800 rounded-2xl flex items-center justify-center border border-black/[0.05] dark:border-white/[0.05] mx-auto mb-6 shadow-sm">
-                <svg class="w-8 h-8 text-[#cccccc] dark:text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-zinc-50 mb-2">{{ __('No orders found') }}</h3>
-            <p class="text-gray-500 dark:text-zinc-400 mb-8 max-w-md mx-auto">{{ __("You haven't placed any orders yet. Start shopping to see your history here.") }}</p>
-            <a href="{{ route('products') }}" class="inline-flex bg-[#0d0d0d] dark:bg-white text-white dark:text-[#0d0d0d] px-8 py-3 rounded-full text-[14px] font-medium hover:opacity-90 transition-all shadow-sm" wire:navigate>
-                {{ __('Browse our catalog') }}
-            </a>
-        </div>
-    @else
-        <div class="grid gap-6">
-            @foreach($orders as $order)
-                <div class="group bg-white dark:bg-zinc-900 border border-black/[0.04] dark:border-white/[0.04] rounded-[32px] p-8 shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:border-[#18E299]/30 transition-all duration-300">
-                    
-                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-black/[0.05] dark:border-white/[0.05] pb-6 mb-6 gap-6">
-                        <div>
-                            <div class="flex items-center gap-3 mb-2">
-                                <span class="text-xl font-bold tracking-tight text-[#0d0d0d] dark:text-white">Order #{{ $order->id }}</span>
-                                <span class="px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] border border-[#18E299]/10">
-                                    {{ $order->status }}
+    <div class="rounded-[16px] border border-black/[0.05] dark:border-white/[0.08] bg-white dark:bg-zinc-900 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="w-full text-[14px] text-left">
+                <thead class="border-b border-black/[0.05] dark:border-white/[0.06] bg-gray-50/50 dark:bg-white/[0.02]">
+                    <tr>
+                        <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#18E299] tracking-widest uppercase font-medium w-24">#</th>
+                        <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#18E299] tracking-widest uppercase font-medium">{{ __('Items') }}</th>
+                        <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#18E299] tracking-widest uppercase font-medium">{{ __('Date') }}</th>
+                        <th scope="col" class="px-6 py-4 text-[11px] font-mono text-[#18E299] tracking-widest uppercase font-medium">{{ __('Status') }}</th>
+                        <th scope="col" class="px-6 py-4 text-right text-[11px] font-mono text-[#18E299] tracking-widest uppercase font-medium">{{ __('Total') }}</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-black/[0.04] dark:divide-white/[0.04]">
+                    @forelse ($orders as $order)
+                        <tr class="group hover:bg-[#fafafa] dark:hover:bg-zinc-800/50 transition-colors">
+                            <td class="px-6 py-5">
+                                <span class="font-bold text-[#0d0d0d] dark:text-white group-hover:text-[#18E299] transition-colors">
+                                    #{{ $order->id }}
                                 </span>
-                            </div>
-                            <p class="text-[13px] text-[#666666] dark:text-zinc-400">
-                                {{ __('Placed on') }} {{ $order->created_at->format('M d, Y') }} at {{ $order->created_at->format('H:i') }}
-                            </p>
-                        </div>
-                        <div class="md:text-right">
-                            <p class="text-[10px] font-mono text-[#0fa76e] dark:text-[#18E299] tracking-widest mb-1 uppercase">{{ __('Total Amount') }}</p>
-                            <p class="text-2xl font-bold text-[#0d0d0d] dark:text-white">{{ $order->formatted_total }}</p>
-                        </div>
-                    </div>
-
-                    <div class="space-y-4">
-                        @foreach($order->orderItems as $item)
-                            <div class="flex items-center justify-between p-4 rounded-2xl bg-gray-50/50 dark:bg-zinc-800/30 border border-transparent group-hover:border-black/[0.03] dark:group-hover:border-white/[0.03] transition-all">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-white dark:bg-zinc-800 rounded-xl flex items-center justify-center border border-black/[0.05] dark:border-white/[0.05] shadow-sm">
-                                        <svg class="w-6 h-6 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold text-[#0d0d0d] dark:text-zinc-50">{{ $item->product_name ?? __('Unnamed Product') }}</p>
-                                        <p class="text-[#999999] text-[12px] font-medium">
-                                            {{ __('Price per unit:') }} &euro;{{ number_format($item->unit_price, 2, ',', '.') }}
-                                        </p>
-                                    </div>
+                            </td>
+                            <td class="px-6 py-5">
+                                <div class="flex flex-col gap-3">
+                                    @foreach($order->orderItems as $item)
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-[#f0fdf4] dark:bg-zinc-800 border border-black/[0.05] dark:border-white/[0.05] overflow-hidden flex-shrink-0">
+                                                @if($item->product && $item->product->image)
+                                                    <img src="{{ Storage::url($item->product->image) }}" alt="" class="w-full h-full object-cover">
+                                                @else
+                                                    <div class="w-full h-full flex items-center justify-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-[#cccccc] dark:text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="text-sm">
+                                                <div class="font-medium text-[#0d0d0d] dark:text-zinc-200">
+                                                    <span class="font-bold text-[#18E299]/70 mr-1">{{ $item->quantity }}x</span>
+                                                    {{ $item->product_name ?? __('Unnamed Product') }}
+                                                </div>
+                                                <div class="text-[12px] text-[#999999] dark:text-zinc-500">
+                                                    &euro;{{ number_format($item->unit_price, 2, ',', '.') }} {{ __('per unit') }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="flex items-center gap-8">
-                                    <div class="text-[#666666] dark:text-zinc-400 font-mono text-[14px]">
-                                        <span class="text-[11px] uppercase tracking-tighter mr-1 text-zinc-400">{{ __('Qty:') }}</span>{{ $item->quantity }}
-                                    </div>
-                                    <div class="font-bold text-[#0d0d0d] dark:text-zinc-50 w-24 text-right text-[15px]">
-                                        &euro;{{ number_format($item->unit_price * $item->quantity, 2, ',', '.') }}
-                                    </div>
+                            </td>
+                            <td class="px-6 py-5">
+                                <span class="font-mono text-[13px] text-[#999999] dark:text-zinc-500">
+                                    {{ $order->created_at->format('M d, Y') }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-5">
+                                <span class="inline-flex justify-center px-3 py-1.5 rounded-full text-[12px] font-medium border min-w-[80px] {{ match($order->status) {
+                                    \App\Enums\OrderStatus::PAID => 'bg-[#d4fae8] dark:bg-[#0fa76e]/20 text-[#0fa76e] dark:text-[#18E299] border-[#18E299]/20',
+                                    \App\Enums\OrderStatus::PENDING => 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/20',
+                                    \App\Enums\OrderStatus::CANCELLED => 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 border-red-200 dark:border-red-500/20',
+                                    default => 'bg-zinc-100 dark:bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-500/20',
+                                } }}">
+                                    {{ $order->status->label() }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-5 text-right">
+                                <span class="text-lg font-bold text-[#0d0d0d] dark:text-white">
+                                    {{ $order->formatted_total }}
+                                </span>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="py-16 text-center">
+                                <p class="text-[#999999] text-[14px]">{{ __('No orders yet.') }}</p>
+                                <div class="mt-6">
+                                    <a href="{{ route('products') }}" wire:navigate class="inline-flex items-center gap-2 bg-[#0d0d0d] dark:bg-white text-white dark:text-[#0d0d0d] hover:opacity-80 transition-all text-[14px] font-medium px-6 py-2.5 rounded-full shadow-sm">
+                                        {{ __('Start Shopping') }}
+                                    </a>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endforeach
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
-    @endif
+    </div>
 </div>

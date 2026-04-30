@@ -11,13 +11,14 @@ Route::livewire('/', 'pages::home')->name('home');
 Route::livewire('/products', 'pages::product-catalog')->name('products');
 Route::livewire('/products/{product:slug}', 'pages::product-detail')->name('products.show');
 
-Route::view('/contact', 'pages.contact')->name('contact');
+Route::get('/contact', \App\Livewire\Public\Contact::class)->name('contact');
 Route::view('/faq', 'pages.faq')->name('faq');
 Route::view('/shipping-returns', 'pages.shipping-returns')->name('shipping-returns');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Voor alle ingelogde gebruikers
     Route::get('mijn-orders', MyOrders::class)->name('my-orders');
+    Route::livewire('mijn-profiel', 'pages::user-profile')->name('profile.edit');
     Route::livewire('qr-login/{token}', 'auth.qr-login-confirm')->name('qr.login');
 
     // Specifiek afgeschermd voor admins
