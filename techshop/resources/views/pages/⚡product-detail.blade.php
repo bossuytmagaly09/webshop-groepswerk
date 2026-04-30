@@ -59,10 +59,11 @@ new #[Layout('layouts.shop')] class extends Component
 
         $this->dispatch('cart-updated');
 
-        Flux::toast(
-            heading: __('Added to cart'),
-            text: $this->product->name,
-            variant: 'success',
+        $this->dispatch('notify', 
+            title: __('Added to cart'),
+            message: $this->product->name,
+            link: route('my-orders'),
+            linkText: __('View My Orders')
         );
     }
 }; ?>

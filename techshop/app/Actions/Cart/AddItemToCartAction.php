@@ -19,7 +19,7 @@ class AddItemToCartAction
         if (Auth::check()) {
             // DB Opslag: we gebruiken een 'pending' Order als winkelwagentje
             $order = Order::firstOrCreate(
-                ['user_id' => Auth::id(), 'status' => 'pending'],
+                ['user_id' => Auth::id(), 'status' => 'pending', 'checked_out_at' => null],
                 ['total_price' => 0]
             );
 
