@@ -211,10 +211,12 @@ new #[Layout('layouts.app')] #[Title('Dashboard Analytics')] class extends Compo
                                 <td class="px-8 py-5 font-mono text-[13px] text-[#0d0d0d] dark:text-white">#{{ str_pad($order->id, 5, '0', STR_PAD_LEFT) }}</td>
                                 <td class="px-8 py-5">
                                     <div class="flex items-center gap-3">
-                                        <div class="size-8 rounded-full bg-gradient-to-tr from-gray-200 to-gray-100 dark:from-zinc-800 dark:to-zinc-700 flex items-center justify-center text-[11px] font-bold text-gray-500">
-                                            {{ substr($order->user->name, 0, 2) }}
+                                        <div class="size-8 rounded-full bg-gradient-to-tr from-gray-200 to-gray-100 dark:from-zinc-800 dark:to-zinc-700 flex items-center justify-center text-[11px] font-bold text-gray-500 uppercase">
+                                            {{ substr($order->user->name ?? $order->shipping_first_name ?? 'G', 0, 2) }}
                                         </div>
-                                        <span class="font-medium text-[#0d0d0d] dark:text-white">{{ $order->user->name }}</span>
+                                        <span class="font-medium text-[#0d0d0d] dark:text-white">
+                                            {{ $order->user->name ?? ($order->shipping_first_name . ' ' . $order->shipping_last_name) ?: __('Guest') }}
+                                        </span>
                                     </div>
                                 </td>
                                 <td class="px-8 py-5 font-semibold text-[#0d0d0d] dark:text-white">€ {{ number_format($order->total_price, 2, ',', '.') }}</td>
