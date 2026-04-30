@@ -40,6 +40,13 @@
                     {{ __('You will receive a confirmation email shortly.') }}
                 </p>
 
+    <p class="text-[#666666] dark:text-zinc-400 text-[16px] mb-2">
+        {{ __('Your order has been placed and payment confirmed successfully.') }}
+    </p>
+    <p class="text-[#666666] dark:text-zinc-400 text-[15px] mb-8">
+        {{ __('You will receive a confirmation email shortly.') }}
+    </p>
+
                 <a 
                     href="{{ route('my-orders') }}" 
                     wire:navigate
@@ -55,6 +62,7 @@
             {{ __('Thank you for your purchase!') }}
         </h1>
     </div>
+
 
     {{-- Order reference card --}}
     <div class="bg-[#fafafa] dark:bg-zinc-900 border border-black/[0.05] dark:border-white/[0.05] rounded-[24px] p-6 mb-8 text-left">
