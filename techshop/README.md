@@ -17,7 +17,7 @@ Dit project is een samenwerking tussen twee cursisten, waarbij de focus lag op e
     *   Ontwikkeling van de volledige **CRUD-interfaces** voor Producten, Categorieën en Gebruikers in de backend.
     *   Ontwerp van de interactieve **Contactpagina** en mediabeheer.
 
-### **Nikita (@Nikita)**
+### **Nikita (@nterekhov)**
 *   **Verantwoordelijkheid**: Core Backend, Betaalsystemen & Systeemintegriteit.
 *   **Taken**:
     *   Integratie van de **Stripe Betaalflow** (Checkout & Verification).
