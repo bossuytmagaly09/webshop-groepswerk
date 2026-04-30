@@ -1,83 +1,130 @@
 # TechShop — Premium E-commerce & CMS
 
-Welkom bij **TechShop**, een state-of-the-art e-commerce platform dat de kracht van de **TALL-stack** (Tailwind, Alpine.js, Laravel, Livewire) combineert met een high-end gebruikerservaring. Dit project is ontwikkeld als een professioneel groepswerk, waarbij de focus lag op schaalbaarheid, veiligheid en een premium esthetiek.
+**TechShop** is een high-end e-commerce platform en content management systeem (CMS), ontworpen voor een naadloze en premium winkelervaring. Het platform biedt een volledige checkout-flow, dynamisch productbeheer en innovatieve login-methoden.
 
 ---
 
-## 👥 Project Team & Bijdragen
+## 👥 Team & Taakverdeling
 
-Dit project is het resultaat van een nauwe samenwerking tussen twee developers, elk met hun eigen specialisatie.
+Dit project is een samenwerking tussen twee cursisten, waarbij de focus lag op een duidelijke scheiding tussen design/UX en core backend functionaliteit.
 
 ### **Magaly Bossuyt (@bossuytmagaly09)**
-*   **Focus**: UI/UX Design System, Frontend Architectuur & Administrative CMS.
-*   **Uitgebreide Bijdragen**:
-    *   **Premium Design System**: Ontwikkeling van een op maat gemaakt UI-framework met TailwindCSS en Flux UI. De focus lag op een "Apple-achtige" esthetiek met subtiele gradiënten, glassmorphism-effecten en vloeiende micro-animaties.
-    *   **Dark Mode Expert**: Implementatie van een geavanceerde dark mode die niet alleen de systeemvoorkeuren volgt, maar ook persistent wordt opgeslagen in de browser-omgeving. Inclusief het oplossen van complexe UI-glitches zoals "white flashes" tijdens pagina-overgangen.
-    *   **Social Auth Ecosysteem**: Volledige configuratie en integratie van **Laravel Socialite** voor Google en GitHub authenticatie. Dit omvat automatische account-linking en beveiligde profielsynchronisatie.
-    *   **Full-stack CMS**: Bouwen van de volledige administratieve backend voor het beheren van **Producten, Categorieën en Gebruikers**. Inclusief geavanceerde functies zoals **soft-deletes**, real-time zoekfilters en rolgebaseerde toegangscontrole (RBAC).
-    *   **Media Architectuur**: Ontwerp van een robuust opslagsysteem voor product- en categorie-afbeeldingen, gebruikmakend van Laravel's Storage-disks voor efficiënte verwerking en weergave.
-*   **Aanpak**: Magaly hanteerde een **"UX-first"** benadering. Elk element in de interface is ontworpen om de gebruiker te leiden, met real-time feedback via notificaties en geoptimaliseerde laad-states.
+*   **Verantwoordelijkheid**: UI/UX Design System, Frontend Architectuur & CMS Beheer.
+*   **Taken**:
+    *   Ontwikkeling van het overkoepelende **Design System** (Tailwind & Flux UI).
+    *   Implementatie van de **Dark Mode** en verfijning van visuele transities.
+    *   Configuratie van **Social Logins** (Google & GitHub).
+    *   Ontwikkeling van de volledige **CRUD-interfaces** voor Producten, Categorieën en Gebruikers in de backend.
+    *   Ontwerp van de interactieve **Contactpagina** en mediabeheer.
 
 ### **Nikita (@Nikita)**
-*   **Focus**: Core Backend, Betaal-infrastructuur & Data Integriteit.
-*   **Uitgebreide Bijdragen**:
-    *   **Stripe Betaal-engine**: Ontwikkeling van een end-to-end betaalpijplijn via Stripe Checkout. Implementatie van de `VerifyPaymentAction` voor server-side validatie van transacties, wat fraude voorkomt en data-integriteit garandeert.
-    *   **Dynamisch Winkelmand-systeem**: Engineering van een Livewire-gestuurde winkelwagen die naadloos synchroniseert tussen gast-sessies en de database. Bij het inloggen worden items automatisch gemerged zonder dataverlies.
-    *   **Data Snapshot Technologie**: Ontwerp van een systeem dat de staat van een product (naam, prijs, specificaties) "bevriest" op het moment van aankoop. Dit zorgt ervoor dat historische orders accuraat blijven, ongeacht toekomstige wijzigingen in het CMS.
-    *   **QR-Code Authenticatie**: Innovatieve implementatie van passwordless login via scanbare QR-codes. Gebruikmakend van `bacon/bacon-qr-code` en polling-mechanismen voor een snelle cross-device ervaring.
-    *   **Transactioneel Dashboard**: Ontwikkeling van diepe Stripe-integratie in zowel het klanten- als admin-overzicht, inclusief weergave van Session IDs en Payment Intent IDs voor volledige transparantie.
-*   **Aanpak**: Nikita focuste op **"Reliability & Scale"**. Door het consequent toepassen van het **Action Pattern** is de business logica volledig losgekoppeld van de UI, wat resulteert in code die extreem goed testbaar is met de geïmplementeerde **Pest Unit Tests**.
+*   **Verantwoordelijkheid**: Core Backend, Betaalsystemen & Systeemintegriteit.
+*   **Taken**:
+    *   Integratie van de **Stripe Betaalflow** (Checkout & Verification).
+    *   Ontwikkeling van de **Winkelwagen-logica** en sessie-synchronisatie.
+    *   Architectuur van het **Order Management** en data-snapshots.
+    *   Implementatie van de **QR-code Login** functionaliteit.
+    *   Opzetten van de **Pest Unit & Feature Tests** voor kritieke bedrijfsprocessen.
 
 ---
 
-## 🚀 Kernfunctionaliteiten
+## 🛠️ Gebruikte Technologieën & Versies
 
-*   **🛒 Geavanceerde Checkout**: Volledig geïntegreerd met Stripe voor veilige transacties.
-*   **🔍 Dynamische Catalogus**: Real-time filtering op categorieën, prijzen en voorraad zonder pagina-reloads.
-*   **⚡ Bliksemsnelle Navigatie**: Gebruik van `wire:navigate` voor een Single Page Application (SPA) gevoel binnen een traditionele Laravel structuur.
-*   **🔐 Multi-Auth**: Traditionele login, Social Login en QR-code Login opties.
-*   **📦 Order Tracking**: Volledig overzicht van orderstatussen (`Pending`, `Paid`, `Shipped`, `Cancelled`).
-*   **🎨 Responsive Design**: Een interface die perfect schaalt van smartphone tot ultra-wide monitor.
-
----
-
-## 🛠️ Technische Stack & Methodologie
-
-### **Stack**
-*   **Backend**: Laravel 11.x
-*   **Frontend**: Livewire 3.x, Alpine.js, TailwindCSS
-*   **Database**: MySQL / MariaDB
-*   **Betalingen**: Stripe PHP SDK
-*   **Testing**: Pest Framework (Unit & Feature Testing)
-
-### **Methodologie**
-1.  **Agile Feature Branching**: Geen enkele code gaat direct naar `dev`. Elke functie begint als een `feature/*` branch.
-2.  **Separation of Concerns**: Business logica leeft in `app/Actions`, Services leven in `app/Services`, en UI-logica in Livewire componenten.
-3.  **Security Overal**: CSRF-bescherming, SQL-injection preventie (Eloquent), XSS-filtering en strikte Form Validation regels.
-4.  **Performance**: Caching van configuraties en optimalisatie van database-queries (Eager Loading) om N+1 problemen te voorkomen.
+*   **Framework**: Laravel 13.x (PHP 8.4+)
+*   **Frontend**: Livewire 4.x, Alpine.js, TailwindCSS 4.x
+*   **Build Tool**: Vite 8.x
+*   **UI Components**: Flux UI 2.x
+*   **Betalingen**: Stripe SDK 20.x
+*   **Authenticatie**: Laravel Fortify & Socialite
+*   **Testing**: Pest Framework 4.x
+*   **QR-Codes**: BaconQrCode
 
 ---
 
-## 💳 Stripe Betalingen Lokaal Testen
+## 📥 Installatie-instructies (Stap-voor-stap)
 
-### 1. Stripe Test Keys Instellen
+Volg deze stappen om het project lokaal op te zetten:
 
-Maak een gratis account aan op [Stripe Dashboard](https://dashboard.stripe.com/) en voeg je keys toe aan je `.env`:
-
-```env
-STRIPE_PUBLISHABLE_KEY=pk_test_...
-STRIPE_SECRET_KEY=sk_test_...
-```
-
-### 2. Test Cards
-
-| Scenario        | Kaartnummer            | Vervaldatum | CVC |
-|-----------------|------------------------|-------------|-----|
-| ✅ Succes       | `4242 4242 4242 4242`  | Toekomst    | 123 |
-| ❌ Geweigerd    | `4000 0000 0000 0002`  | Toekomst    | 123 |
+1.  **Clone de repository**:
+    ```bash
+    git clone https://github.com/bossuytmagaly09/webshop-groepswerk.git
+    cd webshop-groepswerk
+    ```
+2.  **Installeer PHP dependencies**:
+    ```bash
+    composer install
+    ```
+3.  **Installeer Frontend dependencies**:
+    ```bash
+    npm install
+    ```
+4.  **Omgevingsvariabelen instellen**:
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+5.  **Database configureren**:
+    Maak een database aan (bijv. `techshop`) en pas de `DB_*` variabelen aan in je `.env`.
+6.  **Migraties & Seeding**:
+    ```bash
+    php artisan migrate --seed
+    ```
+7.  **Server starten**:
+    ```bash
+    php artisan serve
+    npm run dev
+    ```
 
 ---
 
-## 📧 Bevestigingsmail Lokaal Testen
+## 💳 Stripe Lokaal Testen
 
-Mails worden standaard naar het logbestand geschreven (`storage/logs/laravel.log`). Voor een visuele interface kun je **Mailpit** of een vergelijkbare tool gebruiken door de `MAIL_HOST` aan te passen in je `.env`.
+1.  **Keys**: Voeg je Stripe Test Keys toe aan de `.env`:
+    ```env
+    STRIPE_PUBLISHABLE_KEY=pk_test_...
+    STRIPE_SECRET_KEY=sk_test_...
+    ```
+2.  **Testkaarten**:
+    *   **Succes**: `4242 4242 4242 4242` (elke datum in de toekomst, CVC 123)
+    *   **Geweigerd**: `4000 0000 0000 0002`
+
+---
+
+## 🔑 Social Logins & QR Login
+
+### **Social Logins**
+Configuratie via `SERVICES_GOOGLE_*` en `SERVICES_GITHUB_*` in de `.env`.
+*   *Let op*: De benodigde Client ID's en Secrets moeten worden aangevraagd via de respectievelijke developer consoles (Google Cloud / GitHub Settings).
+
+### **QR Login Testen**
+1.  Open de loginpagina op je desktop.
+2.  Er verschijnt een QR-code (polling start automatisch).
+3.  Scan de code met een ingelogde smartphone (of open de gegenereerde link in een browser waar je al bent ingelogd).
+4.  Bevestig de login op je smartphone; je desktop zal automatisch inloggen.
+
+---
+
+## 🔐 Demo Credentials
+
+| Rol | Email | Wachtwoord |
+| :--- | :--- | :--- |
+| **Admin** | `admin@techshop.local` | `password` |
+| **Klant** | `klant1@techshop.local` | `password` |
+
+---
+
+## ⚠️ Bekende Bugs & Niet-afgewerkte delen
+
+*   **Multi-currency**: Momenteel wordt alleen de Euro (€) ondersteund in de checkout.
+*   **Facturatie**: Het genereren van PDF-facturen voor klanten is nog niet geïmplementeerd.
+*   **Stock Notificaties**: Er is nog geen automatisch systeem om de admin te mailen wanneer de voorraad onder een bepaalde grens zakt.
+*   **Social Auth Redirect**: Op sommige lokale server-omgevingen (zonder HTTPS) kan de redirect van Google soms een 403-fout geven als de callback URL niet exact overeenkomt.
+
+---
+
+## 🏛️ Motivatie Architectuurkeuzes
+
+1.  **Action Pattern**: We hebben gekozen voor Laravel **Actions** (`app/Actions`) om business logica (zoals `CreateOrderAction`) los te koppelen van de Livewire componenten. Dit maakt de code herbruikbaar en eenvoudiger te testen.
+2.  **Data Snapshots**: In plaats van alleen een link naar een product-ID op te slaan in een bestelling, maken we een snapshot van de naam en prijs op het moment van aankoop. Dit is essentieel voor historische correctheid bij prijsverhogingen of productverwijderingen.
+3.  **Flux UI**: We hebben gekozen voor Flux UI vanwege de hoogwaardige, toegankelijke componenten die perfect aansluiten bij de moderne uitstraling die we wilden bereiken.
+4.  **Pest Framework**: Voor het testen hebben we Pest gekozen vanwege de elegante syntax, wat ons hielp om snel een hoge test-coverage te bereiken op de meest kritieke onderdelen (Stripe & Order flow).
