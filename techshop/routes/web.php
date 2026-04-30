@@ -4,6 +4,7 @@ use App\Http\Controllers\SocialLoginController;
 use App\Livewire\Public\CartOverview;
 use App\Livewire\Public\Checkout;
 use App\Livewire\Public\CheckoutSuccess;
+use App\Livewire\Public\Contact;
 use App\Livewire\Public\MyOrders;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +12,7 @@ Route::livewire('/', 'pages::home')->name('home');
 Route::livewire('/products', 'pages::product-catalog')->name('products');
 Route::livewire('/products/{product:slug}', 'pages::product-detail')->name('products.show');
 
-Route::get('/contact', \App\Livewire\Public\Contact::class)->name('contact');
+Route::get('/contact', Contact::class)->name('contact');
 Route::view('/faq', 'pages.faq')->name('faq');
 Route::view('/shipping-returns', 'pages.shipping-returns')->name('shipping-returns');
 

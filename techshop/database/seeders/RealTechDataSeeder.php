@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class RealTechDataSeeder extends Seeder
 {
@@ -13,10 +16,10 @@ class RealTechDataSeeder extends Seeder
     public function run(): void
     {
         // Clear existing data to start fresh (force delete to avoid keeping soft deleted records)
-        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
-        \App\Models\Product::withTrashed()->forceDelete();
-        \App\Models\Category::withTrashed()->forceDelete();
-        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
+        Product::withTrashed()->forceDelete();
+        Category::withTrashed()->forceDelete();
+        Schema::enableForeignKeyConstraints();
 
         $data = [
             'E-readers' => [
@@ -43,21 +46,21 @@ class RealTechDataSeeder extends Seeder
                 ['name' => 'LG UltraGear 27GR95QE', 'price' => 899.00, 'stock' => 15, 'description' => '27-inch OLED gaming monitor at 240Hz.'],
                 ['name' => 'Dell UltraSharp U2723QE', 'price' => 599.00, 'stock' => 22, 'description' => '4K USB-C Hub monitor with IPS Black.'],
                 ['name' => 'Samsung Odyssey Neo G9', 'price' => 1799.00, 'stock' => 5, 'description' => 'Super ultra-wide 49-inch curved monitor.'],
-            ]
+            ],
         ];
 
         foreach ($data as $categoryName => $products) {
-            $category = \App\Models\Category::create([
+            $category = Category::create([
                 'name' => $categoryName,
-                'slug' => \Illuminate\Support\Str::slug($categoryName),
-                'description' => "Ontdek onze selectie van high-end $categoryName."
+                'slug' => Str::slug($categoryName),
+                'description' => "Ontdek onze selectie van high-end $categoryName.",
             ]);
 
             foreach ($products as $productData) {
-                \App\Models\Product::create([
+                Product::create([
                     'category_id' => $category->id,
                     'name' => $productData['name'],
-                    'slug' => \Illuminate\Support\Str::slug($productData['name']),
+                    'slug' => Str::slug($productData['name']),
                     'description' => $productData['description'],
                     'price' => $productData['price'],
                     'stock' => $productData['stock'],

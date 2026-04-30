@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
+use App\Enums\UserRole;
 use App\Models\Product;
 use App\Models\User;
-use App\Enums\UserRole;
 
 class ProductPolicy
 {

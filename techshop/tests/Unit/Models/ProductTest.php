@@ -2,8 +2,9 @@
 
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-uses(Tests\TestCase::class, RefreshDatabase::class);
+uses(TestCase::class, RefreshDatabase::class);
 
 test('product scopeAvailable filters out products with zero stock', function () {
     // Arrange

@@ -12,9 +12,13 @@ use Livewire\Component;
 class Contact extends Component
 {
     public string $first_name = '';
+
     public string $last_name = '';
+
     public string $email = '';
+
     public string $subject = '';
+
     public string $message = '';
 
     protected array $rules = [
@@ -30,7 +34,7 @@ class Contact extends Component
         $this->validate();
 
         ContactMessage::create([
-            'name' => $this->first_name . ' ' . $this->last_name,
+            'name' => $this->first_name.' '.$this->last_name,
             'email' => $this->email,
             'subject' => $this->subject,
             'message' => $this->message,

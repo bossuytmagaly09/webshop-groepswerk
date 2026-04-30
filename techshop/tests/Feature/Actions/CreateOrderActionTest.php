@@ -3,14 +3,11 @@
 use App\Actions\Products\CreateOrderAction;
 use App\Models\Order;
 use App\Models\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Collection;
-
-
+use App\Models\User;
 
 test('CreateOrderAction creates an order with correct items and total price', function () {
     // Arrange
-    $user = \App\Models\User::factory()->create();
+    $user = User::factory()->create();
     $product1 = Product::factory()->create(['price' => 100, 'name' => 'Product 1']);
     $product2 = Product::factory()->create(['price' => 50, 'name' => 'Product 2']);
 
@@ -27,25 +24,25 @@ test('CreateOrderAction creates an order with correct items and total price', fu
         ],
     ]);
 
-    $action = new CreateOrderAction();
+    $action = new CreateOrderAction;
 
     // Act
     $order = $action->execute($cartItems, $user->id);
 
     // Assert
     expect($order)->toBeInstanceOf(Order::class)
-        ->and($order->total_price)->toBe("250.00") // 2*100 + 1*50
+        ->and($order->total_price)->toBe('250.00') // 2*100 + 1*50
         ->and($order->orderItems)->toHaveCount(2);
 
     $item1 = $order->orderItems->where('product_id', $product1->id)->first();
     expect($item1->product_name)->toBe('Product 1')
-        ->and($item1->unit_price)->toBe("100.00")
+        ->and($item1->unit_price)->toBe('100.00')
         ->and($item1->quantity)->toBe(2);
 });
 
 test('CreateOrderAction uses snapshots of product names and prices', function () {
     // Arrange
-    $user = \App\Models\User::factory()->create();
+    $user = User::factory()->create();
     $product = Product::factory()->create(['price' => 100, 'name' => 'Original Name']);
 
     $cartItems = collect([
@@ -56,7 +53,7 @@ test('CreateOrderAction uses snapshots of product names and prices', function ()
         ],
     ]);
 
-    $action = new CreateOrderAction();
+    $action = new CreateOrderAction;
     $order = $action->execute($cartItems, $user->id);
 
     // Change the product price/name after order creation
@@ -65,5 +62,5 @@ test('CreateOrderAction uses snapshots of product names and prices', function ()
     // Assert
     $item = $order->orderItems->first();
     expect($item->product_name)->toBe('Original Name') // Should still be old name
-        ->and($item->unit_price)->toBe("100.00");    // Should still be old price
+        ->and($item->unit_price)->toBe('100.00');    // Should still be old price
 });

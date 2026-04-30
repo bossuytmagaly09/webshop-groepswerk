@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialLoginController extends Controller
 {
@@ -30,7 +32,7 @@ class SocialLoginController extends Controller
             $socialUser = Socialite::driver($provider)->user();
 
             if (! $socialUser->getEmail()) {
-                throw new \Exception('Geen e-mailadres ontvangen van ' . ucfirst($provider));
+                throw new \Exception('Geen e-mailadres ontvangen van '.ucfirst($provider));
             }
 
             $user = User::where('email', $socialUser->getEmail())->first();
@@ -47,7 +49,7 @@ class SocialLoginController extends Controller
                     'email' => $socialUser->getEmail(),
                     "{$provider}_id" => $socialUser->getId(),
                     'role' => 'customer',
-                    'password' => \Illuminate\Support\Facades\Hash::make(\Illuminate\Support\Str::random(24)),
+                    'password' => Hash::make(Str::random(24)),
                 ]);
             }
 
@@ -55,9 +57,9 @@ class SocialLoginController extends Controller
 
             return redirect()->intended('/dashboard');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Social Login Error [' . $provider . ']: ' . $e->getMessage());
+            Log::error('Social Login Error ['.$provider.']: '.$e->getMessage());
 
-            return redirect('/login')->withErrors(['social' => 'Er is een probleem opgetreden met de authenticatie via ' . ucfirst($provider) . ': ' . $e->getMessage()]);
+            return redirect('/login')->withErrors(['social' => 'Er is een probleem opgetreden met de authenticatie via '.ucfirst($provider).': '.$e->getMessage()]);
         }
     }
 }

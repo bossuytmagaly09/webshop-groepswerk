@@ -2,9 +2,9 @@
 
 namespace App\Actions\Cart;
 
-use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -42,7 +42,7 @@ class AddItemToCartAction
         } else {
             // Sessie Opslag - voor gasten
             $cart = Session::get('cart', []);
-            
+
             if (isset($cart[$product->id])) {
                 $cart[$product->id]['quantity'] += $quantity;
             } else {
@@ -50,7 +50,7 @@ class AddItemToCartAction
                     'quantity' => $quantity,
                 ];
             }
-            
+
             Session::put('cart', $cart);
         }
     }
