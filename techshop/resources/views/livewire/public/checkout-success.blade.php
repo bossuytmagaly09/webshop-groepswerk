@@ -33,8 +33,11 @@
                 <h2 class="text-2xl font-bold text-[#0fa76e] dark:text-[#18E299] mb-2 text-center">
                     {{ __('Order Placed Successfully!') }}
                 </h2>
-                <p class="text-[15px] text-[#0fa76e]/80 dark:text-[#18E299]/80 mb-6 text-center max-w-md">
-                    {{ __('Your order has been confirmed and is now being processed. You can track your order status in your profile.') }}
+                <p class="text-[15px] text-[#0fa76e]/80 dark:text-[#18E299]/80 mb-2 text-center max-w-md">
+                    {{ __('Your order has been confirmed and payment was successful.') }}
+                </p>
+                <p class="text-[14px] text-[#0fa76e]/60 dark:text-[#18E299]/60 mb-6 text-center max-w-md">
+                    {{ __('You will receive a confirmation email shortly.') }}
                 </p>
 
                 <a 
